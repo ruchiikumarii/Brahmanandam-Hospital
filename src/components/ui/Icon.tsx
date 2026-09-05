@@ -1,0 +1,96 @@
+import {
+  Activity,
+  Ambulance,
+  Asterisk,
+  Baby,
+  Bone,
+  Brain,
+  CalendarCheck,
+  CalendarPlus,
+  Check,
+  CheckCircle2,
+  ClipboardCheck,
+  CreditCard,
+  Droplet,
+  Droplets,
+  Ear,
+  GraduationCap,
+  HandHeart,
+  Heart,
+  HeartPulse,
+  Microscope,
+  PersonStanding,
+  Phone,
+  Pill,
+  Scale,
+  Scan,
+  Scissors,
+  ShieldCheck,
+  Siren,
+  Smile,
+  Stethoscope,
+  Sparkles,
+  Sunrise,
+  Sunset,
+  UserSearch,
+  Users,
+  Wind,
+  type LucideIcon,
+} from "lucide-react";
+
+const registry: Record<string, LucideIcon> = {
+  activity: Activity,
+  ambulance: Ambulance,
+  asterisk: Asterisk,
+  baby: Baby,
+  bone: Bone,
+  brain: Brain,
+  "calendar-check": CalendarCheck,
+  "calendar-plus": CalendarPlus,
+  check: Check,
+  "check-circle": CheckCircle2,
+  "clipboard-check": ClipboardCheck,
+  "credit-card": CreditCard,
+  droplet: Droplet,
+  droplets: Droplets,
+  ear: Ear,
+  "graduation-cap": GraduationCap,
+  "hand-heart": HandHeart,
+  heart: Heart,
+  "heart-pulse": HeartPulse,
+  microscope: Microscope,
+  "person-standing": PersonStanding,
+  phone: Phone,
+  pill: Pill,
+  scalpel: Scissors,
+  scale: Scale,
+  scan: Scan,
+  "shield-check": ShieldCheck,
+  shield: ShieldCheck,
+  siren: Siren,
+  smile: Smile,
+  sparkle: Sparkles,
+  stethoscope: Stethoscope,
+  sunrise: Sunrise,
+  sunset: Sunset,
+  "user-search": UserSearch,
+  users: Users,
+  wind: Wind,
+};
+
+export function Icon({
+  name,
+  className = "",
+  size = 20,
+  strokeWidth = 1.9,
+}: {
+  name: string;
+  className?: string;
+  size?: number;
+  strokeWidth?: number;
+}) {
+  const Cmp = registry[name] ?? Activity;
+  return (
+    <Cmp className={className} size={size} strokeWidth={strokeWidth} aria-hidden="true" />
+  );
+}

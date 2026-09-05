@@ -1,0 +1,10 @@
+node_modules
+dist
+.DS_Store
+*.local
+.env*
+tsconfig.tsbuildinfo
+
+# Source design files (kept locally, not in the repo)
+design-reference
+*.pdf

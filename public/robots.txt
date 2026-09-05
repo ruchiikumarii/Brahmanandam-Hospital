@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /appointment/confirmation
+
+Sitemap: https://sonari.brahmanandamhospital.in/sitemap.xml
