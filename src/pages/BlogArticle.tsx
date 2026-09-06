@@ -1,118 +1,153 @@
-import Image from "@/components/ui/Img";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, CalendarDays, Clock, UserRound } from "lucide-react";
-import { blogArticles, getArticle } from "@/lib/data/blog";
+import Image from "@/components/ui/Img";
+import { getBlogPost, getBlogPosts } from "@/lib/cms/blog-store";
+import { pickRelated } from "@/lib/cms/posts";
+import { BlockList, RichText } from "@/components/blog/BlockList";
+import { blogPostJsonLd } from "@/lib/seo/route-meta";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { EmergencyBanner } from "@/components/layout/EmergencyBanner";
+import { Seo } from "@/components/Seo";
 import { cn } from "@/components/ui";
-import { Seo, articleSchema } from "@/components/Seo";
 import NotFoundPage from "@/pages/NotFound";
+
+const IST = "Asia/Kolkata";
 
 export default function BlogArticlePage() {
   const { slug } = useParams<{ slug: string }>();
-  const article = slug ? getArticle(slug) : undefined;
+  const article = slug ? getBlogPost(slug) : undefined;
+
+  // Unknown or unpublished slug -> the real 404 page. The prerender never
+  // writes an HTML file for it, so the host returns a genuine 404 status.
   if (!article) return <NotFoundPage />;
 
-  const others = blogArticles.filter((a) => a.slug !== article.slug);
+  const all = getBlogPosts();
+  const others = pickRelated(article, all, 2);
+
+  const published = article.publish_at
+    ? new Date(article.publish_at).toLocaleDateString("en-IN", {
+        day: "numeric", month: "long", year: "numeric", timeZone: IST,
+      })
+    : "";
+
+  const faqLd = article.faq.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: article.faq.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }
+    : null;
 
   return (
     <>
       <Seo
         crumbs={[
           { label: "Health Blog", href: "/blog" },
-          { label: article.category },
+          { label: article.category ?? "Article" },
         ]}
-        image={article.image}
-        schema={articleSchema(article)}
-        title={article.title}
-        description={article.excerpt}
+        image={article.og_image ?? article.featured_image ?? undefined}
+        schema={[blogPostJsonLd(article), ...(faqLd ? [faqLd] : [])]}
+        title={article.seo_title || article.title}
+        description={article.meta_description || article.excerpt}
       />
 
       <article className="relative isolate bg-tint-soft-grad pb-10 lg:pb-12">
         <Breadcrumbs
-        items={[{ label: "Health Blog", href: "/blog" }, { label: article.category }]}
+          items={[
+            { label: "Health Blog", href: "/blog" },
+            { label: article.category ?? "Article" },
+          ]}
         />
+
         <div className="shell">
           <div className="mx-auto max-w-3xl">
             <div className="flex flex-wrap items-center gap-3">
-              <span
-                className={cn(
-                  "rounded-full px-3 py-1.5 text-[0.75rem] font-bold",
-                  article.categoryTone === "secondary"
-                    ? "bg-[rgba(190,53,58,.07)] text-secondary"
-                    : "bg-[rgba(47,59,128,.07)] text-primary",
-                )}
-              >
-                {article.category}
-              </span>
-              <span className="flex items-center gap-1.5 text-[0.8125rem] text-muted">
-                <CalendarDays size={14} />
-                {article.date}
-              </span>
-              <span className="flex items-center gap-1.5 text-[0.8125rem] text-muted">
-                <Clock size={14} />
-                {article.readMinutes} min read
-              </span>
+              {article.category ? (
+                <span
+                  className={cn(
+                    "rounded-full px-3 py-1.5 text-[0.75rem] font-bold",
+                    "bg-[rgba(190,53,58,.07)] text-secondary",
+                  )}
+                >
+                  {article.category}
+                </span>
+              ) : null}
+              {published ? (
+                <span className="flex items-center gap-1.5 text-[0.8125rem] text-muted">
+                  <CalendarDays size={14} />
+                  {published}
+                </span>
+              ) : null}
+              {article.read_time ? (
+                <span className="flex items-center gap-1.5 text-[0.8125rem] text-muted">
+                  <Clock size={14} />
+                  {article.read_time} min read
+                </span>
+              ) : null}
             </div>
 
             <h1 className="mt-4 text-[1.875rem] leading-[1.12] font-extrabold tracking-[-0.025em] sm:text-[2.375rem]">
               {article.title}
             </h1>
-            <p className="mt-4 text-[1.0625rem] leading-relaxed text-muted">
-              {article.excerpt}
-            </p>
 
-            <div className="mt-5 flex items-center gap-3 border-y border-line py-4">
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-[rgba(47,59,128,.07)] text-primary">
-                <UserRound size={18} />
-              </span>
-              <span>
+            {article.excerpt ? (
+              <p className="mt-4 text-[1.0625rem] leading-relaxed text-muted">
+                {article.excerpt}
+              </p>
+            ) : null}
+
+            {article.author ? (
+              <div className="mt-5 flex items-center gap-3 border-y border-line py-4">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-[rgba(47,59,128,.07)] text-primary">
+                  <UserRound size={18} />
+                </span>
                 <span className="block text-[0.9375rem] font-bold text-primary">
                   {article.author}
                 </span>
-                <span className="block text-[0.8125rem] text-muted">
-                  {article.authorRole}
-                </span>
-              </span>
+              </div>
+            ) : null}
+
+            {article.featured_image ? (
+              <Image
+                src={article.featured_image}
+                alt={article.image_alt ?? article.title}
+                width={900}
+                height={438}
+                priority
+                className="mt-6 w-full rounded-[1.25rem] object-cover shadow-card"
+              />
+            ) : null}
+
+            <div className="mt-8">
+              <BlockList content={article.content} />
             </div>
 
-            <Image
-              src={article.image}
-              alt={article.title}
-              width={900}
-              height={438}
-              priority
-              sizes="(max-width: 1023px) 100vw, 768px"
-              className="mt-6 w-full rounded-[1.25rem] object-cover shadow-card"
-            />
-
-            <div className="mt-9 grid gap-8">
-              {article.body.map((block) => (
-                <section key={block.heading} data-reveal>
-                  <h2 className="text-[1.375rem] leading-snug font-extrabold">
-                    {block.heading}
-                  </h2>
-                  <div className="mt-3 grid gap-3.5 text-[1rem] leading-[1.85] text-muted">
-                    {block.paragraphs.map((p) => (
-                      <p key={p.slice(0, 40)}>{p}</p>
-                    ))}
-                  </div>
-                  {block.points ? (
-                    <ul className="mt-4 grid gap-2.5 rounded-[1.125rem] bg-white p-5 shadow-card">
-                      {block.points.map((point) => (
-                        <li
-                          key={point}
-                          className="flex items-start gap-3 text-[0.9375rem] leading-relaxed text-ink"
-                        >
-                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" />
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </section>
-              ))}
-            </div>
+            {article.faq.length ? (
+              <section className="mt-10">
+                <h2 className="text-[1.5rem] font-extrabold">
+                  Frequently asked questions
+                </h2>
+                <dl className="mt-4 grid gap-3">
+                  {article.faq.map((f) => (
+                    <div
+                      key={f.question}
+                      className="rounded-[1.125rem] border border-line bg-white p-5 shadow-card"
+                    >
+                      <dt className="text-[1rem] font-bold text-primary">
+                        {f.question}
+                      </dt>
+                      <dd className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
+                        <RichText text={f.answer} />
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </section>
+            ) : null}
 
             <aside
               data-reveal="zoom"
@@ -142,33 +177,37 @@ export default function BlogArticlePage() {
                 <ArrowLeft size={16} />
                 Back to all articles
               </Link>
-              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                {others.map((other) => (
-                  <li key={other.slug}>
-                    <Link
-                      to={`/blog/${other.slug}`}
-                      className="flex h-full gap-3.5 rounded-[1.125rem] border border-line bg-white p-4 transition-all hover:-translate-y-0.5 hover:shadow-lift"
-                    >
-                      <Image
-                        src={other.image}
-                        alt=""
-                        width={200}
-                        height={97}
-                        sizes="88px"
-                        className="h-16 w-22 shrink-0 rounded-lg object-cover"
-                      />
-                      <span className="min-w-0">
-                        <span className="block text-[0.75rem] font-bold text-secondary">
-                          {other.category}
+
+              {others.length ? (
+                <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {others.map((other) => (
+                    <li key={other.slug}>
+                      <Link
+                        to={`/blog/${other.slug}`}
+                        className="flex h-full gap-3.5 rounded-[1.125rem] border border-line bg-white p-4 transition-all hover:-translate-y-0.5 hover:shadow-lift"
+                      >
+                        {other.featured_image ? (
+                          <Image
+                            src={other.featured_image}
+                            alt=""
+                            width={200}
+                            height={97}
+                            className="h-16 w-22 shrink-0 rounded-lg object-cover"
+                          />
+                        ) : null}
+                        <span className="min-w-0">
+                          <span className="block text-[0.75rem] font-bold text-secondary">
+                            {other.category}
+                          </span>
+                          <span className="mt-1 block text-[0.9375rem] leading-snug font-bold text-primary">
+                            {other.title}
+                          </span>
                         </span>
-                        <span className="mt-1 block text-[0.9375rem] leading-snug font-bold text-primary">
-                          {other.title}
-                        </span>
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </nav>
           </div>
         </div>

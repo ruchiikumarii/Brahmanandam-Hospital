@@ -8,3 +8,8 @@ tsconfig.tsbuildinfo
 # Source design files (kept locally, not in the repo)
 design-reference
 *.pdf
+
+# SSR build artefacts and local env
+dist/server
+.env
+.env.local

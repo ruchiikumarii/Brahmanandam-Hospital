@@ -6,6 +6,7 @@ import { MobileTabBar } from "@/components/layout/MobileTabBar";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { AppointmentProvider } from "@/lib/appointment-context";
 import { useScrollReveal } from "@/lib/use-scroll-reveal";
+import { AdminShell, RequireAuth } from "@/admin/AdminShell";
 
 /* The landing page ships in the main bundle; the rest load on demand. */
 import HomePage from "@/pages/Home";
@@ -43,6 +44,15 @@ const GalleryPage = lazy(() => import("@/pages/Gallery"));
 const HealthPackagesPage = lazy(() => import("@/pages/HealthPackages"));
 const NotFoundPage = lazy(() => import("@/pages/NotFound"));
 
+/* Admin is a separate client-only app; it is never prerendered and never
+   appears in the sitemap. */
+const AdminLogin = lazy(() => import("@/admin/Login"));
+const AdminDashboard = lazy(() => import("@/admin/Dashboard"));
+const AdminBlogList = lazy(() => import("@/admin/BlogList"));
+const AdminBlogEditor = lazy(() => import("@/admin/BlogEditor"));
+const AdminMedia = lazy(() => import("@/admin/Media"));
+const AdminCategories = lazy(() => import("@/admin/Categories"));
+
 /** Keeps the header/footer in place while a route chunk streams in. */
 function RouteFallback() {
   return (
@@ -75,6 +85,37 @@ function ScrollToTop() {
 
 export default function App() {
   useScrollReveal();
+
+  const { pathname } = useLocation();
+
+  /* The admin lives at /admin/* with its own chrome — no hospital header,
+     footer or mobile bar, and no scroll-reveal. */
+  if (pathname.startsWith("/admin")) {
+    return (
+      <Suspense fallback={<RouteFallback />}>
+        <Routes>
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin/*"
+            element={
+              <RequireAuth>
+                <AdminShell>
+                  <Routes>
+                    <Route path="/admin" element={<AdminDashboard />} />
+                    <Route path="/admin/blogs" element={<AdminBlogList />} />
+                    <Route path="/admin/blogs/new" element={<AdminBlogEditor />} />
+                    <Route path="/admin/blogs/:id" element={<AdminBlogEditor />} />
+                    <Route path="/admin/media" element={<AdminMedia />} />
+                    <Route path="/admin/categories" element={<AdminCategories />} />
+                  </Routes>
+                </AdminShell>
+              </RequireAuth>
+            }
+          />
+        </Routes>
+      </Suspense>
+    );
+  }
 
   return (
     <AppointmentProvider>

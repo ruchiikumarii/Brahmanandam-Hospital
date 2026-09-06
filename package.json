@@ -5,11 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && vite build --ssr && node scripts/prerender.mjs",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build:client": "vite build",
+    "verify:bundle": "node scripts/verify-bundle.mjs",
+    "test:cms": "node tests/cms.test.mjs"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.115.0",
     "lucide-react": "^0.549.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

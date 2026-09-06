@@ -196,3 +196,87 @@ for this build and should be reviewed by the hospital before launch.
 The build follows the client-approved Stitch design PDFs. Those source files are
 kept outside the repository (they are large binaries and are not needed to build
 or run the site) — ask the project owner for a copy if you need them.
+
+---
+
+# Blog CMS
+
+Self-hosted CMS on Supabase with an admin dashboard at `/admin`.
+
+## Rendering case: **B — static / build-time**
+
+The public site is a Vite SPA on static hosting, so publishing triggers a
+rebuild + deploy and scheduling needs a periodic build. Before this work the
+site shipped an empty `<div id="root">` on every route — effectively Case C,
+which is unacceptable for a blog. `npm run build` now:
+
+1. `vite build` — client bundle
+2. `vite build --ssr` — server bundle
+3. `node scripts/prerender.mjs` — renders **every** public route to real HTML
+   with head tags and JSON-LD, writes `404.html`, `_redirects` and `sitemap.xml`
+
+Articles are read once at build time and baked into the page. **Nothing fetches
+blog content from the browser.**
+
+## The visibility rule — one place
+
+`src/lib/cms/visibility.ts`
+
+```
+status IN ('published','scheduled') AND publish_at <= now()
+```
+
+Used by the listing, the article page, the sitemap, related-post lookup and the
+prerender, and mirrored as an RLS policy in `0001_blog_cms.sql`. **No cron flips
+`scheduled` → `published`** — a scheduled post becomes visible because the clock
+moved, and the next build picks it up.
+
+## Supabase setup
+
+1. Create a project. Put the **Project URL** and **publishable (anon)** key in
+   `.env` as `VITE_SUPABASE_URL` / `VITE_SUPABASE_PUBLISHABLE_KEY`
+   (see `.env.example`). The service-role key is never used.
+2. SQL Editor → run `supabase/migrations/0001_blog_cms.sql`
+   (tables, indexes, `updated_at` trigger, RLS, `blog-images` bucket, seeds).
+3. Auth → enable Email/Password → create the one admin user.
+4. For automatic deploys, run `supabase/migrations/0002_auto_deploy.sql` and add
+   the secrets it expects:
+   ```sql
+   select vault.create_secret('ghp_…', 'github_dispatch_token');
+   select vault.create_secret('owner/repo', 'github_repo');
+   ```
+5. Verify in an incognito window that a `draft` row is not returned by the anon
+   API.
+
+## Automatic publishing
+
+`pg_cron` runs every 3 minutes and fires a GitHub `repository_dispatch`
+(`cms-publish`) **only** when a post changed or a scheduled post just became
+due, tracked in `deploy_state` so it never build-storms.
+`.github/workflows/deploy.yml` rebuilds, runs `verify:bundle` + `test:cms`, and
+deploys. Publish → live in about 3 minutes.
+
+`VITE_CMS_ENABLED=false` is the instant rollback: the site serves only the
+hand-written articles.
+
+## SEO score
+
+`src/lib/cms/seo-score.ts` — deterministic, rule-based, no guessing. Title:
+length 50–60 (30), keyword present (25), keyword in the first 30 chars (15),
+unique (10), number/power word (10), no stuffing or shouting (10). Description:
+length 120–160 (30), keyword (25), CTA (20), specific and active (15),
+unique (10). Bands: ≥80 green, ≥50 amber, else red.
+
+Below 80 a **Suggest** panel names each failing rule, explains why it matters,
+and offers three rewrites built from the post's own title / excerpt / focus
+keyword — via Gemini when `VITE_GEMINI_API_KEY` is set, otherwise from
+deterministic templates. Every candidate is re-scored before it is offered.
+
+## Commands
+
+| Command | What it does |
+| --- | --- |
+| `npm run build` | client + SSR + prerender + sitemap |
+| `npm run test:cms` | 26 acceptance tests |
+| `npm run verify:bundle` | fails if any credential reached a client file |
+| `node scripts/serve-static.mjs 4180` | serve `dist/` exactly as the host will |

@@ -2,11 +2,11 @@ import Image from "@/components/ui/Img";
 import { Link } from "react-router-dom";
 import { ArrowRight, Quote } from "lucide-react";
 import {
-  blogPosts,
   facilities,
   insurancePartners,
   testimonials,
 } from "@/lib/data/content";
+import { getBlogPosts } from "@/lib/cms/blog-store";
 import { FacilityCard } from "@/components/cards/FacilityCard";
 import { Section, SectionHeading, Stars, cn } from "@/components/ui";
 import { revealDelay } from "@/lib/use-scroll-reveal";
@@ -135,7 +135,10 @@ export function TestimonialsSection({ limit = 3 }: { limit?: number } = {}) {
 
 /* ------------------------------------------------------------------ Blog */
 
-export function BlogSection() {
+export function BlogSection({ limit = 3 }: { limit?: number } = {}) {
+  // Merged CMS + hand-written posts, already visibility-filtered and sorted.
+  const posts = getBlogPosts().slice(0, limit);
+
   return (
     <Section tone="white">
       <div
@@ -162,7 +165,7 @@ export function BlogSection() {
       </div>
 
       <div className="mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {blogPosts.map((post, i) => (
+        {posts.map((post, i) => (
           <article
             key={post.slug}
             data-reveal
@@ -171,7 +174,7 @@ export function BlogSection() {
           >
             <div className="relative aspect-[450/218] w-full overflow-hidden bg-tint">
               <Image
-                src={post.image}
+                src={post.featured_image ?? "/images/general/hospital-exterior.jpg"}
                 alt={post.title}
                 fill
                 loading="lazy"
@@ -184,14 +187,26 @@ export function BlogSection() {
                 <span
                   className={cn(
                     "rounded-full px-2.5 py-1 text-[0.75rem] font-bold",
-                    post.categoryTone === "secondary"
+                    i % 2 === 0
                       ? "bg-[rgba(190,53,58,.07)] text-secondary"
                       : "bg-[rgba(47,59,128,.07)] text-primary",
                   )}
                 >
                   {post.category}
                 </span>
-                <time className="text-[0.8125rem] text-muted">{post.date}</time>
+                <time
+                  dateTime={post.publish_at ?? undefined}
+                  className="text-[0.8125rem] text-muted"
+                >
+                  {post.publish_at
+                    ? new Date(post.publish_at).toLocaleDateString("en-IN", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                        timeZone: "Asia/Kolkata",
+                      })
+                    : ""}
+                </time>
               </div>
               <h3 className="mt-3 text-[1.0625rem] leading-snug font-extrabold">
                 {post.title}

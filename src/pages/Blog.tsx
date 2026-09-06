@@ -20,7 +20,7 @@ export default function BlogPage() {
         subtitle="Preventive wellness guidance and specialist articles written by our senior consultants at the Sonari campus."
         icon={<Newspaper size={14} className="text-secondary" />}
       />
-      <BlogSection />
+      <BlogSection limit={50} />
       <EmergencyBanner />
     </>
   );
