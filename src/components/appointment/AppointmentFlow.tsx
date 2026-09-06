@@ -30,6 +30,7 @@ import {
   buildCalendar,
   genders,
   isSlotAvailable,
+  firstBookableDay,
   monthKeysOf,
   opdSessions,
   visitCategories,
@@ -78,6 +79,7 @@ export function AppointmentFlow() {
 
   const calendar = useMemo(() => buildCalendar(45), []);
   const months = useMemo(() => monthKeysOf(calendar).slice(0, 2), [calendar]);
+  const firstOpen = useMemo(() => firstBookableDay(calendar), [calendar]);
 
   const [step, setStep] = useState(1);
   const [month, setMonth] = useState(months[0]);
@@ -122,12 +124,12 @@ export function AppointmentFlow() {
       target = Math.max(target, urlSeed.step);
     if (!resolvedDept) target = 1;
     else if (!resolvedDoctor) target = Math.min(target, 2);
-    if (target >= 3 && !draft.date) patch.date = calendar[0].iso;
+    if (target >= 3 && !draft.date) patch.date = firstOpen.iso;
 
     if (Object.keys(patch).length) setDraft(patch);
     setStep(target);
     setSeeded(true);
-  }, [hydrated, urlSeed, setDraft, draft.department, draft.doctor, draft.date, calendar]);
+  }, [hydrated, urlSeed, setDraft, draft.department, draft.doctor, draft.date, firstOpen]);
 
   /* Before the seed lands, prefer the URL so the first paint shows the right
      doctor; afterwards the draft is the single source of truth. */
@@ -167,7 +169,7 @@ export function AppointmentFlow() {
   };
 
   const pickDoctor = (slug: string) => {
-    setDraft({ doctor: slug, date: draft.date || calendar[0].iso });
+    setDraft({ doctor: slug, date: draft.date || firstOpen.iso });
     goTo(3);
   };
 

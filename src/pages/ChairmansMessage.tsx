@@ -13,6 +13,7 @@ export default function ChairmansMessagePage() {
   return (
     <>
       <Seo
+        crumbs={[{ label: "About Us", href: "/about" }, { label: "Chairman's Message" }]}
         title="Chairman's Message"
         description={`A message from ${m.name}, Chairman of Brahmanandam Hospital, Sonari, on compassion, integrity and accessible quality healthcare for Jamshedpur.`}
       />

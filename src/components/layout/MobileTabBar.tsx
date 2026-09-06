@@ -1,13 +1,34 @@
-import { CalendarCheck, Home, Menu, Siren, Stethoscope } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { CalendarCheck, Home, Menu, MessageCircle, Phone } from "lucide-react";
 import { cn } from "@/components/ui";
 import { site } from "@/lib/data/site";
 
-const tabs = [
+type Tab = {
+  label: string;
+  href: string;
+  icon: typeof Home;
+  /** Centre action, raised out of the bar. */
+  primary?: boolean;
+  /** Emergency line — always red. */
+  danger?: boolean;
+  /** WhatsApp — always green. */
+  chat?: boolean;
+  /** Opens the header drawer instead of navigating. */
+  action?: boolean;
+  external?: boolean;
+};
+
+const tabs: Tab[] = [
   { label: "Home", href: "/", icon: Home },
-  { label: "Doctors", href: "/doctors", icon: Stethoscope },
+  { label: "Call", href: site.phoneHref, icon: Phone, danger: true, external: true },
   { label: "Appointment", href: "/appointment", icon: CalendarCheck, primary: true },
-  { label: "Emergency", href: site.phoneHref, icon: Siren, danger: true },
+  {
+    label: "WhatsApp",
+    href: site.whatsapp,
+    icon: MessageCircle,
+    chat: true,
+    external: true,
+  },
   { label: "Menu", href: "#menu", icon: Menu, action: true },
 ];
 
@@ -16,14 +37,17 @@ export function MobileTabBar() {
 
   return (
     <nav
-      aria-label="Quick navigation"
+      aria-label="Quick actions"
       className="no-print fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/97 pb-[env(safe-area-inset-bottom)] backdrop-blur-md xl:hidden"
     >
       <ul className="grid grid-cols-5">
-        {tabs.map(({ label, href, icon: IconCmp, primary, danger, action }) => {
+        {tabs.map(({ label, href, icon: IconCmp, primary, danger, chat, action, external }) => {
           const active =
             !danger &&
+            !chat &&
+            !action &&
             (href === "/" ? pathname === "/" : pathname.startsWith(href));
+
           const inner = (
             <>
               <span
@@ -33,19 +57,25 @@ export function MobileTabBar() {
                     ? "-mt-5 h-11 w-11 rounded-full bg-secondary text-white shadow-[0_8px_20px_-8px_rgba(190,53,58,.8)]"
                     : "h-6 w-6",
                   !primary && danger && "text-secondary",
-                  !primary && !danger && (active ? "text-primary" : "text-muted"),
+                  !primary && chat && "text-success",
+                  !primary && !danger && !chat && (active ? "text-primary" : "text-muted"),
                 )}
               >
-                <IconCmp size={primary ? 20 : 19} strokeWidth={active || primary ? 2.3 : 1.9} />
+                <IconCmp
+                  size={primary ? 20 : 19}
+                  strokeWidth={active || primary ? 2.3 : 1.9}
+                />
               </span>
               <span
                 className={cn(
                   "mt-1 text-[0.625rem] font-bold",
                   danger
                     ? "text-secondary"
-                    : active || primary
-                      ? "text-primary"
-                      : "text-muted",
+                    : chat
+                      ? "text-success"
+                      : active || primary
+                        ? "text-primary"
+                        : "text-muted",
                 )}
               >
                 {label}
@@ -56,30 +86,33 @@ export function MobileTabBar() {
             </>
           );
 
-          if (action) {
-            return (
-              <li key={label} className="relative">
+          const cls =
+            "relative flex h-[3.75rem] w-full flex-col items-center justify-center";
+
+          return (
+            <li key={label} className="relative">
+              {action ? (
                 <button
                   type="button"
                   onClick={() =>
                     window.dispatchEvent(new CustomEvent("bh:toggle-menu"))
                   }
                   aria-label="Open navigation menu"
-                  className="relative flex h-[3.75rem] w-full flex-col items-center justify-center"
+                  className={cls}
                 >
                   {inner}
                 </button>
-              </li>
-            );
-          }
-
-          return (
-            <li key={label} className="relative">
-              {danger ? (
+              ) : external ? (
                 <a
                   href={href}
-                  className="relative flex h-[3.75rem] flex-col items-center justify-center"
-                  aria-label={`Call emergency ${site.phone}`}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noreferrer noopener" : undefined}
+                  aria-label={
+                    danger
+                      ? `Call the 24x7 hospital helpline ${site.phone}`
+                      : `Chat with the hospital on WhatsApp`
+                  }
+                  className={cls}
                 >
                   {inner}
                 </a>
@@ -87,7 +120,7 @@ export function MobileTabBar() {
                 <Link
                   to={href}
                   aria-current={active ? "page" : undefined}
-                  className="relative flex h-[3.75rem] flex-col items-center justify-center"
+                  className={cls}
                 >
                   {inner}
                 </Link>

@@ -7,6 +7,10 @@ export default function AdmissionProcessPage() {
   return (
     <>
       <Seo
+        crumbs={[
+          { label: "Patient Care", href: "/patient-services" },
+          { label: "Admission Process" },
+        ]}
         title="Admission Process"
         description="Registration, admission procedure, room types, billing and payment methods for inpatient admission at Brahmanandam Hospital, Sonari, Jamshedpur."
       />

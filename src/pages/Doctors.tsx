@@ -17,8 +17,8 @@ export default function DoctorsPage() {
   return (
     <>
       <Seo
-        title="Our Medical Faculty & Specialists"
-        description="Browse board-certified physicians, senior surgeons and clinical consultants at Brahmanandam Hospital, Sonari, Jamshedpur. Filter by specialty, OPD day and timing, then book a consultation online."
+        title="Doctors in Sonari, Jamshedpur | Our Medical Faculty & Specialists"
+        description="Find doctors in Sonari, Jamshedpur — cardiologists, gynaecologists, orthopaedic surgeons, physicians, paediatricians and urologists at Brahmanandam Hospital. See OPD timings, chamber, fees and book online."
       />
 
       <section className="relative isolate overflow-hidden bg-white pb-10 lg:pb-12">

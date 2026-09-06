@@ -13,6 +13,7 @@ export default function CeoMessagePage() {
   return (
     <>
       <Seo
+        crumbs={[{ label: "About Us", href: "/about" }, { label: "CEO Message" }]}
         title="CEO Message"
         description={`A message from ${m.name}, CEO of Brahmanandam Hospital, Sonari, on compassionate, reliable and high-quality healthcare for Jamshedpur.`}
       />

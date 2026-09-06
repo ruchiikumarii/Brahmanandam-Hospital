@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ChevronDown, Phone } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { EmergencyBanner } from "@/components/layout/EmergencyBanner";
-import { Seo } from "@/components/Seo";
+import { Seo, faqSchema } from "@/components/Seo";
 import { faqs } from "@/lib/data/institutional";
 import { site } from "@/lib/data/site";
 import { Icon } from "@/components/ui/Icon";
@@ -15,6 +15,8 @@ export default function FaqPage() {
   return (
     <>
       <Seo
+        crumbs={[{ label: "FAQ" }]}
+        schema={faqSchema(faqs)}
         title="Frequently Asked Questions"
         description="Answers to common questions about Brahmanandam Hospital, Sonari — location, working hours, appointments, available specialities, insurance and online consultation."
       />

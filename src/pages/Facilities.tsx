@@ -20,7 +20,8 @@ export default function FacilitiesPage() {
   return (
     <>
       <Seo
-        title="Hospital Facilities"
+        crumbs={[{ label: "Hospital Facilities" }]}
+        title="Hospital Facilities in Sonari, Jamshedpur"
         description="Trauma centre, ICU and critical care, laminar airflow operation theatres, modern diagnostics, 24x7 in-house pharmacy and ambulance fleet at Brahmanandam Hospital, Sonari, Jamshedpur."
       />
       <PageHero

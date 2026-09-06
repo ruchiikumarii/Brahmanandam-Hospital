@@ -14,8 +14,8 @@ export default function DepartmentsPage() {
   return (
     <>
       <Seo
-        title="Clinical Departments & Centres of Excellence"
-        description="Explore 12+ specialised clinical departments at Brahmanandam Hospital, Sonari — cardiology and cath lab, maternity, orthopaedics, paediatrics, laparoscopic surgery, emergency care, diagnostics and ICU."
+        title="Departments | Multispeciality Hospital in Sonari, Jamshedpur"
+        description="Explore 20+ specialities at Brahmanandam Hospital, Sonari — cardiology and cath lab, orthopaedics, gynaecology, paediatrics, general surgery, emergency and trauma care, ICU, radiology and pathology in Jamshedpur."
       />
 
       <section className="relative isolate overflow-hidden bg-tint-soft-grad pb-10 lg:pb-12">

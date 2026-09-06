@@ -4,7 +4,13 @@ import { CheckCircle2, ChevronDown } from "lucide-react";
 import { departments } from "@/lib/data/departments";
 import { doctors } from "@/lib/data/doctors";
 import { site } from "@/lib/data/site";
-import { allSlots, buildCalendar, firstAvailableSlot, isSlotAvailable } from "@/lib/slots";
+import {
+  allSlots,
+  buildCalendar,
+  firstAvailableSlot,
+  firstBookableDay,
+  isSlotAvailable,
+} from "@/lib/slots";
 import { useAppointment } from "@/lib/appointment-context";
 import { EkgLine, cn } from "@/components/ui";
 
@@ -19,8 +25,10 @@ export function HeroBookingCard() {
 
   const [department, setDepartment] = useState("cardiology");
   const [doctor, setDoctor] = useState("rajeev-ranjan");
-  const [date, setDate] = useState(calendar[0].iso);
-  const [time, setTime] = useState(() => firstAvailableSlot(calendar[0].iso));
+  const firstOpen = useMemo(() => firstBookableDay(calendar), [calendar]);
+
+  const [date, setDate] = useState(firstOpen.iso);
+  const [time, setTime] = useState(() => firstAvailableSlot(firstOpen.iso));
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [errors, setErrors] = useState<{ name?: string; mobile?: string }>({});

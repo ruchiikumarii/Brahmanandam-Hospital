@@ -9,7 +9,7 @@ import { EmergencyBanner } from "@/components/layout/EmergencyBanner";
 import { DoctorDirectoryCard } from "@/components/cards/DoctorDirectoryCard";
 import { Icon } from "@/components/ui/Icon";
 import { EkgLine } from "@/components/ui";
-import { Seo } from "@/components/Seo";
+import { Seo, departmentSchema } from "@/components/Seo";
 import NotFoundPage from "@/pages/NotFound";
 
 export default function DepartmentDetailPage() {
@@ -23,6 +23,11 @@ export default function DepartmentDetailPage() {
   return (
     <>
       <Seo
+        crumbs={[
+          { label: "Departments", href: "/departments" },
+          { label: dept.shortName },
+        ]}
+        schema={departmentSchema(dept)}
         title={dept.name}
         description={`${dept.summary} ${dept.name} at Brahmanandam Hospital, Sonari, Jamshedpur.`}
       />

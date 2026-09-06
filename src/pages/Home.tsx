@@ -20,8 +20,8 @@ export default function HomePage() {
   return (
     <>
       <Seo
-        title="Brahmanandam Hospital, Sonari | Multi Specialty Centre in Jamshedpur"
-        description="Brahmanandam Hospital, Sonari is a multi specialty centre in Jamshedpur offering 24x7 emergency care, ICU, advanced operation theatres, cardiology, maternity, orthopaedics and cashless TPA support."
+        title="Brahmanandam Hospital Sonari | Multispeciality Hospital in Jamshedpur"
+        description="Brahmanandam Hospital, Sonari is a multispeciality hospital in Jamshedpur with 24x7 emergency care, ICU, modular operation theatres, cardiology, maternity, orthopaedics, diagnostics and cashless TPA support. Call 8271827999."
       />
       <Hero />
       <QuickActions />

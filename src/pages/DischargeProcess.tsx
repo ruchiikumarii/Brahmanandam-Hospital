@@ -7,6 +7,10 @@ export default function DischargeProcessPage() {
   return (
     <>
       <Seo
+        crumbs={[
+          { label: "Patient Care", href: "/patient-services" },
+          { label: "Discharge Process" },
+        ]}
         title="Discharge Process"
         description="Discharge formalities at Brahmanandam Hospital, Sonari — billing, discharge summary, medication, medico-legal cases, certificates and patient feedback."
       />

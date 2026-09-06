@@ -19,8 +19,10 @@ type ImgProps = Omit<
 };
 
 /**
- * Small wrapper that gives every <img> sensible loading defaults and
- * intrinsic dimensions so the browser can reserve space (no layout shift).
+ * Every raster asset in `public/images` ships as both `.jpg` and `.webp`
+ * (see the build notes in the README), so we serve WebP first and let the
+ * browser fall back to the JPEG. Intrinsic width/height are always passed
+ * through, which reserves layout space and keeps CLS at zero.
  */
 export default function Image({
   src,
@@ -35,7 +37,12 @@ export default function Image({
   ...rest
 }: ImgProps) {
   void _sizes;
-  return (
+
+  const webp = /\.(jpe?g|png)$/i.test(src)
+    ? src.replace(/\.(jpe?g|png)$/i, ".webp")
+    : null;
+
+  const img = (
     <img
       src={src}
       alt={alt}
@@ -47,5 +54,14 @@ export default function Image({
       className={cn(fill && "absolute inset-0 h-full w-full", className)}
       {...rest}
     />
+  );
+
+  if (!webp) return img;
+
+  return (
+    <picture className="contents">
+      <source srcSet={webp} type="image/webp" />
+      {img}
+    </picture>
   );
 }

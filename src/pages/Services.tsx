@@ -14,8 +14,9 @@ export default function ServicesPage() {
   return (
     <>
       <Seo
-        title="Clinical Services"
-        description="24x7 emergency care, ICU and critical care, modular operation theatres, diagnostic imaging, clinical pathology, in-house pharmacy, ambulance services and preventive health check-ups at Brahmanandam Hospital, Sonari."
+        crumbs={[{ label: "Services" }]}
+        title="Hospital Services in Jamshedpur | Emergency, ICU, OT & Diagnostics"
+        description="24x7 emergency care, ICU and critical care, modular operation theatres, diagnostic imaging, clinical pathology, in-house pharmacy, ambulance and preventive health check-ups at Brahmanandam Hospital, Sonari, Jamshedpur."
       />
       <PageHero
         crumbs={[{ label: "Services" }]}

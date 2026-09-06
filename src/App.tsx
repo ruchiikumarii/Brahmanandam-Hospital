@@ -40,6 +40,7 @@ const CareersPage = lazy(() => import("@/pages/Careers"));
 const CsrPage = lazy(() => import("@/pages/Csr"));
 const FaqPage = lazy(() => import("@/pages/Faq"));
 const GalleryPage = lazy(() => import("@/pages/Gallery"));
+const HealthPackagesPage = lazy(() => import("@/pages/HealthPackages"));
 const NotFoundPage = lazy(() => import("@/pages/NotFound"));
 
 /** Keeps the header/footer in place while a route chunk streams in. */
@@ -133,6 +134,7 @@ export default function App() {
             <Route path="/csr" element={<CsrPage />} />
             <Route path="/faq" element={<FaqPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/health-packages" element={<HealthPackagesPage />} />
             <Route path="/appointment" element={<AppointmentPage />} />
             <Route
               path="/appointment/confirmation"

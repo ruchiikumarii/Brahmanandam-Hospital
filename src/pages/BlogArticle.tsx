@@ -5,7 +5,7 @@ import { blogArticles, getArticle } from "@/lib/data/blog";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { EmergencyBanner } from "@/components/layout/EmergencyBanner";
 import { cn } from "@/components/ui";
-import { Seo } from "@/components/Seo";
+import { Seo, articleSchema } from "@/components/Seo";
 import NotFoundPage from "@/pages/NotFound";
 
 export default function BlogArticlePage() {
@@ -17,7 +17,16 @@ export default function BlogArticlePage() {
 
   return (
     <>
-      <Seo title={article.title} description={article.excerpt} />
+      <Seo
+        crumbs={[
+          { label: "Health Blog", href: "/blog" },
+          { label: article.category },
+        ]}
+        image={article.image}
+        schema={articleSchema(article)}
+        title={article.title}
+        description={article.excerpt}
+      />
 
       <article className="relative isolate bg-tint-soft-grad pb-10 lg:pb-12">
         <Breadcrumbs

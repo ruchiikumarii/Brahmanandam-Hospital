@@ -9,6 +9,7 @@ export default function BlogPage() {
   return (
     <>
       <Seo
+        crumbs={[{ label: "Health Blog" }]}
         title="Health Blog — Latest Medical Insights"
         description="Preventive wellness guidance and specialist articles by senior doctors at Brahmanandam Hospital, Sonari — cardiology, diabetes care and child health."
       />

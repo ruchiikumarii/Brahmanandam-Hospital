@@ -20,7 +20,7 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { ProfileBookingCard } from "@/components/doctors/ProfileBookingCard";
 import { Icon } from "@/components/ui/Icon";
 import { Stars, cn } from "@/components/ui";
-import { Seo } from "@/components/Seo";
+import { Seo, physicianSchema } from "@/components/Seo";
 import NotFoundPage from "@/pages/NotFound";
 
 function SectionCard({
@@ -63,6 +63,13 @@ export default function DoctorProfilePage() {
   return (
     <>
       <Seo
+        crumbs={[
+          { label: "Doctors", href: "/doctors" },
+          { label: doctor.specialtyLabel, href: "/doctors" },
+          { label: doctor.name },
+        ]}
+        image={doctor.photo}
+        schema={physicianSchema(doctor)}
         title={`${doctor.name} — ${doctor.headline}`}
         description={`${doctor.name}, ${doctor.qualification}. ${doctor.designation} at Brahmanandam Hospital, Sonari, Jamshedpur. OPD ${doctor.daysLabel}, ${doctor.opdTiming}. Book a consultation online.`}
       />

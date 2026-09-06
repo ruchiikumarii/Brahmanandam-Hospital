@@ -46,43 +46,78 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Hospital",
-        "name": "Brahmanandam Hospital, Sonari",
-        "description": "Multi Specialty Centre in Sonari, Jamshedpur with 24x7 emergency care, ICU, modular operation theatres and board-certified specialists.",
-        "telephone": "+918271827999",
-        "email": "info@brahmanandamhospital.com",
-        "url": "https://sonari.brahmanandamhospital.in/",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "184, Near Road No. 3, Kagal Nagar, Sonari",
-          "addressLocality": "Jamshedpur",
-          "addressRegion": "Jharkhand",
-          "postalCode": "831011",
-          "addressCountry": "IN"
-        },
-        "openingHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-          ],
-          "opens": "00:00",
-          "closes": "23:59"
-        },
-        "availableService": [
-          "Emergency Care",
-          "Intensive Care Unit",
-          "Cardiology",
-          "Obstetrics and Gynaecology",
-          "Orthopaedics",
-          "Paediatrics",
-          "General and Laparoscopic Surgery",
-          "Diagnostic Imaging"
+        "@graph": [
+          {
+            "@type": ["Hospital", "MedicalOrganization", "LocalBusiness"],
+            "@id": "https://sonari.brahmanandamhospital.in/#hospital",
+            "name": "Brahmanandam Hospital, Sonari",
+            "alternateName": "Brahmanandam Multi Specialty Centre, Sonari",
+            "description": "Multispeciality hospital in Sonari, Jamshedpur with 24x7 emergency care, ICU, modular operation theatres, cardiology, maternity, orthopaedics, diagnostics and cashless TPA support.",
+            "url": "https://sonari.brahmanandamhospital.in/",
+            "logo": "https://sonari.brahmanandamhospital.in/images/general/hospital-exterior.jpg",
+            "image": "https://sonari.brahmanandamhospital.in/images/general/hospital-exterior.jpg",
+            "telephone": "+918271827999",
+            "email": "care@sonari.brahmanandamhospital.in",
+            "priceRange": "$$",
+            "currenciesAccepted": "INR",
+            "paymentAccepted": "Cash, Debit Card, Credit Card, UPI, Bank Transfer, Demand Draft, Cashless Insurance",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "184, Near Road No. 3, Kagal Nagar, Sonari",
+              "addressLocality": "Jamshedpur",
+              "addressRegion": "Jharkhand",
+              "postalCode": "831011",
+              "addressCountry": "IN"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 22.7868,
+              "longitude": 86.1687
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Jamshedpur" },
+              { "@type": "Place", "name": "Sonari" },
+              { "@type": "Place", "name": "Kadma" },
+              { "@type": "Place", "name": "Bistupur" },
+              { "@type": "AdministrativeArea", "name": "East Singhbhum" }
+            ],
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday", "Tuesday", "Wednesday", "Thursday",
+                  "Friday", "Saturday", "Sunday"
+                ],
+                "opens": "00:00",
+                "closes": "23:59",
+                "description": "Emergency, ICU, pharmacy and ambulance"
+              }
+            ],
+            "availableService": [
+              { "@type": "MedicalProcedure", "name": "Emergency and Trauma Care" },
+              { "@type": "MedicalProcedure", "name": "Intensive Care Unit" },
+              { "@type": "MedicalProcedure", "name": "Cardiology and Cath Lab" },
+              { "@type": "MedicalProcedure", "name": "Obstetrics and Gynaecology" },
+              { "@type": "MedicalProcedure", "name": "Orthopaedics and Joint Replacement" },
+              { "@type": "MedicalProcedure", "name": "Paediatrics and Neonatal Care" },
+              { "@type": "MedicalProcedure", "name": "General and Laparoscopic Surgery" },
+              { "@type": "MedicalProcedure", "name": "Diagnostic Imaging and Pathology" },
+              { "@type": "MedicalProcedure", "name": "Preventive Health Check-up" }
+            ],
+            "medicalSpecialty": [
+              "Cardiovascular", "Emergency", "Gynecologic", "Orthopedic",
+              "Pediatric", "Surgical", "Radiography", "Pathology"
+            ],
+            "hasMap": "https://www.google.com/maps/search/?api=1&query=Brahmanandam+Hospital+Sonari+Jamshedpur"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://sonari.brahmanandamhospital.in/#website",
+            "url": "https://sonari.brahmanandamhospital.in/",
+            "name": "Brahmanandam Hospital, Sonari",
+            "publisher": { "@id": "https://sonari.brahmanandamhospital.in/#hospital" },
+            "inLanguage": "en-IN"
+          }
         ]
       }
     </script>

@@ -32,8 +32,9 @@ export default function InsurancePage() {
   return (
     <>
       <Seo
-        title="TPA & Insurance — Cashless Hospitalization"
-        description="Brahmanandam Hospital, Sonari is empanelled with leading TPAs and health insurers including Star Health, ICICI Lombard, HDFC ERGO, Bajaj Allianz, Medi Assist, Paramount and Raksha for cashless hospitalization."
+        crumbs={[{ label: "TPA & Insurance" }]}
+        title="Cashless Hospital in Jamshedpur | TPA & Insurance Partners"
+        description="Cashless hospitalisation at Brahmanandam Hospital, Sonari — empanelled with Star Health, ICICI Lombard, HDFC ERGO, Bajaj Allianz, Medi Assist, Paramount and more. Pre-authorisation handled by our TPA desk."
       />
       <PageHero
         crumbs={[{ label: "TPA & Insurance" }]}

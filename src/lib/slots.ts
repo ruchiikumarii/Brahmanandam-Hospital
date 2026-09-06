@@ -120,8 +120,16 @@ export function formatLongDate(iso: string) {
   return `${wd}, ${d.getDate()} ${MONTHS[d.getMonth()].slice(0, 3)} ${d.getFullYear()}`;
 }
 
+/**
+ * First day that actually has an OPD (Sundays are emergency-only), so a
+ * pre-selected date never lands on a closed day.
+ */
+export function firstBookableDay(cal: CalendarDay[]): CalendarDay {
+  return cal.find((d) => !d.isSunday) ?? cal[0];
+}
+
 export function firstAvailableSlot(iso: string) {
-  return allSlots.find((s) => isSlotAvailable(iso, s)) ?? allSlots[0];
+  return allSlots.find((s) => isSlotAvailable(iso, s)) ?? "";
 }
 
 export const visitCategories = [

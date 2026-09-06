@@ -14,6 +14,7 @@ export default function CareersPage() {
   return (
     <>
       <Seo
+        crumbs={[{ label: "Careers" }]}
         title="Careers"
         description="Careers at Brahmanandam Hospital, Sonari, Jamshedpur — a supportive and professional environment for medical and non-medical professionals. Send your updated resume to our careers desk."
       />

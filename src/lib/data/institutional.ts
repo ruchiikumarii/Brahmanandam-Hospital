@@ -659,3 +659,89 @@ export const footerQuickLinks = [
   { label: "Insurance", href: "/insurance" },
   { label: "FAQ", href: "/faq" },
 ];
+
+/* ------------------------------------------------- Preventive health checks */
+
+/**
+ * Package *scope* only. The hospital has not published prices, so every card
+ * routes the visitor to the helpdesk rather than showing an invented figure.
+ */
+export const healthPackages = [
+  {
+    name: "Basic Health Check",
+    forWhom: "Adults 18+, first-time screening",
+    icon: "clipboard-check",
+    includes: [
+      "Complete Blood Count (CBC)",
+      "Blood Sugar — Fasting",
+      "Urine Routine Examination",
+      "Blood Pressure & BMI assessment",
+      "Physician consultation & report review",
+    ],
+  },
+  {
+    name: "Diabetes Care Package",
+    forWhom: "Known diabetics & anyone with a family history",
+    icon: "droplet",
+    includes: [
+      "HbA1c (3-month glucose average)",
+      "Fasting & Post-Prandial Blood Sugar",
+      "Kidney Function Test (KFT)",
+      "Lipid Profile",
+      "Diabetic foot screening",
+      "Diabetologist consultation",
+    ],
+  },
+  {
+    name: "Cardiac Screening",
+    forWhom: "Adults 35+, or with chest pain / hypertension",
+    icon: "heart-pulse",
+    includes: [
+      "Electrocardiogram (ECG)",
+      "2D Echocardiography",
+      "Treadmill Test (TMT)",
+      "Lipid Profile",
+      "Blood Pressure evaluation",
+      "Cardiologist consultation",
+    ],
+  },
+  {
+    name: "Women's Health Package",
+    forWhom: "Women of all ages",
+    icon: "person-standing",
+    includes: [
+      "Complete Blood Count & Haemoglobin",
+      "Thyroid Profile",
+      "Pap Smear (cervical screening)",
+      "Pelvic Ultrasound",
+      "Calcium & Vitamin D",
+      "Gynaecologist consultation",
+    ],
+  },
+  {
+    name: "Senior Citizen Check-up",
+    forWhom: "Adults 60+",
+    icon: "hand-heart",
+    includes: [
+      "Complete Blood Count & Blood Sugar",
+      "Kidney & Liver Function Tests",
+      "Lipid Profile & Thyroid Profile",
+      "ECG and Chest X-Ray",
+      "Bone health & fall-risk assessment",
+      "Physician consultation with priority assistance",
+    ],
+  },
+  {
+    name: "Executive Health Check",
+    forWhom: "Working professionals, annual corporate screening",
+    icon: "graduation-cap",
+    includes: [
+      "Comprehensive blood panel",
+      "Liver & Kidney Function Tests",
+      "Lipid Profile & Thyroid Profile",
+      "ECG, Chest X-Ray and Ultrasound Abdomen",
+      "Vision and BMI assessment",
+      "Consolidated physician review",
+    ],
+  },
+];

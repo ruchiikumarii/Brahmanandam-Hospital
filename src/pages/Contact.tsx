@@ -54,8 +54,9 @@ export default function ContactPage() {
   return (
     <>
       <Seo
-        title="Contact Us"
-        description="Contact Brahmanandam Hospital, Sonari — 184, Near Road No. 3, Kagal Nagar, Jamshedpur 831011. Helpline 8271827999, open 24x7 for emergency and IPD."
+        crumbs={[{ label: "Contact Us" }]}
+        title="Contact | Hospital in Sonari, Jamshedpur — 24x7 Helpline"
+        description="Contact Brahmanandam Hospital, Sonari — 184, Near Road No. 3, Kagal Nagar, Jamshedpur 831011. 24x7 helpline 8271827999, WhatsApp, email, Google Maps directions and OPD timings."
       />
       <PageHero
         crumbs={[{ label: "Contact Us" }]}

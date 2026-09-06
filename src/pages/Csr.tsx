@@ -10,6 +10,7 @@ export default function CsrPage() {
   return (
     <>
       <Seo
+        crumbs={[{ label: "CSR" }]}
         title="Corporate Social Responsibility (CSR)"
         description="CSR at Brahmanandam Hospital, Sonari — free health check-up camps, community health awareness, women and child health support, and help for underprivileged patients in Jamshedpur."
       />

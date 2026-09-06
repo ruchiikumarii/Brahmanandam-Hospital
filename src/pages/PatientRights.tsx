@@ -9,6 +9,10 @@ export default function PatientRightsPage() {
   return (
     <>
       <Seo
+        crumbs={[
+          { label: "Patient Care", href: "/patient-services" },
+          { label: "Patient and Attendant Rights" },
+        ]}
         title="Patient and Attendant Rights"
         description="Patient and attendant rights at Brahmanandam Hospital, Sonari — dignity, privacy, clear medical information, safety, cost transparency and access to medical records."
       />

@@ -21,6 +21,7 @@ export default function PatientServicesPage() {
   return (
     <>
       <Seo
+        crumbs={[{ label: "Patient Services" }]}
         title="Patient Services"
         description="Support facilities at Brahmanandam Hospital, Sonari — 24x7 pharmacy, blood bank coordination, ambulance, laundry, patient assistance, safe drinking water and cafeteria."
       />

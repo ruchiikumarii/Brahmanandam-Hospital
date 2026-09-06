@@ -1,5 +1,4 @@
-import Image from "@/components/ui/Img";
-import { MapPin, Phone } from "lucide-react";
+import { MapPin, Navigation, Phone } from "lucide-react";
 import { site } from "@/lib/data/site";
 import { InquiryForm } from "./InquiryForm";
 
@@ -50,23 +49,16 @@ export function LocationSection() {
             </div>
           </div>
 
-          <a
-            href={site.mapsUrl}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="group relative mt-4 block overflow-hidden rounded-[1.125rem] border border-line bg-white shadow-card"
-            aria-label="Open Brahmanandam Hospital Sonari on Google Maps"
-          >
-            <Image
-              src="/images/general/sonari-map.jpg"
-              alt="Map showing Brahmanandam Hospital Centre location in Sonari, Jamshedpur"
-              width={1200}
-              height={524}
+          <div className="group relative mt-4 overflow-hidden rounded-[1.125rem] border border-line bg-white shadow-card">
+            <iframe
+              title="Brahmanandam Hospital, Sonari — location map"
+              src="https://www.google.com/maps?q=Brahmanandam%20Hospital%20Sonari%2C%20184%20Near%20Road%20No.%203%2C%20Kagal%20Nagar%2C%20Jamshedpur%2C%20Jharkhand%20831011&output=embed"
               loading="lazy"
-              sizes="(max-width: 1023px) 100vw, 46vw"
-              className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+              className="block h-[19rem] w-full border-0 sm:h-[21rem]"
             />
-            <div className="absolute bottom-4 left-4 max-w-[16rem] rounded-xl bg-white/95 p-3.5 shadow-card backdrop-blur-sm">
+            <div className="pointer-events-none absolute bottom-4 left-4 max-w-[16rem] rounded-xl bg-white/95 p-3.5 shadow-card backdrop-blur-sm">
               <p className="text-[0.6875rem] font-extrabold tracking-[0.08em] text-secondary uppercase">
                 Central Sonari Location
               </p>
@@ -77,6 +69,16 @@ export function LocationSection() {
                 Direct drive from Marine Drive &amp; Kadma
               </p>
             </div>
+          </div>
+
+          <a
+            href={site.mapsUrl}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="mt-3 inline-flex h-11 items-center gap-2 rounded-full bg-[rgba(47,59,128,.06)] px-5 text-[0.875rem] font-bold text-primary transition-colors hover:bg-[rgba(47,59,128,.11)]"
+          >
+            <Navigation size={15} className="text-secondary" />
+            Get Directions on Google Maps
           </a>
         </div>
 
