@@ -52,7 +52,7 @@ export function LocationSection() {
           <div className="group relative mt-4 overflow-hidden rounded-[1.125rem] border border-line bg-white shadow-card">
             <iframe
               title="Brahmanandam Hospital, Sonari — location map"
-              src="https://www.google.com/maps?q=Brahmanandam%20Hospital%20Sonari%2C%20184%20Near%20Road%20No.%203%2C%20Kagal%20Nagar%2C%20Jamshedpur%2C%20Jharkhand%20831011&output=embed"
+              src={site.google.embedUrl}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
@@ -72,7 +72,7 @@ export function LocationSection() {
           </div>
 
           <a
-            href={site.mapsUrl}
+            href={site.google.directionsUrl}
             target="_blank"
             rel="noreferrer noopener"
             className="mt-3 inline-flex h-11 items-center gap-2 rounded-full bg-[rgba(47,59,128,.06)] px-5 text-[0.875rem] font-bold text-primary transition-colors hover:bg-[rgba(47,59,128,.11)]"

@@ -14,6 +14,7 @@ import { LocationSection } from "@/components/home/LocationSection";
 import { CoreServices, EmergencyHours } from "@/components/home/CoreServices";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { GallerySection } from "@/components/home/GallerySection";
+import { GoogleReviews } from "@/components/home/GoogleReviews";
 import { Seo } from "@/components/Seo";
 
 export default function HomePage() {
@@ -36,6 +37,7 @@ export default function HomePage() {
       <GallerySection />
       <InsuranceSection />
       <TestimonialsSection />
+      <GoogleReviews />
       <BlogSection />
       <HomeFaq />
       <LocationSection />

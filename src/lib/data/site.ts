@@ -14,8 +14,29 @@ export const site = {
     line2: "Sonari, Jamshedpur, Jharkhand - 831011",
     full: "184, Near Road No. 3, Kagal Nagar, Sonari, Jamshedpur, Jharkhand - 831011",
   },
-  mapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Brahmanandam+Hospital+Sonari+Jamshedpur",
+  /* Verified from the hospital's own Google Business listing. */
+  google: {
+    name: "Brahmanandam Hospital Sonari | Best Multi speciality Health Care",
+    cid: "7692677784331814544",
+    lat: 22.8234999,
+    lng: 86.1667012,
+    /** Opens the listing (reviews tab included). */
+    listingUrl: "https://www.google.com/maps?cid=7692677784331814544",
+    directionsUrl:
+      "https://www.google.com/maps/dir/?api=1&destination=22.8234999,86.1667012&destination_place_id=ChIJsc8lM7Xl9TkRkAaj8q_hwWo",
+    embedUrl:
+      "https://www.google.com/maps?q=22.8234999,86.1667012&z=17&hl=en&output=embed",
+    /**
+     * Rating and reviews are intentionally empty: they must be copied from the
+     * live Google Business Profile (or pulled from the Places API) rather than
+     * guessed. The review section hides itself until these are filled in.
+     */
+    rating: null as number | null,
+    reviewCount: null as number | null,
+    /** Quoted reviews — paste real ones from the listing to show them here. */
+    reviews: [] as { name: string; rating: number; when: string; text: string }[],
+  },
+  mapsUrl: "https://www.google.com/maps?cid=7692677784331814544",
   hours: "Emergency & IPD: 24x7 Open",
 } as const;
 

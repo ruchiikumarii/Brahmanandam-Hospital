@@ -1,5 +1,6 @@
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { LocationSection } from "@/components/home/LocationSection";
+import { GoogleReviews } from "@/components/home/GoogleReviews";
 import { EmergencyBanner } from "@/components/layout/EmergencyBanner";
 import { PageHero } from "@/components/layout/PageHero";
 import { site } from "@/lib/data/site";
@@ -95,6 +96,7 @@ export default function ContactPage() {
       />
 
       <LocationSection />
+      <GoogleReviews />
       <EmergencyBanner />
     </>
   );
