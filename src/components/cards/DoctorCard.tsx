@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CalendarCheck, Clock } from "lucide-react";
+import { CalendarCheck } from "lucide-react";
 import type { Doctor } from "@/lib/data/doctors";
 import { DoctorAvatar } from "./DoctorAvatar";
 
@@ -18,28 +18,20 @@ export function DoctorCard({
     >
       <div className="flex gap-4">
         <DoctorAvatar doctor={doctor} size={76} className="h-19 w-19" />
-        <div className="min-w-0">
-          <span className="inline-block rounded-full bg-[rgba(190,53,58,.07)] px-2.5 py-1 text-[0.6875rem] font-bold text-secondary">
+        {/* Each slot reserves the space for its longest case, so a doctor with
+            a qualification line does not make a taller card than one without.
+            The OPD line below already says "(on call)", so a separate on-call
+            row would only repeat it. */}
+        <div className="min-w-0 flex-1">
+          <span className="inline-block max-w-full truncate rounded-full bg-[rgba(190,53,58,.07)] px-2.5 py-1 text-[0.6875rem] font-bold text-secondary">
             {doctor.roleLabel}
           </span>
           <h3 className="mt-1.5 truncate text-[1.125rem] font-extrabold">
             {doctor.name}
           </h3>
-          {doctor.qualification ? (
-            <p className="mt-0.5 line-clamp-2 text-[0.8125rem] text-muted">
-              {doctor.qualification}
-            </p>
-          ) : (
-            <p className="mt-0.5 text-[0.8125rem] text-muted">
-              {doctor.specialtyLabel}
-            </p>
-          )}
-          {doctor.onCall ? (
-            <p className="mt-1.5 flex items-center gap-1.5 text-[0.8125rem] font-semibold text-secondary">
-              <Clock size={14} strokeWidth={2.1} />
-              Available on call
-            </p>
-          ) : null}
+          <p className="mt-0.5 line-clamp-2 min-h-[2.6em] text-[0.8125rem] leading-[1.3] text-muted">
+            {doctor.qualification ?? doctor.specialtyLabel}
+          </p>
         </div>
       </div>
 

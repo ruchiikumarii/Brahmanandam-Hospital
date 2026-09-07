@@ -1,9 +1,22 @@
 import { Link } from "react-router-dom";
-import { CalendarDays, DoorClosed, Phone } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 import type { Doctor } from "@/lib/data/doctors";
-import { site } from "@/lib/data/site";
 import { DoctorAvatar } from "./DoctorAvatar";
 
+/**
+ * A timing that only says "ask at reception" tells the reader nothing the days
+ * line has not already said, so it is left out rather than printed as filler.
+ */
+const isPlaceholderTiming = (timing: string) =>
+  /please confirm with reception/i.test(timing);
+
+/**
+ * Every card is the same height by construction, not by luck: each text slot
+ * reserves the space for its longest case and clamps beyond it. Only six of the
+ * thirty-two doctors carry a qualification line and six carry Ex-Consultant
+ * credentials, so letting the content set the height left the grid ragged.
+ * The credentials appear in full on the doctor's own page.
+ */
 export function DoctorDirectoryCard({
   doctor,
   style,
@@ -11,6 +24,8 @@ export function DoctorDirectoryCard({
   doctor: Doctor;
   style?: React.CSSProperties;
 }) {
+  const timing = isPlaceholderTiming(doctor.opdTiming) ? null : doctor.opdTiming;
+
   return (
     <article
       data-reveal
@@ -33,64 +48,39 @@ export function DoctorDirectoryCard({
             />
           ) : null}
         </div>
-        <div className="min-w-0">
-          <span className="inline-block rounded-full bg-[rgba(47,59,128,.07)] px-2.5 py-1 text-[0.6875rem] font-extrabold tracking-[0.06em] text-primary uppercase">
+
+        <div className="min-w-0 flex-1">
+          <span className="inline-block max-w-full truncate rounded-full bg-[rgba(47,59,128,.07)] px-2.5 py-1 text-[0.6875rem] font-extrabold tracking-[0.06em] text-primary uppercase">
             {doctor.specialty}
           </span>
-          <h3 className="mt-1.5 text-[1.1875rem] leading-tight font-extrabold">
+          <h3 className="mt-1.5 line-clamp-2 min-h-[2.4em] text-[1.0625rem] leading-[1.2] font-extrabold">
             <Link to={`/doctors/${doctor.slug}`} className="hover:text-secondary">
               {doctor.name}
             </Link>
           </h3>
-          {doctor.qualification ? (
-            <p className="mt-1 text-[0.8125rem] text-muted">{doctor.qualification}</p>
-          ) : null}
-          <p className="mt-1 text-[0.8125rem] font-semibold text-secondary">
-            {doctor.designation}
-          </p>
         </div>
       </div>
 
-      {doctor.credentials?.length ? (
-        <ul className="mt-4 grid gap-1.5 rounded-xl bg-[rgba(47,59,128,.05)] px-3.5 py-2.5">
-          {doctor.credentials.map((c) => (
-            <li key={c} className="text-[0.75rem] leading-snug text-muted">
-              {c}
-            </li>
-          ))}
-        </ul>
-      ) : null}
+      {/* Two reserved lines each, so a long qualification cannot push the card
+          taller than one that has none. */}
+      <p className="mt-3 line-clamp-2 min-h-[2.6em] text-[0.8125rem] leading-[1.3] text-muted">
+        {doctor.qualification ?? doctor.specialtyLabel}
+      </p>
+      <p className="mt-1 line-clamp-2 min-h-[2.6em] text-[0.8125rem] leading-[1.3] font-semibold text-secondary">
+        {doctor.designation}
+      </p>
 
-      <dl className="mt-4 grid gap-2.5 text-[0.8125rem]">
-        <div className="flex gap-2.5">
-          <dt className="sr-only">OPD days and timing</dt>
-          <CalendarDays size={15} className="mt-0.5 shrink-0 text-primary" />
-          <dd>
-            <span className="font-bold text-primary">{doctor.daysLabel}</span>
-            <span className="mt-0.5 block text-muted">{doctor.opdTiming}</span>
-          </dd>
-        </div>
-        <div className="flex items-start gap-2.5">
-          <dt className="sr-only">Chamber</dt>
-          <DoorClosed size={15} className="mt-0.5 shrink-0 text-primary" />
-          <dd className="text-muted">
-            Chamber:{" "}
-            <strong className="font-bold text-primary">{doctor.opdRoom}</strong>
-          </dd>
-        </div>
-        <div className="flex items-start gap-2.5">
-          <dt className="sr-only">Reception</dt>
-          <Phone size={15} className="mt-0.5 shrink-0 text-primary" />
-          <dd className="text-muted">
-            Confirm timing:{" "}
-            <a
-              href={site.phoneHref}
-              className="font-bold text-primary hover:text-secondary"
-            >
-              {site.phone}
-            </a>
-          </dd>
-        </div>
+      {/* Sized for the longest real schedule -- one doctor consults on a split
+          timetable that needs two lines -- so no card is taller for it. */}
+      <dl className="mt-4 flex min-h-[3.875rem] gap-2.5 text-[0.8125rem]">
+        <dt className="sr-only">OPD days and timing</dt>
+        <CalendarDays size={15} className="mt-0.5 shrink-0 text-primary" />
+        <dd className="min-w-0">
+          <span className="block font-bold text-primary">{doctor.daysLabel}</span>
+          {timing ? (
+            <span className="mt-0.5 line-clamp-2 block text-muted">{timing}</span>
+          ) : null}
+        </dd>
       </dl>
 
       <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-5">

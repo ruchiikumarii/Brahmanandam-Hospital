@@ -38,7 +38,15 @@ export function DoctorsSection() {
           </Link>
         </div>
 
-        <div className="mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {/* The visiting-specialists tile used to sit in this grid, and being a
+            head taller than a doctor card it stretched its whole row -- the
+            cards beside it ended up taller than the ones above. It is not a
+            doctor, so it now runs full width underneath and the cards are left
+            to size themselves identically. */}
+        <div
+          className="card-row card-row--md-2 card-row--lg-3 mt-9 gap-4"
+          style={{ "--row-gap": "1rem" } as React.CSSProperties}
+        >
           {list.map((doctor, i) => (
             <DoctorCard
               key={doctor.slug}
@@ -46,31 +54,32 @@ export function DoctorsSection() {
               style={revealDelay(i, 80)}
             />
           ))}
+        </div>
 
-          <article
-            data-reveal
-            style={revealDelay(list.length, 80)}
-            className="flex flex-col justify-center rounded-[1.125rem] bg-primary p-6 text-white shadow-[0_24px_50px_-30px_rgba(47,59,128,.95)]"
-          >
-            <span className="grid h-11 w-11 place-items-center rounded-xl bg-white/12">
-              <BriefcaseMedical size={20} strokeWidth={2} />
-            </span>
-            <h3 className="mt-5 text-[1.1875rem] font-extrabold !text-white">
+        <article
+          data-reveal
+          className="mt-4 flex flex-col gap-5 rounded-[1.125rem] bg-primary p-6 text-white shadow-[0_24px_50px_-30px_rgba(47,59,128,.95)] sm:flex-row sm:items-center sm:gap-6"
+        >
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/12">
+            <BriefcaseMedical size={20} strokeWidth={2} />
+          </span>
+          <div className="min-w-0 flex-1">
+            <h3 className="text-[1.1875rem] font-extrabold !text-white">
               Looking for another specialist?
             </h3>
-            <p className="mt-2.5 text-[0.875rem] leading-relaxed text-white/75">
+            <p className="mt-1.5 text-[0.875rem] leading-relaxed text-white/75">
               We host visiting super-specialists from top national institutes
               every week for oncology, rheumatology, and pediatric surgery.
             </p>
-            <a
-              href={site.phoneHref}
-              className="mt-6 inline-flex h-12 items-center justify-center gap-2.5 rounded-xl bg-secondary text-[0.875rem] font-bold text-white transition-colors hover:bg-secondary-700"
-            >
-              <Phone size={16} strokeWidth={2.2} />
-              CALL OPD RECEPTION
-            </a>
-          </article>
-        </div>
+          </div>
+          <a
+            href={site.phoneHref}
+            className="inline-flex h-12 shrink-0 items-center justify-center gap-2.5 rounded-xl bg-secondary px-6 text-[0.875rem] font-bold whitespace-nowrap text-white transition-colors hover:bg-secondary-700"
+          >
+            <Phone size={16} strokeWidth={2.2} />
+            CALL OPD RECEPTION
+          </a>
+        </article>
       </div>
     </section>
   );
