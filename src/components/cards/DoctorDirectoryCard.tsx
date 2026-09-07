@@ -11,11 +11,14 @@ const isPlaceholderTiming = (timing: string) =>
   /please confirm with reception/i.test(timing);
 
 /**
- * Every card is the same height by construction, not by luck: each text slot
- * reserves the space for its longest case and clamps beyond it. Only six of the
- * thirty-two doctors carry a qualification line and six carry Ex-Consultant
- * credentials, so letting the content set the height left the grid ragged.
- * The credentials appear in full on the doctor's own page.
+ * Every card is the same height by construction, not by luck: each slot reserves
+ * the space for its longest case and clamps beyond it.
+ *
+ * The qualification and the Ex-Consultant lines share one clamped line, because
+ * only six of the thirty-two doctors have either. Given a slot of their own they
+ * would have left a two-line hole in the other twenty-six cards, since equal
+ * heights mean every card pays for the tallest one. The full list is on the
+ * doctor's own page, which the card links to twice.
  */
 export function DoctorDirectoryCard({
   doctor,
@@ -25,6 +28,9 @@ export function DoctorDirectoryCard({
   style?: React.CSSProperties;
 }) {
   const timing = isPlaceholderTiming(doctor.opdTiming) ? null : doctor.opdTiming;
+  const detail = [doctor.qualification, ...(doctor.credentials ?? [])]
+    .filter(Boolean)
+    .join(" · ");
 
   return (
     <article
@@ -58,32 +64,33 @@ export function DoctorDirectoryCard({
               {doctor.name}
             </Link>
           </h3>
+          {/* The badge above already names the speciality, so this says the
+              consultant's role instead of repeating it. */}
+          <p className="mt-1 line-clamp-2 min-h-[2.6em] text-[0.8125rem] leading-[1.3] font-semibold text-secondary">
+            {doctor.designation}
+          </p>
         </div>
       </div>
 
-      {/* Two reserved lines each, so a long qualification cannot push the card
-          taller than one that has none. */}
-      <p className="mt-3 line-clamp-2 min-h-[2.6em] text-[0.8125rem] leading-[1.3] text-muted">
-        {doctor.qualification ?? doctor.specialtyLabel}
-      </p>
-      <p className="mt-1 line-clamp-2 min-h-[2.6em] text-[0.8125rem] leading-[1.3] font-semibold text-secondary">
-        {doctor.designation}
+      <p
+        title={detail ?? undefined}
+        className="mt-1.5 line-clamp-1 min-h-[1.3em] text-[0.75rem] leading-[1.3] text-muted"
+      >
+        {detail}
       </p>
 
-      {/* Sized for the longest real schedule -- one doctor consults on a split
-          timetable that needs two lines -- so no card is taller for it. */}
-      <dl className="mt-4 flex min-h-[3.875rem] gap-2.5 text-[0.8125rem]">
+      <dl className="mt-3 flex min-h-[2.6rem] gap-2.5 text-[0.8125rem]">
         <dt className="sr-only">OPD days and timing</dt>
         <CalendarDays size={15} className="mt-0.5 shrink-0 text-primary" />
         <dd className="min-w-0">
           <span className="block font-bold text-primary">{doctor.daysLabel}</span>
           {timing ? (
-            <span className="mt-0.5 line-clamp-2 block text-muted">{timing}</span>
+            <span className="mt-0.5 line-clamp-1 text-muted">{timing}</span>
           ) : null}
         </dd>
       </dl>
 
-      <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-5">
+      <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-4">
         <Link
           to={`/appointment?doctor=${doctor.slug}`}
           className="inline-flex h-11 flex-1 items-center justify-center rounded-full bg-secondary px-5 text-[0.875rem] font-bold text-white transition-colors hover:bg-secondary-700"
