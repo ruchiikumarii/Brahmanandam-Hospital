@@ -128,7 +128,7 @@ export function scoreTitle(title: string, ctx: ScoreContext = {}): ScoreResult {
   else if ((len >= 30 && len <= 39) || (len >= 66 && len <= 70)) lenPts = 10;
   rules.push({
     id: "title-length",
-    label: "Length 50–60 characters",
+    label: "Length 50-60 characters",
     why: "Google truncates the title at about 600px (roughly 60 characters) with an ellipsis, and anything under about 30 wastes the space you are given.",
     problem:
       len === 0
@@ -257,8 +257,8 @@ export function scoreDescription(
   else if ((len >= 70 && len <= 119) || (len >= 161 && len <= 170)) lenPts = 15;
   rules.push({
     id: "desc-length",
-    label: "Length 120–160 characters",
-    why: "Google shows roughly 920px on desktop (about 155–160 characters) and around 120 on mobile. Longer is truncated; shorter wastes the slot.",
+    label: "Length 120-160 characters",
+    why: "Google shows roughly 920px on desktop (about 155-160 characters) and around 120 on mobile. Longer is truncated; shorter wastes the slot.",
     problem:
       len === 0
         ? "Meta description is empty."

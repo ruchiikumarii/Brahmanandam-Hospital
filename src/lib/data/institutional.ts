@@ -260,7 +260,7 @@ export const dischargeProcess: ContentBlock[] = [
   {
     heading: "Medical Certificates",
     paragraphs: [
-      "Treating physicians issue medical certificates during working hours (9:00 AM – 5:00 PM) on regular weekdays, based on clinical documentation.",
+      "Treating physicians issue medical certificates during working hours (9:00 AM - 5:00 PM) on regular weekdays, based on clinical documentation.",
     ],
   },
   {
@@ -395,7 +395,7 @@ export const patientSupportServices = [
     title: "Cafeteria",
     text: "Food service for attendants and visitors, with limited late-night availability.",
     icon: "clipboard-check",
-    note: "7:30 AM – 10:00 PM",
+    note: "7:30 AM - 10:00 PM",
   },
 ];
 
@@ -449,7 +449,7 @@ export const careers = {
 export const faqs = [
   {
     q: "Where is Brahmanandam Hospital located?",
-    a: "Brahmanandam Hospital is located at 184, Near Road No. 3, Kagal Nagar, Sonari, Jamshedpur, Jharkhand – 831011.",
+    a: "Brahmanandam Hospital is located at 184, Near Road No. 3, Kagal Nagar, Sonari, Jamshedpur, Jharkhand - 831011.",
   },
   {
     q: "What are the hospital's working hours?",
@@ -636,8 +636,8 @@ export const emergencySubhead =
   "Delivering Expert Care with Compassion - 24×7";
 
 export const openingHours = [
-  { days: "Monday – Friday", hours: "Open 24 Hours" },
-  { days: "Saturday – Sunday", hours: "Open 24 Hours" },
+  { days: "Monday - Friday", hours: "Open 24 Hours" },
+  { days: "Saturday - Sunday", hours: "Open 24 Hours" },
 ];
 
 /* --------------------------------------------------------- Footer (verbatim) */

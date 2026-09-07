@@ -149,7 +149,7 @@ const bodies: Record<
         heading: "Book Your Appointment Today",
         paragraphs: [
           "Your health is your most valuable asset. Don't compromise when it comes to medical care. Choose a hospital that offers quality, reliability, and compassion.",
-          "If you are looking for the best hospital in Jamshedpur, visit Brahmanandam Hospital, Sonari today. Call +91 82718 27999 or visit 184, Near Road No. 3, Kagal Nagar, Sonari, Jamshedpur, Jharkhand \u2013 831011.",
+          "If you are looking for the best hospital in Jamshedpur, visit Brahmanandam Hospital, Sonari today. Call +91 82718 27999 or visit 184, Near Road No. 3, Kagal Nagar, Sonari, Jamshedpur, Jharkhand - 831011.",
         ],
       },
     ],
@@ -355,7 +355,7 @@ const bodies: Record<
       {
         heading: "Understanding your HbA1c",
         paragraphs: [
-          "HbA1c reflects average glucose control over roughly three months, which makes it far more useful than a single fasting reading. For most adults we target below 7%, relaxed to 7.5–8% in the elderly or those prone to hypoglycaemia.",
+          "HbA1c reflects average glucose control over roughly three months, which makes it far more useful than a single fasting reading. For most adults we target below 7%, relaxed to 7.5-8% in the elderly or those prone to hypoglycaemia.",
           "Bring your previous reports to every visit. Therapy decisions depend on the trend, not one number.",
         ],
       },
@@ -399,7 +399,7 @@ const bodies: Record<
         points: [
           "Birth: BCG, OPV-0, Hepatitis B.",
           "6, 10 and 14 weeks: DTwP/DTaP, IPV, Hib, Rotavirus, PCV.",
-          "9–12 months: MMR-1, Typhoid conjugate.",
+          "9-12 months: MMR-1, Typhoid conjugate.",
           "Annual influenza vaccine from 6 months, especially for asthmatic children.",
         ],
       },

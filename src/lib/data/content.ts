@@ -193,7 +193,7 @@ export const blogPosts = [
     date: "November 25, 2021",
     image: "/images/general/hospital-exterior.jpg",
     title:
-      "Why Choose Brahmanandam Hospital – Best Hospital in Jamshedpur for Quality Healthcare",
+      "Why Choose Brahmanandam Hospital - Best Hospital in Jamshedpur for Quality Healthcare",
     excerpt:
       "Known for its commitment to quality, compassion, and patient-centered care, the hospital has become a trusted healthcare destination for thousands of patients in the region.",
   },
@@ -204,7 +204,7 @@ export const blogPosts = [
     date: "November 25, 2021",
     image: "/images/facilities/emergency.jpg",
     title:
-      "Best Hospital in Jamshedpur – How to Choose the Right One for Your Family",
+      "Best Hospital in Jamshedpur - How to Choose the Right One for Your Family",
     excerpt:
       "A guide to the key factors to consider while selecting the best hospital in Jamshedpur, and why making the right choice can significantly impact your health outcomes.",
   },

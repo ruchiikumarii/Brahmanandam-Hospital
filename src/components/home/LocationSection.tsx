@@ -28,7 +28,7 @@ export function LocationSection() {
               <address className="mt-2.5 text-[0.875rem] leading-[1.7] text-muted not-italic">
                 184, Near Road No. 3, Kagal Nagar,
                 <br />
-                Sonari, Jamshedpur, Jharkhand – 831011
+                Sonari, Jamshedpur, Jharkhand - 831011
               </address>
             </div>
 

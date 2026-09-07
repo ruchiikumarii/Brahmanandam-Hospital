@@ -1,5 +1,5 @@
 /**
- * Replaces em dashes with a plain hyphen in the text the site renders.
+ * Replaces en and em dashes with a plain hyphen in the text the site renders.
  *
  * Two guards keep it away from code:
  *
@@ -7,17 +7,24 @@
  *      would bury the real change in noise. Skipping them needs a scanner
  *      rather than a regex, because "https://" inside a string would otherwise
  *      look like the start of a line comment and hide the rest of that line.
- *   2. Only a dash with whitespace on both sides is touched. Prose always
- *      writes it that way; a regex character class never does. That is what
- *      protects /[|\-–—:·•]/ , where replacing the dash would leave "\--" and
- *      a reversed range that stops the build.
+ *   2. A dash that touches another dash, a backslash or a square bracket is
+ *      left alone. That shape only occurs in a regex character class such as
+ *      /[|\-–—:·•]/ , where rewriting one leaves "\--", a reversed range, and
+ *      the build stops. Prose never puts two dashes side by side.
  *
  *   node scripts/dashes.mjs [--check]
  */
 import { readdirSync, readFileSync, writeFileSync, statSync } from "node:fs";
 import { join, extname } from "node:path";
 
+const EN = String.fromCharCode(0x2013);
 const EM = String.fromCharCode(0x2014);
+const DASHES = new Set([EN, EM]);
+/** The same two dashes written as JS escapes, which render identically. */
+const ESCAPES = new Set(["\\u2013", "\\u2014"]);
+/** Neighbours that mark a character class rather than a sentence. */
+const GUARD = new Set([EN, EM, "-", "\\", "[", "]"]);
+
 const ROOTS = ["src", "index.html"];
 const EXT = new Set([".ts", ".tsx", ".html", ".css"]);
 
@@ -96,16 +103,33 @@ for (const root of ROOTS) {
     const ext = extname(file);
     if (!EXT.has(ext)) continue;
     const src = readFileSync(file, "utf8");
-    if (!src.includes(EM)) continue;
+    // The escape forms count here too: a file can hold only those, and
+    // skipping it on the characters alone is how one survived a whole sweep.
+    const candidates = [...DASHES, ...ESCAPES];
+    if (!candidates.some((d) => src.includes(d))) continue;
     const mask = ext === ".html" ? htmlCommentMask(src) : commentMask(src);
     let out = "";
     let hits = 0;
     let kept = 0;
     for (let i = 0; i < src.length; i++) {
-      const spaced = /\s/.test(src[i - 1] ?? "") && /\s/.test(src[i + 1] ?? "");
-      if (src[i] === EM && !mask[i] && spaced) { out += "-"; hits++; continue; }
-      if (src[i] === EM) kept++;
-      out += src[i];
+      const c = src[i];
+
+      /* Some strings spell the dash as a – escape rather than the
+         character. It renders identically, so it has to be caught here too --
+         missing these is how the first sweep still left dashes on the page. */
+      if (c === "\\" && ESCAPES.has(src.slice(i, i + 6)) && src[i - 1] !== "\\") {
+        if (!mask[i]) { out += "-"; hits++; i += 5; continue; }
+        kept++;
+        out += src.slice(i, i + 6);
+        i += 5;
+        continue;
+      }
+
+      if (!DASHES.has(c)) { out += c; continue; }
+      const guarded = GUARD.has(src[i - 1] ?? "") || GUARD.has(src[i + 1] ?? "");
+      if (!mask[i] && !guarded) { out += "-"; hits++; continue; }
+      kept++;
+      out += c;
     }
     left += kept;
     if (hits) {
@@ -117,6 +141,6 @@ for (const root of ROOTS) {
   }
 }
 console.log(
-  `${check ? "would replace" : "replaced"} ${replaced} em dashes in ${files} files; ` +
+  `${check ? "would replace" : "replaced"} ${replaced} dashes in ${files} files; ` +
     `${left} left in comments or character classes`,
 );

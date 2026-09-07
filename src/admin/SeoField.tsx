@@ -90,7 +90,7 @@ export function SeoField({
           <span
             className={`text-[0.75rem] font-semibold ${inRange ? "text-emerald-600" : "text-slate-500"}`}
           >
-            {score.length}/{min}–{max}
+            {score.length}/{min}-{max}
           </span>
           <span className={`text-[0.75rem] font-bold ${style.text}`}>
             {score.score}/100 · {BAND_LABEL[score.band]}

@@ -514,7 +514,7 @@ export default function BlogEditor() {
                 value={post.meta_description ?? ""}
                 onChange={(v) => update({ meta_description: v || null })} postTitle={post.title}
                 excerpt={post.excerpt} focusKeyword={post.focus_keyword ?? ""} ctx={seoCtx}
-                placeholder="120–160 characters with the keyword and a call to action" />
+                placeholder="120-160 characters with the keyword and a call to action" />
             </div>
 
             <label className={`${lbl} mt-4 block`}>Canonical URL</label>

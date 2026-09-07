@@ -10,7 +10,7 @@ export const opdSessions: SlotSession[] = [
   {
     id: "morning",
     label: "Morning OPD Session",
-    window: "10:00 AM – 01:00 PM",
+    window: "10:00 AM - 01:00 PM",
     icon: "sunrise",
     slots: [
       "10:00 AM",
@@ -25,7 +25,7 @@ export const opdSessions: SlotSession[] = [
   {
     id: "evening",
     label: "Evening OPD Session",
-    window: "04:00 PM – 07:00 PM",
+    window: "04:00 PM - 07:00 PM",
     icon: "sunset",
     slots: ["04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM", "06:00 PM"],
   },

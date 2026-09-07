@@ -18,7 +18,7 @@ const howItWorks = [
   },
   {
     title: "Come fasting in the morning",
-    text: "Most panels need an 8–10 hour fast. Report between 7:00 AM and 10:00 AM at the collection counter.",
+    text: "Most panels need an 8-10 hour fast. Report between 7:00 AM and 10:00 AM at the collection counter.",
     icon: "clipboard-check",
   },
   {
@@ -170,7 +170,7 @@ export default function HealthPackagesPage() {
 
         <p className="mt-8 flex items-center justify-center gap-2 text-[0.875rem] text-muted">
           <Clock size={15} className="text-primary" />
-          Sample collection 7:00 AM – 8:00 PM · Emergency lab open 24×7
+          Sample collection 7:00 AM - 8:00 PM · Emergency lab open 24×7
         </p>
       </Section>
 
