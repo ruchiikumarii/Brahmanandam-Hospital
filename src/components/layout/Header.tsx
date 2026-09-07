@@ -79,37 +79,59 @@ export function Header() {
             : "border-transparent",
         )}
       >
-        {/* Thin utility strip -- desktop only */}
+        {/*
+          The emergency number lives here rather than in the main row: the
+          whole header is sticky, so it stays on screen either way, and the
+          main row then has room for the nav without overrunning the shell.
+        */}
         <div className="hidden bg-primary text-white lg:block">
-          <div className="shell flex h-9 items-center justify-between text-[0.75rem]">
-            <p className="flex items-center gap-2 text-white/85">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-secondary-400" />
-              {site.address.line1}, {site.address.line2}
+          <div className="shell flex h-9 items-center justify-between gap-6 text-[0.75rem]">
+            <p className="flex min-w-0 items-center gap-2 text-white/85">
+              <span className="inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-secondary-400" />
+              <span className="truncate">
+                {site.address.line1}, {site.address.line2}
+              </span>
             </p>
-            <div className="flex items-center gap-5">
+            <div className="flex shrink-0 items-center gap-4">
               <a
                 href={`mailto:${site.email}`}
-                className="text-white/85 hover:text-white"
+                className="hidden text-white/85 hover:text-white xl:inline"
               >
                 {site.email}
               </a>
-              <span className="text-white/30">|</span>
-              <span className="font-semibold text-white">{site.hours}</span>
+              <span className="hidden text-white/25 xl:inline">|</span>
+              <a
+                href={site.phoneHref}
+                className="flex items-center gap-1.5 whitespace-nowrap text-white/85 hover:text-white"
+              >
+                <Siren size={13} className="text-secondary-400" />
+                24×7 Emergency
+                <strong className="font-extrabold text-white">{site.phone}</strong>
+              </a>
+              <span className="text-white/25">|</span>
+              <span className="font-semibold whitespace-nowrap text-white">
+                {site.hours}
+              </span>
             </div>
           </div>
         </div>
 
-        <div className="shell flex h-[4.25rem] items-center justify-between gap-2 lg:h-[4.75rem]">
+        <div className="shell flex h-[4.25rem] items-center gap-3 lg:h-[4.75rem]">
           <div className="shrink-0">
             <Logo />
           </div>
 
           {/*
-            The nav is the only element allowed to flex. min-w-0 lets it shrink
-            below its content width and scroll internally, so the emergency
-            number and Book Appointment button can never be pushed off-screen.
+            The nav takes the space between the logo and the buttons and centres
+            itself in it, so the row reads as balanced instead of left-packed.
+            Everything else is shrink-0, so the widths have to add up: logo 238
+            + buttons 218 + gaps leave 756px, and the nine items need 731.
           */}
-          <nav ref={navRef} aria-label="Primary" className="hidden min-[1400px]:block">
+          <nav
+            ref={navRef}
+            aria-label="Primary"
+            className="hidden min-w-0 flex-1 justify-center min-[1400px]:flex"
+          >
             <ul className="flex items-center">
               {mainNav.map((item) => {
                 const active = isActive(item);
@@ -121,15 +143,15 @@ export function Header() {
                         to={item.href}
                         aria-current={active ? "page" : undefined}
                         className={cn(
-                          "relative inline-flex h-9 items-center rounded-full px-1.5 text-[0.8125rem] font-semibold whitespace-nowrap transition-colors 2xl:px-2.5",
+                          "relative inline-flex h-9 items-center rounded-full px-2 text-[0.8125rem] font-semibold whitespace-nowrap transition-colors",
                           active
-                            ? "bg-[rgba(47,59,128,.07)] text-primary"
-                            : "text-muted hover:text-primary",
+                            ? "text-primary"
+                            : "text-muted hover:bg-[rgba(47,59,128,.045)] hover:text-primary",
                         )}
                       >
                         {item.label}
                         {active ? (
-                          <span className="absolute inset-x-3 -bottom-[3px] h-[2px] rounded-full bg-secondary" />
+                          <span className="absolute inset-x-2 -bottom-[3px] h-[2px] rounded-full bg-secondary" />
                         ) : null}
                       </Link>
                     </li>
@@ -150,10 +172,10 @@ export function Header() {
                       aria-haspopup="true"
                       onClick={() => setOpenMenu(expanded ? null : item.label)}
                       className={cn(
-                        "relative inline-flex h-9 items-center gap-1 rounded-full px-1.5 text-[0.8125rem] font-semibold whitespace-nowrap transition-colors 2xl:px-2.5",
+                        "relative inline-flex h-9 items-center gap-1 rounded-full px-2 text-[0.8125rem] font-semibold whitespace-nowrap transition-colors",
                         active
-                          ? "bg-[rgba(47,59,128,.07)] text-primary"
-                          : "text-muted hover:text-primary",
+                          ? "text-primary"
+                          : "text-muted hover:bg-[rgba(47,59,128,.045)] hover:text-primary",
                       )}
                     >
                       {item.label}
@@ -166,7 +188,7 @@ export function Header() {
                         )}
                       />
                       {active ? (
-                        <span className="absolute inset-x-3 -bottom-[3px] h-[2px] rounded-full bg-secondary" />
+                        <span className="absolute inset-x-2 -bottom-[3px] h-[2px] rounded-full bg-secondary" />
                       ) : null}
                     </button>
 
@@ -205,21 +227,15 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2.5">
+          <div className="ml-auto flex shrink-0 items-center gap-2.5 min-[1400px]:ml-0">
             <a
               href={site.phoneHref}
-              className="hidden items-center gap-2.5 rounded-full border border-[rgba(190,53,58,.18)] bg-[rgba(190,53,58,.05)] py-1.5 pr-4 pl-1.5 transition-colors hover:bg-[rgba(190,53,58,.09)] md:inline-flex"
+              title={`24×7 emergency — call ${site.phone}`}
+              className="hidden h-10 w-10 place-items-center rounded-full bg-secondary text-white transition-colors hover:bg-secondary-700 md:grid"
             >
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-secondary text-white">
-                <Phone size={15} strokeWidth={2.2} />
-              </span>
-              <span className="flex flex-col leading-none whitespace-nowrap">
-                <span className="text-[0.625rem] font-bold tracking-[0.1em] text-secondary uppercase">
-                  24×7 Emergency
-                </span>
-                <span className="mt-1 text-[0.9375rem] font-extrabold text-primary">
-                  {site.phone}
-                </span>
+              <Phone size={17} strokeWidth={2.2} />
+              <span className="sr-only">
+                Call the 24×7 emergency line, {site.phone}
               </span>
             </a>
 
@@ -251,7 +267,7 @@ export function Header() {
       <div
         id="mobile-menu"
         hidden={!open}
-        className="fixed inset-x-0 top-[4.25rem] bottom-0 z-[60] overflow-y-auto border-t border-line bg-white lg:top-[7rem] xl:hidden"
+        className="fixed inset-x-0 top-[4.25rem] bottom-0 z-[60] overflow-y-auto border-t border-line bg-white lg:top-[7rem] min-[1400px]:hidden"
       >
         <nav aria-label="Mobile" className="shell py-5 pb-24">
           <ul className="grid gap-1">
