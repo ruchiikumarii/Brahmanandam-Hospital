@@ -360,7 +360,7 @@ export function ConfirmationView() {
                   <div className="mt-3.5 flex items-center justify-between gap-3 border-t border-line pt-3.5">
                     <span className="flex items-center gap-2 text-[0.875rem] text-muted">
                       <Wallet size={15} className="text-primary" />
-                      Consultation Fee
+                      Payment
                     </span>
                     <span className="text-right">
                       <strong className="text-[0.9375rem] font-bold text-primary">

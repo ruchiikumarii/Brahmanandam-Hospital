@@ -67,7 +67,7 @@ export default function MissionVisionValuesPage() {
           title="Seven Commitments We Practise Daily"
           subtitle="These values shape how our clinical and support teams work with every patient and family at Sonari."
         />
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="card-row card-row--3 mt-10 gap-4" style={{ "--row-gap": "1rem" } as React.CSSProperties}>
           {coreValues.map((value, i) => (
             <li
               key={value.name}

@@ -161,6 +161,47 @@
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+  /* ------------------------------------------------- balanced card rows ---
+     A CSS grid leaves a partly-filled last row hugging the left edge, which
+     reads as a mistake when a set has 5 or 7 cards. These rows wrap like a
+     grid but centre whatever is left over, so an odd count looks deliberate.
+     Cards keep an identical width, so rows still line up column to column. */
+  .card-row {
+    --cols: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .card-row > * {
+    width: calc(
+      (100% - (var(--cols) - 1) * var(--row-gap, 1rem)) / var(--cols)
+    );
+  }
+  /* Column counts read as `--<breakpoint>-<n>`, so a row can start at two
+     columns on a phone and still balance its last row at every width. */
+  .card-row--base-2 { --cols: 2; }
+  @media (min-width: 640px) {
+    .card-row--2,
+    .card-row--3,
+    .card-row--4,
+    .card-row--sm-2 { --cols: 2; }
+    .card-row--sm-3 { --cols: 3; }
+  }
+  @media (min-width: 768px) {
+    .card-row--md-2 { --cols: 2; }
+    .card-row--md-3 { --cols: 3; }
+  }
+  @media (min-width: 1024px) {
+    .card-row--3,
+    .card-row--lg-3 { --cols: 3; }
+    .card-row--4,
+    .card-row--lg-4 { --cols: 4; }
+  }
+  @media (min-width: 1280px) {
+    .card-row--xl-3 { --cols: 3; }
+    .card-row--xl-4 { --cols: 4; }
+  }
+
   /* ---------------------------------------------- scroll reveal system ---
      The hidden state only applies once JS has added `.reveal-ready`, so the
      page degrades to fully visible without scripting. */

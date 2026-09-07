@@ -41,7 +41,7 @@ export default function CsrPage() {
           ekg={false}
         />
 
-        <ul className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="card-row card-row--3 mt-10 gap-4" style={{ "--row-gap": "1rem" } as React.CSSProperties}>
           {csrInitiatives.map((item, i) => (
             <li
               key={item.title}

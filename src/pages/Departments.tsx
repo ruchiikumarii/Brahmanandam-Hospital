@@ -111,7 +111,10 @@ export default function DepartmentsPage() {
             </p>
           </div>
 
-          <ul className="mt-9 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
+          <ul
+            className="card-row card-row--base-2 card-row--sm-3 card-row--lg-4 mt-9 gap-2.5"
+            style={{ "--row-gap": "0.625rem" } as React.CSSProperties}
+          >
             {clinicalDirectory.map((item, i) => {
               const inner = (
                 <>

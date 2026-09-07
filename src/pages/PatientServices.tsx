@@ -34,7 +34,7 @@ export default function PatientServicesPage() {
       />
 
       <Section tone="white">
-        <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="card-row card-row--3 gap-4" style={{ "--row-gap": "1rem" } as React.CSSProperties}>
           {patientSupportServices.map((service, i) => (
             <li
               key={service.title}

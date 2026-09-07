@@ -283,11 +283,11 @@ export function AppointmentFlow() {
                   <dl className="mt-4 grid grid-cols-2 gap-3 rounded-xl bg-[rgba(47,59,128,.05)] p-3.5">
                     <div>
                       <dt className="text-[0.6875rem] font-bold tracking-[0.06em] text-muted uppercase">
-                        Consultation Fee
+                        Reception
                       </dt>
                       <dd className="mt-1.5 text-[0.875rem] font-bold text-primary">
                         <a href={site.phoneHref} className="hover:text-secondary">
-                          Call {site.phone}
+                          {site.phone}
                         </a>
                       </dd>
                     </div>
@@ -370,7 +370,10 @@ export function AppointmentFlow() {
                 title="Select Clinical Department"
                 subtitle="Choose the speciality you want to consult at the Sonari campus."
               >
-                <ul className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                <ul
+                  className="card-row card-row--sm-2 card-row--xl-3 gap-3"
+                  style={{ "--row-gap": "0.75rem" } as React.CSSProperties}
+                >
                   {bookableDepartments.map((dept) => (
                     <li key={dept.slug}>
                       <button

@@ -7,7 +7,12 @@ import { site } from "@/lib/data/site";
 import { Seo } from "@/components/Seo";
 
 
-const channels = [
+/*
+ * Two short contacts sit side by side; the two long ones (email addresses and
+ * the address) take a full row each so nothing truncates and no card is left
+ * stranded on a half-empty row.
+ */
+const quickChannels = [
   {
     icon: Phone,
     label: "24×7 Helpline",
@@ -22,27 +27,11 @@ const channels = [
     href: site.whatsapp,
     tone: "success" as const,
   },
-  {
-    icon: Mail,
-    label: "Care Email",
-    value: site.email,
-    href: `mailto:${site.email}`,
-    tone: "primary" as const,
-  },
-  {
-    icon: Mail,
-    label: "Info Email",
-    value: site.emailAlt,
-    href: `mailto:${site.emailAlt}`,
-    tone: "primary" as const,
-  },
-  {
-    icon: MapPin,
-    label: "Campus",
-    value: "Kagal Nagar, Sonari",
-    href: site.mapsUrl,
-    tone: "primary" as const,
-  },
+];
+
+const emails = [
+  { label: "Care", value: site.email },
+  { label: "Info", value: site.emailAlt },
 ];
 
 const toneClass = {
@@ -66,32 +55,81 @@ export default function ContactPage() {
         subtitle="We are always here to assist you with your healthcare needs. Whether you want to book an appointment, need emergency care, or have a general inquiry, feel free to reach out — our helpdesk responds within 15 minutes during OPD hours."
         icon={<Clock size={14} className="text-secondary" />}
         aside={
-          <ul className="grid gap-3 sm:grid-cols-2">
-            {channels.map((c) => (
-              <li key={c.label}>
-                <a
-                  href={c.href}
-                  target={c.href.startsWith("http") ? "_blank" : undefined}
-                  rel={c.href.startsWith("http") ? "noreferrer noopener" : undefined}
-                  className="flex h-full items-center gap-3 rounded-[1.125rem] border border-line bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-lift"
-                >
-                  <span
-                    className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${toneClass[c.tone]}`}
+          <div className="grid gap-3">
+            <ul className="grid grid-cols-2 gap-3">
+              {quickChannels.map((c) => (
+                <li key={c.label}>
+                  <a
+                    href={c.href}
+                    target={c.href.startsWith("http") ? "_blank" : undefined}
+                    rel={c.href.startsWith("http") ? "noreferrer noopener" : undefined}
+                    className="flex h-full items-center gap-3 rounded-[1.125rem] border border-line bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-lift"
                   >
-                    <c.icon size={18} />
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block text-[0.6875rem] font-bold tracking-[0.07em] text-muted uppercase">
-                      {c.label}
+                    <span
+                      className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${toneClass[c.tone]}`}
+                    >
+                      <c.icon size={18} />
                     </span>
-                    <span className="mt-0.5 block truncate text-[0.9375rem] font-bold text-primary">
-                      {c.value}
+                    <span className="min-w-0">
+                      <span className="block text-[0.6875rem] font-bold tracking-[0.07em] text-muted uppercase">
+                        {c.label}
+                      </span>
+                      <span className="mt-0.5 block truncate text-[0.9375rem] font-bold text-primary">
+                        {c.value}
+                      </span>
                     </span>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex items-start gap-3 rounded-[1.125rem] border border-line bg-white p-4 shadow-card">
+              <span
+                className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${toneClass.primary}`}
+              >
+                <Mail size={18} />
+              </span>
+              <div className="min-w-0">
+                <p className="text-[0.6875rem] font-bold tracking-[0.07em] text-muted uppercase">
+                  Email
+                </p>
+                <ul className="mt-1 grid gap-0.5">
+                  {emails.map((e) => (
+                    <li key={e.value}>
+                      <a
+                        href={`mailto:${e.value}`}
+                        className="block text-[0.875rem] font-semibold break-all text-primary hover:text-secondary"
+                      >
+                        {e.value}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <a
+              href={site.mapsUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="flex items-start gap-3 rounded-[1.125rem] border border-line bg-white p-4 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-lift"
+            >
+              <span
+                className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${toneClass.primary}`}
+              >
+                <MapPin size={18} />
+              </span>
+              <span className="min-w-0">
+                <span className="block text-[0.6875rem] font-bold tracking-[0.07em] text-muted uppercase">
+                  Campus
+                </span>
+                <span className="mt-0.5 block text-[0.875rem] leading-snug font-semibold text-primary">
+                  {site.address.line1},<br />
+                  {site.address.line2}
+                </span>
+              </span>
+            </a>
+          </div>
         }
       />
 

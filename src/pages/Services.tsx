@@ -47,7 +47,7 @@ export default function ServicesPage() {
       />
 
       <Section tone="white">
-        <ul className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <ul className="card-row card-row--3 gap-4" style={{ "--row-gap": "1rem" } as React.CSSProperties}>
           {services.map((service, i) => (
             <li
               key={service.id}

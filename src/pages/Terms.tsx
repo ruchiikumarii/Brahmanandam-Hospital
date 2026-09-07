@@ -45,7 +45,7 @@ export default function TermsPage() {
         {
           heading: "Fees and estimates",
           paragraphs: [
-            "Consultation fees displayed on this website are indicative of standard OPD charges and may change. Investigation, procedure and admission charges are shared as a written estimate before treatment begins.",
+            "Charges are not published on this website. Consultation, investigation, procedure and admission charges are confirmed at the hospital, and a written estimate is shared before treatment begins.",
             "Insurance coverage depends on your individual policy terms. Non-payable items are explained by the TPA desk before discharge.",
           ],
         },

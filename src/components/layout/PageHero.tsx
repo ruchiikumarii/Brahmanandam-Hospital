@@ -37,7 +37,7 @@ export function PageHero({
 
       {crumbs ? <Breadcrumbs items={crumbs} /> : <div className="pt-8" />}
 
-      <div className="shell relative grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:items-center">
+      <div className="shell relative grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:items-start">
         <div data-reveal>
           <p className="inline-flex items-center gap-2 rounded-full bg-[rgba(47,59,128,.06)] px-3.5 py-2 text-[0.6875rem] font-extrabold tracking-[0.1em] text-primary uppercase">
             {icon ?? <span className="h-1.5 w-1.5 rounded-full bg-secondary" />}

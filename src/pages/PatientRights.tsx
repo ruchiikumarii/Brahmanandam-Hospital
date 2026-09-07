@@ -28,7 +28,7 @@ export default function PatientRightsPage() {
       />
 
       <Section tone="white">
-        <ul className="mx-auto grid max-w-5xl gap-4 md:grid-cols-2">
+        <ul className="card-row card-row--2 mx-auto max-w-5xl gap-4" style={{ "--row-gap": "1rem" } as React.CSSProperties}>
           {patientRights.map((right, i) => (
             <li
               key={right.title}

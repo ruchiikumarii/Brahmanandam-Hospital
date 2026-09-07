@@ -71,7 +71,7 @@ export const FIXED_ROUTES: Record<string, Fixed> = {
   "/doctors": {
     title: "Doctors in Sonari, Jamshedpur | Our Medical Faculty & Specialists",
     description:
-      "Find doctors in Sonari, Jamshedpur — cardiologists, gynaecologists, orthopaedic surgeons, physicians, paediatricians and urologists at Brahmanandam Hospital. See OPD timings, chamber, fees and book online.",
+      "Find doctors in Sonari, Jamshedpur — cardiologists, gynaecologists, orthopaedic surgeons, physicians, paediatricians and urologists at Brahmanandam Hospital. See OPD timings, chamber and book online.",
   },
   "/departments": {
     title: "Departments | Multispeciality Hospital in Sonari, Jamshedpur",

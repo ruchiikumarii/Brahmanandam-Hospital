@@ -78,7 +78,10 @@ export function GalleryGrid() {
         ))}
       </div>
 
-      <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <ul
+        className="card-row card-row--3 mt-8 gap-4"
+        style={{ "--row-gap": "1rem" } as React.CSSProperties}
+      >
         {items.map((item, i) => (
           <li
             key={item.src + item.caption}

@@ -99,7 +99,7 @@ export default function InsurancePage() {
             Brahmanandam Hospital, Sonari is associated with the following
             insurance companies and Third Party Administrators.
           </p>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="card-row card-row--3 mt-4 gap-2" style={{ "--row-gap": "0.5rem" } as React.CSSProperties}>
             {tpaPartners.map((name) => (
               <li
                 key={name}

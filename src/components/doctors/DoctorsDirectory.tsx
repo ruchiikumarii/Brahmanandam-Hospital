@@ -186,7 +186,10 @@ export function DoctorsDirectory() {
 
       {/* Results */}
       {results.length ? (
-        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div
+          className="card-row card-row--md-2 card-row--xl-3 mt-8 gap-4"
+          style={{ "--row-gap": "1rem" } as React.CSSProperties}
+        >
           {results.map((doctor, i) => (
             <DoctorDirectoryCard
               key={doctor.slug}

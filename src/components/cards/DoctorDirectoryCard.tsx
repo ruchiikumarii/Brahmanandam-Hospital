@@ -79,15 +79,15 @@ export function DoctorDirectoryCard({
           </dd>
         </div>
         <div className="flex items-start gap-2.5">
-          <dt className="sr-only">Consultation fee</dt>
+          <dt className="sr-only">Reception</dt>
           <Phone size={15} className="mt-0.5 shrink-0 text-primary" />
           <dd className="text-muted">
-            Consultation fee:{" "}
+            Confirm timing:{" "}
             <a
               href={site.phoneHref}
               className="font-bold text-primary hover:text-secondary"
             >
-              call {site.phone}
+              {site.phone}
             </a>
           </dd>
         </div>
