@@ -28,7 +28,8 @@ const serverMod = (name) =>
 
 const { render } = await serverMod("entry-server.js");
 const { getVisiblePosts } = await serverMod("prerender-data.js");
-const { getRouteMeta, FIXED_ROUTES } = await serverMod("prerender-meta.js");
+const { getRouteMeta, FIXED_ROUTES, DOCTOR_SLUGS, DEPARTMENT_SLUGS } =
+  await serverMod("prerender-meta.js");
 
 /* ---------------------------------------------------------------- the data */
 
@@ -48,16 +49,9 @@ console.log(
 
 /* --------------------------------------------------------------- the routes */
 
-const doctorSlugs = [
-  "rajeev-ranjan", "shreya-singh", "amit-kumar",
-  "pankaj-verma", "neha-kumari", "sk-mukherjee",
-];
-const deptSlugs = [
-  "cardiology", "obstetrics-gynaecology", "orthopaedics-trauma-surgery",
-  "paediatrics-neonatal-care", "general-laparoscopic-surgery",
-  "general-medicine-diabetology", "emergency-trauma-care",
-  "diagnostic-imaging-pathology", "icu-critical-care",
-];
+// Straight from src/lib/data — no hand-maintained list to drift.
+const doctorSlugs = DOCTOR_SLUGS;
+const deptSlugs = DEPARTMENT_SLUGS;
 
 const routes = [
   ...Object.keys(FIXED_ROUTES),

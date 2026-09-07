@@ -1,4 +1,3 @@
-import Image from "@/components/ui/Img";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
@@ -26,6 +25,7 @@ import { getDoctor } from "@/lib/data/doctors";
 import { site } from "@/lib/data/site";
 import { formatLongDate } from "@/lib/slots";
 import { useAppointment } from "@/lib/appointment-context";
+import { DoctorAvatar } from "@/components/cards/DoctorAvatar";
 import { ConfirmedStepper } from "./Stepper";
 import { EkgLine, cn } from "@/components/ui";
 
@@ -203,7 +203,7 @@ export function ConfirmationView() {
     {
       icon: AlarmClock,
       title: "Reporting Time",
-      text: `Arrive 15 minutes early (${confirmed.time}) at the ${doctor?.chamberShort ?? "OPD"} counter for vitals (BP, SpO2 & pulse) recording.`,
+      text: `Arrive 15 minutes early (${confirmed.time}) at the ${doctor?.opdRoom ?? "OPD"} counter for vitals (BP, SpO2 & pulse) recording.`,
       tone: "default" as const,
     },
     {
@@ -288,14 +288,7 @@ export function ConfirmationView() {
               <div className="grid content-start gap-4">
                 <div className="flex items-start gap-3.5 rounded-[1.125rem] bg-[rgba(47,59,128,.05)] p-4">
                   {doctor ? (
-                    <Image
-                      src={doctor.photo}
-                      alt={doctor.name}
-                      width={160}
-                      height={160}
-                      sizes="60px"
-                      className="h-15 w-15 shrink-0 rounded-xl object-cover"
-                    />
+                    <DoctorAvatar doctor={doctor} size={60} className="h-15 w-15" />
                   ) : null}
                   <div className="min-w-0">
                     <p className="flex flex-wrap items-center gap-2">
@@ -307,7 +300,7 @@ export function ConfirmationView() {
                       </span>
                     </p>
                     <p className="mt-1 text-[0.8125rem] text-muted">
-                      {doctor?.qualificationShort} • {doctor?.headline}
+                      {[doctor?.qualification, doctor?.designation].filter(Boolean).join(" • ")}
                     </p>
                     <p className="mt-1.5 flex items-center gap-1.5 text-[0.8125rem] font-semibold text-secondary">
                       <Ticket size={13} />
@@ -356,7 +349,7 @@ export function ConfirmationView() {
                         Chamber &amp; Location
                       </span>
                       <span className="mt-1.5 block text-[1rem] font-extrabold text-primary">
-                        {doctor?.chamberShort ?? "OPD Clinical Block"}
+                        {doctor?.opdRoom ?? "OPD Clinical Block"}
                       </span>
                       <span className="mt-1 block text-[0.8125rem] text-muted">
                         Brahmanandam Hospital, {site.address.line1},{" "}

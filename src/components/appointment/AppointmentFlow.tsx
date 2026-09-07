@@ -1,4 +1,3 @@
-import Image from "@/components/ui/Img";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import {
@@ -41,6 +40,7 @@ import {
   useAppointment,
 } from "@/lib/appointment-context";
 import { saveAppointment } from "@/lib/appointments";
+import { DoctorAvatar } from "@/components/cards/DoctorAvatar";
 import { AppointmentStepper } from "./Stepper";
 import { Icon } from "@/components/ui/Icon";
 import { EkgLine, cn } from "@/components/ui";
@@ -262,14 +262,7 @@ export function AppointmentFlow() {
                 <>
                   <div className="mt-4 flex gap-3.5">
                     <div className="relative shrink-0">
-                      <Image
-                        src={doctor.photo}
-                        alt={doctor.name}
-                        width={160}
-                        height={160}
-                        sizes="72px"
-                        className="h-18 w-18 rounded-xl object-cover"
-                      />
+                      <DoctorAvatar doctor={doctor} size={72} className="h-18 w-18" />
                       <span className="absolute -right-1 -bottom-1 grid h-6 w-6 place-items-center rounded-full border-2 border-white bg-primary text-white">
                         <BadgeCheck size={12} />
                       </span>
@@ -279,10 +272,10 @@ export function AppointmentFlow() {
                         {doctor.name}
                       </p>
                       <p className="mt-1 text-[0.8125rem] font-semibold text-secondary">
-                        {doctor.headline}
+                        {doctor.designation}
                       </p>
                       <p className="mt-1 text-[0.75rem] text-muted">
-                        {doctor.qualificationShort}
+                        {(doctor.qualification ?? doctor.specialtyLabel)}
                       </p>
                     </div>
                   </div>
@@ -313,7 +306,7 @@ export function AppointmentFlow() {
                     <DoorOpen size={16} className="mt-0.5 shrink-0 text-primary" />
                     <span>
                       <span className="block font-bold text-primary">
-                        {doctor.chamberShort}
+                        {doctor.opdRoom}
                       </span>
                       <span className="mt-0.5 block text-[0.8125rem] text-muted">
                         OPD Wing A, Brahmanandam Centre Sonari, Jamshedpur
@@ -444,23 +437,16 @@ export function AppointmentFlow() {
                               : "border-line bg-white hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lift",
                           )}
                         >
-                          <Image
-                            src={d.photo}
-                            alt=""
-                            width={160}
-                            height={160}
-                            sizes="64px"
-                            className="h-16 w-16 shrink-0 rounded-xl object-cover"
-                          />
+                          <DoctorAvatar doctor={d} size={64} className="h-16 w-16" />
                           <span className="min-w-0">
                             <span className="block text-[1rem] font-extrabold text-primary">
                               {d.name}
                             </span>
                             <span className="mt-0.5 block text-[0.8125rem] text-secondary">
-                              {d.headline}
+                              {d.designation}
                             </span>
                             <span className="mt-1 block text-[0.75rem] text-muted">
-                              {d.daysLabel} • {d.experienceYears}+ yrs
+                              {d.daysLabel} • {d.opdRoom}
                             </span>
                           </span>
                         </button>

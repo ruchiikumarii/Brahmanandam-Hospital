@@ -75,7 +75,7 @@ OPD Booking
           Schedule Consultation
         </h2>
         <p className="mt-1 text-[0.8125rem] text-white/70">
-          {doctor.name} • {doctor.chamber.split(",")[0]}
+          {doctor.name} • {doctor.opdRoom}
         </p>
       </div>
 
@@ -166,7 +166,7 @@ OPD Booking
                   <Sunset size={14} className="text-secondary" />
                 )}
                 {session.id === "morning" ? "Morning Slots" : "Evening Slots"} (
-                {doctor.chamber.split(",")[0]})
+                {doctor.opdRoom})
               </p>
               <div className="grid grid-cols-2 gap-2">
                 {session.slots.slice(0, 4).map((s) => {

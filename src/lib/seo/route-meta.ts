@@ -1,4 +1,6 @@
 import type { BlogPost } from "@/lib/cms/types";
+import { getDoctor } from "@/lib/data/doctors";
+import { getDepartment } from "@/lib/data/departments";
 import { blocksToText } from "@/lib/cms/types";
 import { pickRelated } from "@/lib/cms/posts";
 
@@ -292,7 +294,84 @@ export function getRouteMeta(pathname: string, posts: BlogPost[] = []): RouteMet
     };
   }
 
-  /* ---- anything else (dynamic doctor/department pages keep their own <Seo>) */
+  /* ---- doctor profile */
+  const doctorSlug = /^\/doctors\/([^/]+)\/?$/.exec(path)?.[1];
+  if (doctorSlug) {
+    const d = getDoctor(doctorSlug);
+    if (d) {
+      const dept = getDepartment(d.departmentSlug);
+      return {
+        title: `${d.name} - ${d.designation} | ${SITE_NAME}`,
+        description:
+          `${d.name}${d.qualification ? ", " + d.qualification : ""}. ` +
+          `${d.designation}${dept ? " in " + dept.name : ""} at Brahmanandam Hospital, ` +
+          `Sonari, Jamshedpur. OPD ${d.daysLabel}, ${d.opdTiming}. Book online or call 8271827999.`,
+        canonical,
+        image: abs(d.photo ?? DEFAULT_IMAGE),
+        noIndex: false,
+        jsonLd: [
+          {
+            "@context": "https://schema.org",
+            "@type": "Physician",
+            "@id": `${ORIGIN}/doctors/${d.slug}#physician`,
+            name: d.name,
+            url: `${ORIGIN}/doctors/${d.slug}`,
+            medicalSpecialty: d.specialtyLabel,
+            jobTitle: d.designation,
+            worksFor: { "@id": `${ORIGIN}/#hospital` },
+            telephone: "+918271827999",
+            ...(d.qualification ? { hasCredential: d.qualification } : {}),
+            ...(d.photo ? { image: abs(d.photo) } : {}),
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "184, Near Road No. 3, Kagal Nagar, Sonari",
+              addressLocality: "Jamshedpur",
+              addressRegion: "Jharkhand",
+              postalCode: "831011",
+              addressCountry: "IN",
+            },
+          },
+        ],
+      };
+    }
+  }
+
+  /* ---- department page */
+  const deptSlug = /^\/departments\/([^/]+)\/?$/.exec(path)?.[1];
+  if (deptSlug) {
+    const dept = getDepartment(deptSlug);
+    if (dept) {
+      return {
+        title: `${dept.name} | ${SITE_NAME}`,
+        description: `${dept.summary} ${dept.name} at Brahmanandam Hospital, Sonari, Jamshedpur. Call 8271827999 to book an OPD consultation.`,
+        canonical,
+        image: abs(DEFAULT_IMAGE),
+        noIndex: false,
+        jsonLd: [
+          {
+            "@context": "https://schema.org",
+            "@type": "MedicalClinic",
+            "@id": `${ORIGIN}/departments/${dept.slug}#department`,
+            name: `${dept.name} - ${SITE_NAME}`,
+            url: `${ORIGIN}/departments/${dept.slug}`,
+            description: dept.summary,
+            parentOrganization: { "@id": `${ORIGIN}/#hospital` },
+            telephone: "+918271827999",
+            ...(dept.procedures?.length
+              ? {
+                  availableService: dept.procedures.map((x) => ({
+                    "@type": "MedicalProcedure",
+                    name: x,
+                  })),
+                }
+              : {}),
+          },
+        ],
+      };
+    }
+  }
+
+  /* ---- anything else */
   return {
     title: SITE_NAME,
     description: FIXED_ROUTES["/"].description,

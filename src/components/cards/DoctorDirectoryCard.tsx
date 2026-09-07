@@ -1,9 +1,8 @@
-import Image from "@/components/ui/Img";
 import { Link } from "react-router-dom";
-import { BadgeCheck, CalendarDays, DoorClosed, Wallet } from "lucide-react";
+import { CalendarDays, DoorClosed, Phone } from "lucide-react";
 import type { Doctor } from "@/lib/data/doctors";
 import { site } from "@/lib/data/site";
-import { Stars } from "@/components/ui";
+import { DoctorAvatar } from "./DoctorAvatar";
 
 export function DoctorDirectoryCard({
   doctor,
@@ -20,19 +19,19 @@ export function DoctorDirectoryCard({
     >
       <div className="flex gap-4">
         <div className="relative shrink-0 self-start">
-          <Image
-            src={doctor.photo}
-            alt={`${doctor.name}, ${doctor.designation}`}
-            width={168}
-            height={168}
-            sizes="84px"
-            className="h-[5.25rem] w-[5.25rem] rounded-2xl object-cover"
+          <DoctorAvatar
+            doctor={doctor}
+            size={84}
+            rounded="rounded-2xl"
+            className="h-[5.25rem] w-[5.25rem]"
           />
-          <span
-            className="absolute -right-0.5 -bottom-0.5 h-4 w-4 rounded-full border-[2.5px] border-white bg-success"
-            title="Available for consultation"
-            aria-label="Available for consultation"
-          />
+          {!doctor.onCall ? (
+            <span
+              className="absolute -right-0.5 -bottom-0.5 h-4 w-4 rounded-full border-[2.5px] border-white bg-success"
+              title="Regular OPD hours"
+              aria-label="Regular OPD hours"
+            />
+          ) : null}
         </div>
         <div className="min-w-0">
           <span className="inline-block rounded-full bg-[rgba(47,59,128,.07)] px-2.5 py-1 text-[0.6875rem] font-extrabold tracking-[0.06em] text-primary uppercase">
@@ -43,27 +42,24 @@ export function DoctorDirectoryCard({
               {doctor.name}
             </Link>
           </h3>
-          <p className="mt-1 text-[0.8125rem] text-muted">{doctor.qualification}</p>
+          {doctor.qualification ? (
+            <p className="mt-1 text-[0.8125rem] text-muted">{doctor.qualification}</p>
+          ) : null}
           <p className="mt-1 text-[0.8125rem] font-semibold text-secondary">
             {doctor.designation}
           </p>
         </div>
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-2 rounded-xl bg-[rgba(47,59,128,.05)] px-3.5 py-2.5">
-        <span className="flex items-center gap-1.5 text-[0.8125rem] text-muted">
-          <BadgeCheck size={15} className="text-primary" />
-          <strong className="font-bold text-primary">
-            {doctor.experienceYears}+ Years
-          </strong>{" "}
-          Exp.
-        </span>
-        <span className="flex items-center gap-1.5 text-[0.8125rem] text-muted">
-          <Stars rating={doctor.rating} size={13} />
-          <strong className="font-bold text-ink">{doctor.rating}</strong>(
-          {doctor.reviews} reviews)
-        </span>
-      </div>
+      {doctor.credentials?.length ? (
+        <ul className="mt-4 grid gap-1.5 rounded-xl bg-[rgba(47,59,128,.05)] px-3.5 py-2.5">
+          {doctor.credentials.map((c) => (
+            <li key={c} className="text-[0.75rem] leading-snug text-muted">
+              {c}
+            </li>
+          ))}
+        </ul>
+      ) : null}
 
       <dl className="mt-4 grid gap-2.5 text-[0.8125rem]">
         <div className="flex gap-2.5">
@@ -79,17 +75,20 @@ export function DoctorDirectoryCard({
           <DoorClosed size={15} className="mt-0.5 shrink-0 text-primary" />
           <dd className="text-muted">
             Chamber:{" "}
-            <strong className="font-bold text-primary">{doctor.chamber}</strong>
+            <strong className="font-bold text-primary">{doctor.opdRoom}</strong>
           </dd>
         </div>
         <div className="flex items-start gap-2.5">
           <dt className="sr-only">Consultation fee</dt>
-          <Wallet size={15} className="mt-0.5 shrink-0 text-primary" />
+          <Phone size={15} className="mt-0.5 shrink-0 text-primary" />
           <dd className="text-muted">
-            Consultation Fee:{" "}
-            <strong className="font-bold text-primary">
-              Call {site.phone}
-            </strong>
+            Consultation fee:{" "}
+            <a
+              href={site.phoneHref}
+              className="font-bold text-primary hover:text-secondary"
+            >
+              call {site.phone}
+            </a>
           </dd>
         </div>
       </dl>

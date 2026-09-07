@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { ChevronRight, MapPinned, Navigation, ShieldCheck } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { departments } from "@/lib/data/departments";
 import { DepartmentsExplorer } from "@/components/departments/DepartmentsExplorer";
 import { campusWayfinding } from "@/lib/data/content";
+import { doctors } from "@/lib/data/doctors";
 import { clinicalDirectory, tpaPartners } from "@/lib/data/institutional";
 import { site } from "@/lib/data/site";
 import { EkgLine } from "@/components/ui";
@@ -25,7 +27,7 @@ export default function DepartmentsPage() {
         <>
         <span className="flex items-center gap-2 font-semibold text-success">
         <span className="h-1.5 w-1.5 rounded-full bg-success" />
-        12+ Speciality Units Operational
+        {departments.length} Speciality Units Operational
         </span>
         <span className="text-muted">Kagal Nagar Campus, Sonari</span>
         </>
@@ -78,7 +80,7 @@ export default function DepartmentsPage() {
               </span>
               <span>
                 <span className="block font-display text-[1.5rem] leading-none font-extrabold text-primary">
-                  35+
+                  {doctors.length}+
                 </span>
                 <span className="mt-1 block text-[0.8125rem] text-muted">
                   Super-Specialists

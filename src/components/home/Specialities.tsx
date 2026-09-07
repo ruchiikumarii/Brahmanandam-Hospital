@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { specialities } from "@/lib/data/content";
+import { departments } from "@/lib/data/departments";
 import { Icon } from "@/components/ui/Icon";
 import { Section, SectionHeading } from "@/components/ui";
 import { revealDelay } from "@/lib/use-scroll-reveal";
@@ -45,7 +46,9 @@ export function Specialities() {
             <h3 className="mt-4 text-[0.9375rem] font-extrabold !text-secondary">
               VIEW ALL
             </h3>
-            <p className="mt-1 text-[0.75rem] text-muted">18+ Departments</p>
+            <p className="mt-1 text-[0.75rem] text-muted">
+              {departments.length} Departments
+            </p>
           </Link>
         </li>
       </ul>

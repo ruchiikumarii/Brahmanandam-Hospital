@@ -13,12 +13,11 @@ import { DoctorDirectoryCard } from "@/components/cards/DoctorDirectoryCard";
 import { cn } from "@/components/ui";
 import { revealDelay } from "@/lib/use-scroll-reveal";
 
-type SortKey = "experience" | "rating" | "name";
+type SortKey = "department" | "name";
 
 const sortLabels: { value: SortKey; label: string }[] = [
-  { value: "experience", label: "Experience (Highest First)" },
-  { value: "rating", label: "Patient Rating (Highest First)" },
-  { value: "name", label: "Doctor Name (A – Z)" },
+  { value: "department", label: "Department (A - Z)" },
+  { value: "name", label: "Doctor Name (A - Z)" },
 ];
 
 const windowLabels = [
@@ -32,7 +31,7 @@ export function DoctorsDirectory() {
   const [specialty, setSpecialty] = useState("all");
   const [day, setDay] = useState("all");
   const [opdWindow, setOpdWindow] = useState("all");
-  const [sort, setSort] = useState<SortKey>("experience");
+  const [sort, setSort] = useState<SortKey>("department");
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -46,11 +45,11 @@ export function DoctorsDirectory() {
         d.name,
         d.specialty,
         d.specialtyLabel,
-        d.qualification,
         d.designation,
-        d.chamber,
-        ...d.tags,
-        ...d.expertise.map((e) => `${e.title} ${e.text}`),
+        d.roleLabel,
+        d.qualification ?? "",
+        d.opdRoom,
+        ...(d.credentials ?? []),
       ]
         .join(" ")
         .toLowerCase();
@@ -58,8 +57,11 @@ export function DoctorsDirectory() {
     });
 
     return [...list].sort((a, b) => {
-      if (sort === "experience") return b.experienceYears - a.experienceYears;
-      if (sort === "rating") return b.rating - a.rating;
+      if (sort === "department")
+        return (
+          a.specialtyLabel.localeCompare(b.specialtyLabel) ||
+          a.name.localeCompare(b.name)
+        );
       return a.name.localeCompare(b.name);
     });
   }, [query, specialty, day, opdWindow, sort]);
@@ -69,7 +71,7 @@ export function DoctorsDirectory() {
     setSpecialty("all");
     setDay("all");
     setOpdWindow("all");
-    setSort("experience");
+    setSort("department");
   };
 
   const filtersActive =

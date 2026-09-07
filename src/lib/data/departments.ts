@@ -20,9 +20,9 @@ export type Department = {
   secondaryAction: { label: string; href: string };
   hotline?: string;
   hotlineNote?: string;
-  overview: string[];
-  procedures: string[];
-  equipment: { title: string; text: string }[];
+  overview?: string[];
+  procedures?: string[];
+  equipment?: { title: string; text: string }[];
   opd: { label: string; value: string }[];
 };
 
@@ -476,6 +476,278 @@ export const departments: Department[] = [
       { label: "Nursing Ratio", value: "1:1 in critical bed bays" },
       { label: "Family Briefing", value: "Daily, 11:00 AM & 06:00 PM" },
       { label: "Location", value: "First Floor, Critical Care Block" },
+    ],
+  },
+  /* ------------------------------------------------------------------------
+     Departments from the hospital's OPD schedule board. Capabilities come from
+     the printed facility lists (Dialysis; PFT & Bronchoscopy; Modern NICU), so
+     nothing clinical here is unsourced. Consulting hours are as displayed.
+     --------------------------------------------------------------------- */
+  {
+    slug: "nephrology",
+    name: "Nephrology & Dialysis",
+    shortName: "Nephrology",
+    badge: "Dialysis Unit",
+    category: "medical",
+    icon: "droplet",
+    tone: "primary",
+    summary:
+      "Consultant-led kidney care with an in-house dialysis unit at the Sonari campus.",
+    lead: {
+      label: "Consultant",
+      name: "Dr Sujit Kumar",
+      meta: "Consultant Nephrologist",
+      doctorSlug: "sujit-kumar",
+    },
+    capabilityLabel: "Available Here",
+    capabilities: ["Dialysis", "Renal OPD consultation"],
+    primaryAction: {
+      label: "Book Department OPD",
+      href: "/appointment?department=nephrology",
+    },
+    secondaryAction: { label: "View Details", href: "/departments/nephrology" },
+    opd: [
+      { label: "OPD Days", value: "Monday to Saturday" },
+      { label: "OPD Timing", value: "11:00 AM - 6:00 PM" },
+      { label: "Chamber", value: "OPD 3" },
+    ],
+  },
+  {
+    slug: "chest-pulmonology",
+    name: "Chest & Pulmonology",
+    shortName: "Chest",
+    badge: "PFT & Bronchoscopy",
+    category: "medical",
+    icon: "wind",
+    tone: "primary",
+    summary:
+      "Interventional pulmonology for asthma, allergy and chest disease, with pulmonary function testing and bronchoscopy.",
+    lead: {
+      label: "Consultant",
+      name: "Dr Vinayak Agarwal",
+      meta: "MBBS, DNB - Interventional Pulmonologist",
+      doctorSlug: "vinayak-agarwal",
+    },
+    capabilityLabel: "Available Here",
+    capabilities: ["Pulmonary Function Test (PFT)", "Bronchoscopy"],
+    primaryAction: {
+      label: "Book Department OPD",
+      href: "/appointment?department=chest-pulmonology",
+    },
+    secondaryAction: {
+      label: "View Details",
+      href: "/departments/chest-pulmonology",
+    },
+    opd: [
+      { label: "OPD Days", value: "Monday to Saturday" },
+      { label: "OPD Timing", value: "11:00 AM - 4:00 PM" },
+      { label: "Chamber", value: "OPD 4" },
+    ],
+  },
+  {
+    slug: "gastroenterology",
+    name: "Gastroenterology",
+    shortName: "Gastro",
+    badge: "Gastric Surgery",
+    category: "surgical",
+    icon: "activity",
+    tone: "primary",
+    summary: "Consultant gastric surgery and digestive care OPD.",
+    lead: {
+      label: "Consultant",
+      name: "Dr A. R. Basu",
+      meta: "Gastric Surgeon",
+      doctorSlug: "a-r-basu",
+    },
+    capabilityLabel: "Available Here",
+    capabilities: ["Gastric surgery consultation"],
+    primaryAction: {
+      label: "Book Department OPD",
+      href: "/appointment?department=gastroenterology",
+    },
+    secondaryAction: {
+      label: "View Details",
+      href: "/departments/gastroenterology",
+    },
+    opd: [
+      { label: "OPD Days", value: "Monday to Saturday" },
+      { label: "OPD Timing", value: "10:00 AM - 11:00 AM" },
+      { label: "Chamber", value: "OPD 1" },
+    ],
+  },
+  {
+    slug: "urology",
+    name: "Urology",
+    shortName: "Urology",
+    badge: "DNB Urology",
+    category: "surgical",
+    icon: "droplets",
+    tone: "primary",
+    summary: "Consultant urology OPD for kidney, bladder and prostate concerns.",
+    lead: {
+      label: "Consultant",
+      name: "Dr Ajay Agarwal",
+      meta: "MBBS, MS, DNB (Urology)",
+      doctorSlug: "ajay-agarwal",
+    },
+    capabilityLabel: "Available Here",
+    capabilities: ["Urology consultation"],
+    primaryAction: {
+      label: "Book Department OPD",
+      href: "/appointment?department=urology",
+    },
+    secondaryAction: { label: "View Details", href: "/departments/urology" },
+    opd: [
+      { label: "OPD Days", value: "Monday to Saturday" },
+      { label: "OPD Timing", value: "12:00 PM - 1:00 PM" },
+      { label: "Chamber", value: "OPD 2" },
+    ],
+  },
+  {
+    slug: "neurology",
+    name: "Neurology",
+    shortName: "Neurology",
+    badge: "3 Consultants",
+    category: "medical",
+    icon: "brain",
+    tone: "primary",
+    summary: "Neuro physician OPD with on-call cover through the week.",
+    lead: {
+      label: "Consultant",
+      name: "Dr S. Narayan",
+      meta: "Consultant Neuro Physician",
+      doctorSlug: "s-narayan",
+    },
+    capabilityLabel: "Available Here",
+    capabilities: ["Neuro physician consultation", "On-call neurology cover"],
+    primaryAction: {
+      label: "Book Department OPD",
+      href: "/appointment?department=neurology",
+    },
+    secondaryAction: { label: "View Details", href: "/departments/neurology" },
+    opd: [
+      { label: "OPD Days", value: "Monday to Saturday" },
+      { label: "OPD Timing", value: "3:30 PM - 4:30 PM" },
+      { label: "Chamber", value: "OPD 2" },
+    ],
+  },
+  {
+    slug: "plastic-surgery",
+    name: "Plastic & Cosmetic Surgery",
+    shortName: "Plastic Surgery",
+    badge: "On Call",
+    category: "surgical",
+    icon: "scalpel",
+    tone: "primary",
+    summary: "Plastic, cosmetic and reconstructive surgery consultation on call.",
+    lead: {
+      label: "Consultant",
+      name: "Dr V. S. P. Sinha",
+      meta: "Consultant Plastic Surgeon",
+      doctorSlug: "v-s-p-sinha",
+    },
+    capabilityLabel: "Available Here",
+    capabilities: ["Plastic & cosmetic surgery consultation"],
+    primaryAction: {
+      label: "Book Department OPD",
+      href: "/appointment?department=plastic-surgery",
+    },
+    secondaryAction: {
+      label: "View Details",
+      href: "/departments/plastic-surgery",
+    },
+    opd: [
+      { label: "OPD Days", value: "Monday to Saturday (on call)" },
+      { label: "OPD Timing", value: "On call, from 10:00 AM" },
+      { label: "Chamber", value: "Assigned at reception" },
+    ],
+  },
+  {
+    slug: "psychiatry",
+    name: "Psychiatry",
+    shortName: "Psychiatry",
+    badge: "On Call",
+    category: "medical",
+    icon: "brain",
+    tone: "primary",
+    summary: "Consultant psychiatry OPD, available on call each evening.",
+    lead: {
+      label: "Consultant",
+      name: "Dr D. K. Giri",
+      meta: "Consultant Psychiatrist",
+      doctorSlug: "d-k-giri",
+    },
+    capabilityLabel: "Available Here",
+    capabilities: ["Psychiatry consultation"],
+    primaryAction: {
+      label: "Book Department OPD",
+      href: "/appointment?department=psychiatry",
+    },
+    secondaryAction: { label: "View Details", href: "/departments/psychiatry" },
+    opd: [
+      { label: "OPD Days", value: "Monday to Saturday (on call)" },
+      { label: "OPD Timing", value: "On call, from 7:00 PM" },
+      { label: "Chamber", value: "Assigned at reception" },
+    ],
+  },
+  {
+    slug: "pain-management",
+    name: "Pain Management & Anaesthesia",
+    shortName: "Pain Management",
+    badge: "On Call",
+    category: "medical",
+    icon: "hand-heart",
+    tone: "primary",
+    summary:
+      "Pain management and anaesthesia consultation for chronic and post-operative pain.",
+    lead: {
+      label: "Consultant",
+      name: "Dr Ashok Jadon",
+      meta: "Pain Management & Consultant Anaesthetist",
+      doctorSlug: "ashok-jadon",
+    },
+    capabilityLabel: "Available Here",
+    capabilities: ["Pain management consultation", "Anaesthesia services"],
+    primaryAction: {
+      label: "Book Department OPD",
+      href: "/appointment?department=pain-management",
+    },
+    secondaryAction: {
+      label: "View Details",
+      href: "/departments/pain-management",
+    },
+    opd: [
+      { label: "OPD Days", value: "Monday to Saturday (on call)" },
+      { label: "OPD Timing", value: "On call, from 2:00 PM" },
+      { label: "Chamber", value: "OPD 1" },
+    ],
+  },
+  {
+    slug: "neonatology",
+    name: "NICU & Neonatology",
+    shortName: "NICU",
+    badge: "Modern NICU",
+    category: "critical-care",
+    icon: "baby",
+    tone: "primary",
+    summary:
+      "Neonatal intensive care with a four-consultant team on call around the clock.",
+    lead: {
+      label: "Consultants",
+      name: "Neonatology Team",
+      meta: "Dr Mohan Thakur, Dr Navin Kumar, Dr Subhendhu Mandal, Dr Esther Nimisha",
+    },
+    capabilityLabel: "Available Here",
+    capabilities: ["Modern NICU", "On-call neonatology cover"],
+    primaryAction: {
+      label: "Book Department OPD",
+      href: "/appointment?department=neonatology",
+    },
+    secondaryAction: { label: "View Details", href: "/departments/neonatology" },
+    opd: [
+      { label: "Availability", value: "Monday to Saturday (on call)" },
+      { label: "Cover", value: "24x7 NICU" },
+      { label: "Chamber", value: "Assigned at reception" },
     ],
   },
 ];

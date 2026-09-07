@@ -1,3 +1,4 @@
+import { doctors } from "@/lib/data/doctors";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { EmergencyBanner } from "@/components/layout/EmergencyBanner";
 import { DoctorsDirectory } from "@/components/doctors/DoctorsDirectory";
@@ -8,7 +9,7 @@ import { Seo } from "@/components/Seo";
 
 
 const stats = [
-  { value: "32+", label: "Specialists", tone: "text-primary" },
+  { value: `${doctors.length}`, label: "Specialists", tone: "text-primary" },
   { value: "24×7", label: "Emergency OT", tone: "text-success" },
   { value: "4.9★", label: "Care Index", tone: "text-secondary" },
 ];

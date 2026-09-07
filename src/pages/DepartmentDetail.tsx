@@ -1,4 +1,3 @@
-import Image from "@/components/ui/Img";
 import { Link, useParams } from "react-router-dom";
 import { ArrowRight, CircleCheck, Clock, Phone, Stethoscope } from "lucide-react";
 import { getDepartment } from "@/lib/data/departments";
@@ -6,6 +5,7 @@ import { doctorsByDepartment, getDoctor } from "@/lib/data/doctors";
 import { site } from "@/lib/data/site";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { EmergencyBanner } from "@/components/layout/EmergencyBanner";
+import { DoctorAvatar } from "@/components/cards/DoctorAvatar";
 import { DoctorDirectoryCard } from "@/components/cards/DoctorDirectoryCard";
 import { Icon } from "@/components/ui/Icon";
 import { EkgLine } from "@/components/ui";
@@ -27,7 +27,7 @@ export default function DepartmentDetailPage() {
           { label: "Departments", href: "/departments" },
           { label: dept.shortName },
         ]}
-        schema={departmentSchema(dept)}
+        schema={departmentSchema({ ...dept, procedures: dept.procedures ?? [] })}
         title={dept.name}
         description={`${dept.summary} ${dept.name} at Brahmanandam Hospital, Sonari, Jamshedpur.`}
       />
@@ -104,6 +104,7 @@ export default function DepartmentDetailPage() {
       <section className="bg-white py-12 lg:py-14">
         <div className="shell grid gap-6 lg:grid-cols-[1fr_20rem] lg:items-start">
           <div className="grid gap-6">
+            {dept.overview?.length ? (
             <div
               data-reveal
               className="rounded-[1.25rem] border border-line bg-white p-6 shadow-card sm:p-8"
@@ -118,7 +119,9 @@ export default function DepartmentDetailPage() {
                 ))}
               </div>
             </div>
+            ) : null}
 
+            {dept.procedures?.length ? (
             <div
               data-reveal
               className="rounded-[1.25rem] border border-line bg-white p-6 shadow-card sm:p-8"
@@ -139,7 +142,9 @@ export default function DepartmentDetailPage() {
                 ))}
               </ul>
             </div>
+            ) : null}
 
+            {dept.equipment?.length ? (
             <div
               data-reveal
               className="rounded-[1.25rem] border border-line bg-white p-6 shadow-card sm:p-8"
@@ -159,6 +164,7 @@ export default function DepartmentDetailPage() {
                 ))}
               </ul>
             </div>
+            ) : null}
 
             {deptDoctors.length ? (
               <div>
@@ -183,14 +189,7 @@ export default function DepartmentDetailPage() {
               {lead ? (
                 <>
                   <div className="mt-3 flex items-center gap-3">
-                    <Image
-                      src={lead.photo}
-                      alt={lead.name}
-                      width={140}
-                      height={140}
-                      sizes="60px"
-                      className="h-15 w-15 shrink-0 rounded-xl object-cover"
-                    />
+                    <DoctorAvatar doctor={lead} size={60} className="h-15 w-15" />
                     <span className="min-w-0">
                       <span className="block text-[1rem] font-extrabold text-primary">
                         {lead.name}

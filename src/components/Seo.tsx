@@ -148,12 +148,10 @@ export const HOSPITAL_ID = `${ORIGIN}/#hospital`;
 export function physicianSchema(d: {
   name: string;
   slug: string;
-  qualification: string;
+  qualification?: string;
   designation: string;
   specialtyLabel: string;
-  photo: string;
-  rating: number;
-  reviews: number;
+  photo?: string;
   daysLabel: string;
   opdTiming: string;
 }) {
@@ -163,10 +161,9 @@ export function physicianSchema(d: {
     "@id": `${ORIGIN}/doctors/${d.slug}#physician`,
     name: d.name,
     url: `${ORIGIN}/doctors/${d.slug}`,
-    image: ORIGIN + d.photo,
     medicalSpecialty: d.specialtyLabel,
     jobTitle: d.designation,
-    description: `${d.name}, ${d.qualification}. ${d.designation} at Brahmanandam Hospital, Sonari, Jamshedpur.`,
+    description: `${d.name}${d.qualification ? ", " + d.qualification : ""}. ${d.designation} at Brahmanandam Hospital, Sonari, Jamshedpur.`,
     worksFor: { "@id": HOSPITAL_ID },
     address: {
       "@type": "PostalAddress",
@@ -177,12 +174,7 @@ export function physicianSchema(d: {
       addressCountry: "IN",
     },
     telephone: "+918271827999",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: d.rating,
-      reviewCount: d.reviews,
-      bestRating: 5,
-    },
+    ...(d.photo ? { image: ORIGIN + d.photo } : {}),
   };
 }
 

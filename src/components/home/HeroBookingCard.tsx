@@ -121,7 +121,7 @@ export function HeroBookingCard() {
             onChange={setDoctor}
             options={deptDoctors.map((d) => ({
               value: d.slug,
-              label: `${d.name} (${d.qualification.split(",").slice(1, 3).join(",").trim() || d.specialty})`,
+              label: `${d.name} (${d.roleLabel})`,
             }))}
           />
 
