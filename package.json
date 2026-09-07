@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "build:client": "vite build",
     "verify:bundle": "node scripts/verify-bundle.mjs",
-    "test:cms": "node tests/cms.test.mjs"
+    "test:cms": "node tests/cms.test.mjs",
+    "cms:check": "node scripts/cms-check.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.115.0",
