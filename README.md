@@ -231,6 +231,14 @@ prerender, and mirrored as an RLS policy in `0001_blog_cms.sql`. **No cron flips
 `scheduled` → `published`** — a scheduled post becomes visible because the clock
 moved, and the next build picks it up.
 
+## Fonts
+
+DM Sans and Plus Jakarta Sans are served from `public/fonts`, not from
+fonts.googleapis.com, which times out on some Indian networks — the page then
+rendered in a fallback face and logged a failed request on every load. Run
+`node scripts/fonts.mjs` to regenerate `public/fonts` and `src/fonts.css` if the
+type stack changes.
+
 ## Supabase setup
 
 1. Create a project. Put the **Project URL** and **publishable (anon)** key in
@@ -238,7 +246,10 @@ moved, and the next build picks it up.
    (see `.env.example`). The service-role key is never used.
 2. SQL Editor → run `supabase/migrations/0001_blog_cms.sql`
    (tables, indexes, `updated_at` trigger, RLS, `blog-images` bucket, seeds).
-3. Auth → enable Email/Password → create the one admin user.
+3. Auth → Providers → enable **Email**, then Auth → Users → **Add user** →
+   *Create new user*. Tick **Auto Confirm User**, or the account exists but
+   cannot sign in. That email and password are what `/admin/login` expects;
+   nothing in this repo creates or stores them.
 4. For automatic deploys, run `supabase/migrations/0002_auto_deploy.sql` and add
    the secrets it expects:
    ```sql
