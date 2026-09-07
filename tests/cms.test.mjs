@@ -10,7 +10,7 @@ import { execFileSync } from "node:child_process";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
-const mod = (n) => import(pathToFileURL(join(dist, "server", n)).href);
+const mod = (n) => import(pathToFileURL(join(root, ".ssr", n)).href);
 
 const { isPubliclyVisible, selectVisible } = await mod("prerender-visibility.js");
 const { scoreDescription, scoreTitle } = await mod("prerender-seo.js");

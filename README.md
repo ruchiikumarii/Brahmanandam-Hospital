@@ -164,13 +164,29 @@ for Netlify-style hosts) ship with the build.
 
 ## Deploying
 
-`npm run build` outputs a static `dist/`. Because this is a single-page app,
-configure the host to rewrite all unknown paths to `/index.html`:
+`npm run build` outputs a static `dist/`. Every public route is prerendered to
+a real file, so the host needs **no** catch-all rewrite — and must not have one.
+A blanket `/(.*)` → `/index.html` would answer every misspelled URL with 200 and
+an empty shell, which is exactly what the prerender exists to avoid; unknown
+paths must keep returning `404.html`.
 
-- **Netlify** — `public/_redirects` is already included.
-- **Vercel** — add a rewrite of `/(.*)` → `/index.html`.
-- **Apache** — `FallbackResource /index.html`.
-- **nginx** — `try_files $uri $uri/ /index.html;`
+Only `/admin` is client-only and therefore needs a rewrite:
+
+- **Vercel** — `vercel.json` is in the repo: it publishes `dist/`, rewrites
+  `/admin` and `/admin/:path*` to `/index.html`, marks the admin `noindex`, and
+  caches `/assets` and `/fonts` immutably.
+- **Netlify** — the generated `dist/_redirects` covers it.
+- **Apache** — `RewriteRule ^admin(/.*)?$ /index.html [L]`
+- **nginx** — `location /admin { try_files $uri /index.html; }`
+
+The SSR pass builds to `.ssr/`, outside `dist/`, so the server bundle is never
+published — set the host's output directory to `dist`.
+
+Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` in the host's
+environment variables for the Production environment, or the admin will load
+and then report that the CMS is not configured. Both are publishable values
+that end up in the client bundle either way, so they need no secret handling.
+`VITE_CMS_ENABLED` is optional — the CMS is on unless it is set to `false`.
 
 ## Content provenance
 

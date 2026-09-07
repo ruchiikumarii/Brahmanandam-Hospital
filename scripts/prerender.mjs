@@ -17,6 +17,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
+const ssr = join(root, ".ssr");
 const ORIGIN = "https://sonari.brahmanandamhospital.in";
 
 /* ------------------------------------------------------------- load bundle */
@@ -24,7 +25,7 @@ const ORIGIN = "https://sonari.brahmanandamhospital.in";
 // pathToFileURL keeps this working on Windows, where a bare "d:\..." path is
 // not a valid ESM specifier.
 const serverMod = (name) =>
-  import(pathToFileURL(join(dist, "server", name)).href);
+  import(pathToFileURL(join(ssr, name)).href);
 
 const { render } = await serverMod("entry-server.js");
 const { getVisiblePosts } = await serverMod("prerender-data.js");

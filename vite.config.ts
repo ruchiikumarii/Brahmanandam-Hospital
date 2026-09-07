@@ -11,9 +11,13 @@ export default defineConfig(({ isSsrBuild }) => ({
   server: { port: 3000 },
   preview: { port: 3000 },
   build: {
-    outDir: isSsrBuild ? "dist/server" : "dist",
-    // The client build owns dist/, so the SSR pass must not wipe it.
-    emptyOutDir: !isSsrBuild,
+    // The SSR pass builds outside dist/ on purpose: dist/ is what a static
+    // host publishes, and the server bundle is a build-time artefact. Kept
+    // under dist/ it was served at /server/*.js and copied all of public/
+    // into the deploy a second time.
+    outDir: isSsrBuild ? ".ssr" : "dist",
+    emptyOutDir: true,
+    copyPublicDir: !isSsrBuild,
     assetsInlineLimit: 2048,
     ...(isSsrBuild
       ? {

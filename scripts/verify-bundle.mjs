@@ -1,9 +1,9 @@
 /**
  * Proves no privileged credential reached anything a browser downloads.
  *
- * Scans every client-served file in dist/ (excluding dist/server/, which is a
- * build-time-only artefact) for service-role keys, Postgres connection strings
- * and any JWT whose payload claims the `service_role` role.
+ * Scans every file in dist/ -- all of which a browser can download, since the
+ * SSR bundle builds to .ssr/ outside it -- for service-role keys, Postgres
+ * connection strings and any JWT whose payload claims the `service_role` role.
  */
 import { readdirSync, readFileSync, statSync, existsSync } from "node:fs";
 import { join, dirname, resolve, extname } from "node:path";
@@ -11,7 +11,7 @@ import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
-const SERVER_DIR = join(dist, "server");
+const SERVER_DIR = join(root, ".ssr");
 
 const TEXT = new Set([".html", ".js", ".mjs", ".css", ".json", ".txt", ".xml", ".map"]);
 

@@ -10,6 +10,6 @@ design-reference
 *.pdf
 
 # SSR build artefacts and local env
-dist/server
+.ssr
 .env
 .env.local
