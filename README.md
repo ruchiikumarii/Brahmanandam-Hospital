@@ -36,9 +36,9 @@ Fonts: **Plus Jakarta Sans** (display) and **DM Sans** (body), loaded in
 
 ## Scroll animations
 
-Driven by one IntersectionObserver in
+Driven by GSAP ScrollTrigger from
 [`src/lib/use-scroll-reveal.ts`](src/lib/use-scroll-reveal.ts), mounted once in
-`App`. Add `data-reveal` to any element and it fades/slides in as it enters the
+`App`. Add `data-reveal` to any element and it eases in as it enters the
 viewport:
 
 ```tsx
@@ -47,24 +47,34 @@ viewport:
 <div data-reveal="right">…</div>                           // slide from right (lg+)
 <li data-reveal="zoom">…</li>                              // subtle scale-in
 <p data-reveal="fade">…</p>                                // opacity only
+<div data-parallax="-55" aria-hidden="true" />              // drifts across its section
 ```
 
-- `revealDelay(i, step?, max?)` staggers a grid; the delay is capped so long
-  lists never feel slow.
-- Elements are observed once, then unobserved — no scroll listeners, no layout
-  thrash. A debounced MutationObserver catches nodes added by lazy routes and
-  filtered lists.
-- **Safe by default:** the hidden state lives under `.reveal-ready`, a class the
-  hook adds only after it runs. Without JavaScript — or with
-  `prefers-reduced-motion: reduce` — every element renders visible immediately.
+- Elements are grouped by variant and handed to `ScrollTrigger.batch`, which
+  animates whatever crosses the fold together with a 60ms stagger. Batches are
+  capped at six: collecting a whole section and staggering it puts the last
+  card a second behind the first, which reads as lag rather than rhythm.
+- Each tween ends with `clearProps`, so nothing inline is left on the element
+  and the cards' hover transforms are not fighting a leftover transform.
+- `data-parallax` scrubs a decorative layer against its section. Only
+  `aria-hidden` blobs use it.
+- A debounced MutationObserver arms nodes added by lazy routes and filtered
+  lists, and refreshes ScrollTrigger at most every 400ms.
+- **Safe by default:** GSAP loads from its own chunk (~46KB gzipped) after the
+  page is interactive, so it costs nothing up front. The hidden state lives
+  under `.reveal-ready`, which the hook adds only when it runs and a 2.5s timer
+  removes if that chunk never arrives. Without JavaScript -- or with
+  `prefers-reduced-motion: reduce`, which returns before GSAP is even fetched
+  -- every element renders visible immediately.
 - Horizontal offsets apply only from `lg` up, where the shell has side padding
   to absorb them, so narrow screens never gain a horizontal scrollbar.
+- The admin passes `false` to the hook: it has no revealed elements, so it does
+  not download GSAP at all.
 
 Also included: statistics count up when scrolled into view
 ([`CountUp`](src/components/ui/CountUp.tsx), reserves the final width so nothing
-reflows), EKG lines draw themselves, cards lift on hover, decorative blobs drift
-slowly, and a back-to-top button appears past 900px of scroll — clear of the
-mobile tab bar.
+reflows), EKG lines draw themselves, cards lift on hover, and a back-to-top
+button appears past 900px of scroll -- clear of the mobile tab bar.
 
 ## Responsive
 

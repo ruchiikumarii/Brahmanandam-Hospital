@@ -35,6 +35,7 @@ export default function DepartmentsPage() {
         />
         <div
           aria-hidden="true"
+          data-parallax="-45"
           className="pointer-events-none absolute -top-20 left-1/3 h-80 w-80 rounded-full blur-3xl"
           style={{
             background: "radial-gradient(circle, rgba(190,53,58,.06), transparent 70%)",

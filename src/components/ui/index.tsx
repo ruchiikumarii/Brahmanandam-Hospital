@@ -303,6 +303,7 @@ export function BrandBackdrop({
       className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}
     >
       <div
+        data-parallax="-55"
         className="absolute -top-32 -right-24 h-[26rem] w-[26rem] rounded-full blur-3xl"
         style={{
           background:
@@ -312,6 +313,7 @@ export function BrandBackdrop({
         }}
       />
       <div
+        data-parallax="35"
         className="absolute -bottom-40 -left-32 h-[24rem] w-[24rem] rounded-full blur-3xl"
         style={{
           background: "radial-gradient(circle, rgba(190,53,58,.055), transparent 68%)",

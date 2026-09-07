@@ -204,8 +204,11 @@
   }
 
   /* ---------------------------------------------- scroll reveal system ---
-     The hidden state only applies once JS has added `.reveal-ready`, so the
-     page degrades to fully visible without scripting. */
+     GSAP owns the animation; these rules only cover the gap between the page
+     painting and the GSAP chunk arriving. `.reveal-ready` is added by the hook
+     and removed if GSAP fails to load, so a visitor without JavaScript -- or
+     one who asked for reduced motion -- sees the finished page. No transition
+     here on purpose: a CSS transition would fight the tween. */
   .reveal-ready [data-reveal] {
     opacity: 0;
     transform: translate3d(0, 22px, 0);
@@ -226,13 +229,11 @@
   .reveal-ready [data-reveal="fade"] {
     transform: none;
   }
+  /* The resting state the tween hands back to once it clears its inline
+     styles. */
   .reveal-ready [data-reveal].is-revealed {
     opacity: 1;
     transform: none;
-    transition:
-      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    transition-delay: var(--reveal-delay, 0ms);
   }
 
   /* Gentle float used by decorative blobs. */

@@ -4,6 +4,7 @@ import { EmergencyBanner } from "@/components/layout/EmergencyBanner";
 import { DoctorsDirectory } from "@/components/doctors/DoctorsDirectory";
 import { clinicalStandards } from "@/lib/data/content";
 import { Icon } from "@/components/ui/Icon";
+import { CountUp } from "@/components/ui/CountUp";
 import { Section, SectionHeading } from "@/components/ui";
 import { Seo } from "@/components/Seo";
 
@@ -26,6 +27,7 @@ export default function DoctorsPage() {
         <Breadcrumbs items={[{ label: "Doctors Directory" }]} />
         <div
           aria-hidden="true"
+          data-parallax="-55"
           className="pointer-events-none absolute -top-28 -right-20 h-96 w-96 rounded-full blur-3xl"
           style={{
             background: "radial-gradient(circle, rgba(47,59,128,.08), transparent 68%)",
@@ -56,7 +58,7 @@ export default function DoctorsPage() {
                 <p
                   className={`font-display text-[1.5rem] leading-none font-extrabold sm:text-[1.75rem] ${stat.tone}`}
                 >
-                  {stat.value}
+                  <CountUp value={stat.value} />
                 </p>
                 <p className="mt-2 text-[0.6875rem] font-bold tracking-[0.07em] text-muted uppercase">
                   {stat.label}

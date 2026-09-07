@@ -18,6 +18,7 @@ export default function AppointmentPage() {
         <Breadcrumbs items={[{ label: "Book Appointment" }]} />
         <div
           aria-hidden="true"
+          data-parallax="-40"
           className="pointer-events-none absolute -top-24 right-1/4 h-72 w-72 rounded-full blur-3xl"
           style={{
             background:

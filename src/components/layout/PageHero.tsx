@@ -20,8 +20,11 @@ export function PageHero({
 }) {
   return (
     <section className="relative isolate overflow-hidden bg-tint-soft-grad pb-11 lg:pb-14">
+      {/* Decorative only, and drifting at different rates so the header has a
+          little depth behind it as the page moves. */}
       <div
         aria-hidden="true"
+        data-parallax="-60"
         className="pointer-events-none absolute -top-28 -right-24 h-96 w-96 rounded-full blur-3xl"
         style={{
           background: "radial-gradient(circle, rgba(47,59,128,.08), transparent 68%)",
@@ -29,6 +32,7 @@ export function PageHero({
       />
       <div
         aria-hidden="true"
+        data-parallax="40"
         className="pointer-events-none absolute -bottom-28 left-1/4 h-72 w-72 rounded-full blur-3xl"
         style={{
           background: "radial-gradient(circle, rgba(190,53,58,.05), transparent 70%)",

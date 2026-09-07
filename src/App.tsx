@@ -85,9 +85,11 @@ function ScrollToTop() {
 }
 
 export default function App() {
-  useScrollReveal();
-
   const { pathname } = useLocation();
+
+  /* The admin has no revealed elements, so it should not pay for the GSAP
+     chunk either. */
+  useScrollReveal(!pathname.startsWith("/admin"));
 
   /* The admin lives at /admin/* with its own chrome — no hospital header,
      footer or mobile bar, and no scroll-reveal. */
