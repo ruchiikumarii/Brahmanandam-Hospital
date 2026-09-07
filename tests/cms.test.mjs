@@ -112,6 +112,20 @@ t("known slug does", () => {
     assert.equal(ghost.status, 404));
   t("unknown path -> real 404", () => assert.equal(junk.status, 404));
 
+  /*
+   * The admin screens all rendered blank once because the descendant <Routes>
+   * inside "/admin/*" declared absolute paths ("/admin/blogs"), which match
+   * nothing: the parent route has already consumed "/admin". A 200 from the
+   * shell does not catch that -- the nav still renders -- so guard the source.
+   */
+  t("admin child routes are relative, not absolute", () => {
+    const app = readFileSync(join(root, "src", "App.tsx"), "utf8");
+    const inner = app.slice(app.indexOf("<AdminShell>"), app.indexOf("</AdminShell>"));
+    assert.ok(inner.includes("<Routes>"), "expected a descendant <Routes> under AdminShell");
+    const absolute = [...inner.matchAll(/<Route[^>]*\spath="(\/[^"]*)"/g)].map((m) => m[1]);
+    assert.deepEqual(absolute, [], `these would never match: ${absolute.join(", ")}`);
+  });
+
   console.log("\n3. published content is in the served HTML, not fetched later");
   t("article body is in the initial HTML", () => {
     assert.match(post.body, /earned its reputation by consistently/);

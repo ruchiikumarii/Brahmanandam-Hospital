@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileTabBar } from "@/components/layout/MobileTabBar";
@@ -101,17 +101,22 @@ export default function App() {
             element={
               <RequireAuth>
                 <AdminShell>
+                  {/*
+                    These paths are relative on purpose. This is a descendant
+                    <Routes>: the "/admin/*" route above has already consumed
+                    "/admin", so these match against what is left. Written as
+                    "/admin/blogs" they matched nothing, and every admin screen
+                    rendered blank under the nav.
+                  */}
                   <Routes>
-                    <Route path="/admin" element={<AdminDashboard />} />
-                    <Route path="/admin/blogs" element={<AdminBlogList />} />
-                    <Route path="/admin/blogs/new" element={<AdminBlogEditor />} />
-                    <Route path="/admin/blogs/:id" element={<AdminBlogEditor />} />
-                    <Route
-                      path="/admin/appointments"
-                      element={<AdminAppointments />}
-                    />
-                    <Route path="/admin/media" element={<AdminMedia />} />
-                    <Route path="/admin/categories" element={<AdminCategories />} />
+                    <Route index element={<AdminDashboard />} />
+                    <Route path="blogs" element={<AdminBlogList />} />
+                    <Route path="blogs/new" element={<AdminBlogEditor />} />
+                    <Route path="blogs/:id" element={<AdminBlogEditor />} />
+                    <Route path="appointments" element={<AdminAppointments />} />
+                    <Route path="media" element={<AdminMedia />} />
+                    <Route path="categories" element={<AdminCategories />} />
+                    <Route path="*" element={<Navigate to="/admin" replace />} />
                   </Routes>
                 </AdminShell>
               </RequireAuth>

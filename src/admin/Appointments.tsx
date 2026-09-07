@@ -216,7 +216,7 @@ export default function AdminAppointments() {
           <select
             value={when}
             onChange={(e) => setWhen(e.target.value as typeof when)}
-            className="field h-10 w-full sm:w-44"
+            className="field w-full sm:w-44"
             aria-label="Filter by date"
           >
             <option value="all">Any date</option>
@@ -233,7 +233,7 @@ export default function AdminAppointments() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Name, mobile, reference…"
-              className="field h-10 pl-10"
+              className="field pl-10"
               aria-label="Search appointments"
             />
           </div>
