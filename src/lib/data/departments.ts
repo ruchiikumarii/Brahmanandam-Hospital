@@ -64,7 +64,7 @@ export const departments: Department[] = [
     secondaryAction: { label: "View Details", href: "/departments/cardiology" },
     overview: [
       "The Department of Cardiology & Cardiac Sciences at Brahmanandam Hospital, Sonari operates a digital flat-panel catheterisation laboratory with round-the-clock primary angioplasty readiness for acute myocardial infarction.",
-      "Our cardiac team combines non-invasive diagnostics — echocardiography, treadmill testing, Holter and ambulatory BP monitoring — with a full interventional programme covering angioplasty, stenting, and device implantation.",
+      "Our cardiac team combines non-invasive diagnostics - echocardiography, treadmill testing, Holter and ambulatory BP monitoring - with a full interventional programme covering angioplasty, stenting, and device implantation.",
       "Post-procedure patients are monitored in a dedicated cardiac intensive care unit with multi-parameter telemetry and a structured cardiac rehabilitation pathway.",
     ],
     procedures: [
@@ -113,7 +113,7 @@ export const departments: Department[] = [
     secondaryAction: { label: "View Details", href: "/departments/obstetrics-gynaecology" },
     overview: [
       "The maternity wing at Brahmanandam Hospital, Sonari provides complete antenatal, intrapartum, and postnatal care supported by dedicated labour suites and 24×7 anaesthesia cover for painless delivery.",
-      "High-risk pregnancies — hypertensive disorders, gestational diabetes, twin gestation, and previous caesarean — are managed with structured monitoring and immediate neonatal intensive care backup.",
+      "High-risk pregnancies - hypertensive disorders, gestational diabetes, twin gestation, and previous caesarean - are managed with structured monitoring and immediate neonatal intensive care backup.",
       "Our gynaecology service covers minimally invasive keyhole surgery, infertility evaluation, adolescent health, and menopause care in a private, unhurried clinic setting.",
     ],
     procedures: [
@@ -261,14 +261,14 @@ export const departments: Department[] = [
     overview: [
       "The surgical services at Brahmanandam Hospital cover general, gastrointestinal, laparoscopic, and urological surgery in HEPA-filtered laminar airflow modular operation theatres.",
       "Minimally invasive keyhole techniques are the default wherever clinically appropriate, reducing hospital stay, post-operative pain, and infection risk.",
-      "A dedicated day-care surgical pathway allows several procedures — laser proctology, hernia repair, and endourology — to be completed with same-day discharge.",
+      "A dedicated day-care surgical pathway allows several procedures - laser proctology, hernia repair, and endourology - to be completed with same-day discharge.",
     ],
     procedures: [
       "Laparoscopic Cholecystectomy (Gall Bladder)",
       "Laparoscopic Appendectomy",
       "Inguinal, Umbilical & Ventral Hernia Mesh Repair",
-      "Laser Proctology — Piles, Fissure, Fistula",
-      "Endourology — RIRS, URSL, PCNL & TURP",
+      "Laser Proctology - Piles, Fissure, Fistula",
+      "Endourology - RIRS, URSL, PCNL & TURP",
       "Breast, Thyroid & Soft Tissue Surgery",
     ],
     equipment: [
@@ -308,7 +308,7 @@ export const departments: Department[] = [
     primaryAction: { label: "Book Department OPD", href: "/appointment?department=general-medicine-diabetology" },
     secondaryAction: { label: "View Details", href: "/departments/general-medicine-diabetology" },
     overview: [
-      "The Department of General Medicine manages the full breadth of adult internal medicine — from acute febrile illness and infection to long-term metabolic and cardiovascular risk control.",
+      "The Department of General Medicine manages the full breadth of adult internal medicine - from acute febrile illness and infection to long-term metabolic and cardiovascular risk control.",
       "A structured diabetes clinic combines HbA1c-guided therapy titration, renal and retinal screening referral, and diabetic foot surveillance under one follow-up plan.",
       "Acute medical admissions are supported by high-dependency beds, 24×7 in-house pathology, and immediate intensivist escalation when required.",
     ],

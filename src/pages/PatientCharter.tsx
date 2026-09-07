@@ -7,7 +7,7 @@ export default function PatientCharterPage() {
     <>
       <Seo
         title="Patient Charter"
-        description="Patient rights and responsibilities at Brahmanandam Hospital, Sonari — dignity, information, consent, privacy, transparent billing and grievance redressal."
+        description="Patient rights and responsibilities at Brahmanandam Hospital, Sonari - dignity, information, consent, privacy, transparent billing and grievance redressal."
       />
       <LegalPage
       crumb="Patient Charter"

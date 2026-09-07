@@ -12,7 +12,7 @@ export default function VisitorGuidelinesPage() {
           { label: "Guidelines for Visitors" },
         ]}
         title="Guidelines for Visitors"
-        description="Visitor rules at Brahmanandam Hospital, Sonari — infection control, attendant policy, visiting conduct, parking, payments and fire safety guidelines."
+        description="Visitor rules at Brahmanandam Hospital, Sonari - infection control, attendant policy, visiting conduct, parking, payments and fire safety guidelines."
       />
       <ContentPage
         crumbs={[

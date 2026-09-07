@@ -21,10 +21,10 @@ export default function AdmissionProcessPage() {
         ]}
         eyebrow="Patient Care Services"
         title="Admission Process"
-        subtitle="Everything you need to know before and during admission — registration, formalities, room categories, billing and hospital policies."
+        subtitle="Everything you need to know before and during admission - registration, formalities, room categories, billing and hospital policies."
         icon="clipboard-check"
         sections={admissionProcess}
-        footerNote="The admission process takes approximately 30 minutes. For emergencies, report directly to the Emergency Department — admission formalities are completed alongside treatment."
+        footerNote="The admission process takes approximately 30 minutes. For emergencies, report directly to the Emergency Department - admission formalities are completed alongside treatment."
       />
       <EmergencyBanner />
     </>

@@ -12,7 +12,7 @@ export default function DischargeProcessPage() {
           { label: "Discharge Process" },
         ]}
         title="Discharge Process"
-        description="Discharge formalities at Brahmanandam Hospital, Sonari — billing, discharge summary, medication, medico-legal cases, certificates and patient feedback."
+        description="Discharge formalities at Brahmanandam Hospital, Sonari - billing, discharge summary, medication, medico-legal cases, certificates and patient feedback."
       />
       <ContentPage
         crumbs={[

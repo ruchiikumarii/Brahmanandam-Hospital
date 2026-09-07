@@ -33,7 +33,7 @@ export const ceoMessage = {
   organisation: "Brahmanandam Hospital, Sonari",
   initials: "SR",
   paragraphs: [
-    "Our mission at Brahmanandam Hospital, Sonari is to deliver compassionate, reliable, and high-quality healthcare. Healthcare is not only about treatment — it is about building trust, and about the comfort and dignity of every person who walks through our doors.",
+    "Our mission at Brahmanandam Hospital, Sonari is to deliver compassionate, reliable, and high-quality healthcare. Healthcare is not only about treatment - it is about building trust, and about the comfort and dignity of every person who walks through our doors.",
     "Our physicians and staff provide patient-centered care backed by continuous facility upgrades, the adoption of modern technology, and steadily improving clinical practices.",
     "Beyond hospital operations, we focus on community health awareness, preventive care initiatives, and quality medical support for the region we serve.",
     "I thank every patient and family for the trust and support they have placed in Brahmanandam Hospital, Sonari.",
@@ -633,7 +633,7 @@ export const emergencyHeadline =
   "Your Trusted Multi-Speciality Hospital in Sonari, Jamshedpur";
 
 export const emergencySubhead =
-  "Delivering Expert Care with Compassion — 24×7";
+  "Delivering Expert Care with Compassion - 24×7";
 
 export const openingHours = [
   { days: "Monday – Friday", hours: "Open 24 Hours" },
@@ -673,7 +673,7 @@ export const healthPackages = [
     icon: "clipboard-check",
     includes: [
       "Complete Blood Count (CBC)",
-      "Blood Sugar — Fasting",
+      "Blood Sugar - Fasting",
       "Urine Routine Examination",
       "Blood Pressure & BMI assessment",
       "Physician consultation & report review",

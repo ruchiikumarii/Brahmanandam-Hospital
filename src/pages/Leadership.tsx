@@ -13,7 +13,7 @@ export default function LeadershipPage() {
       <Seo
         crumbs={[{ label: "About Us", href: "/about" }, { label: "Our Directors" }]}
         title="Our Directors"
-        description="The leadership team of Brahmanandam Hospital, Sonari — driven by a shared vision of delivering compassionate, ethical and high-quality healthcare in Jamshedpur."
+        description="The leadership team of Brahmanandam Hospital, Sonari - driven by a shared vision of delivering compassionate, ethical and high-quality healthcare in Jamshedpur."
       />
       <PageHero
         crumbs={[{ label: "About Us", href: "/about" }, { label: "Our Directors" }]}

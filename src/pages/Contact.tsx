@@ -45,14 +45,14 @@ export default function ContactPage() {
     <>
       <Seo
         crumbs={[{ label: "Contact Us" }]}
-        title="Contact | Hospital in Sonari, Jamshedpur — 24x7 Helpline"
-        description="Contact Brahmanandam Hospital, Sonari — 184, Near Road No. 3, Kagal Nagar, Jamshedpur 831011. 24x7 helpline 8271827999, WhatsApp, email, Google Maps directions and OPD timings."
+        title="Contact | Hospital in Sonari, Jamshedpur - 24x7 Helpline"
+        description="Contact Brahmanandam Hospital, Sonari - 184, Near Road No. 3, Kagal Nagar, Jamshedpur 831011. 24x7 helpline 8271827999, WhatsApp, email, Google Maps directions and OPD timings."
       />
       <PageHero
         crumbs={[{ label: "Contact Us" }]}
         eyebrow="Reach Us 24x7"
         title="Contact Brahmanandam Hospital, Sonari"
-        subtitle="We are always here to assist you with your healthcare needs. Whether you want to book an appointment, need emergency care, or have a general inquiry, feel free to reach out — our helpdesk responds within 15 minutes during OPD hours."
+        subtitle="We are always here to assist you with your healthcare needs. Whether you want to book an appointment, need emergency care, or have a general inquiry, feel free to reach out - our helpdesk responds within 15 minutes during OPD hours."
         icon={<Clock size={14} className="text-secondary" />}
         aside={
           <div className="grid gap-3">

@@ -177,7 +177,7 @@ export function ConfirmationView() {
       `DTSTAMP:${fmt(new Date())}`,
       `DTSTART:${fmt(start)}`,
       `DTEND:${fmt(end)}`,
-      `SUMMARY:OPD Consultation — ${doctor?.name ?? "Brahmanandam Hospital"}`,
+      `SUMMARY:OPD Consultation - ${doctor?.name ?? "Brahmanandam Hospital"}`,
       `DESCRIPTION:Booking Reference ${confirmed.reference}. OPD Token ${confirmed.token}. Report 15 minutes early.`,
       `LOCATION:${site.address.full}`,
       "END:VEVENT",

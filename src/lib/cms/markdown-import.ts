@@ -346,7 +346,7 @@ export function importMarkdown(source: string): ImportResult {
     | undefined;
   const title = meta.title || h1?.text || "Untitled";
 
-  // Drop the leading H1 from the body — the page renders the title itself.
+  // Drop the leading H1 from the body - the page renders the title itself.
   const firstIdx = blocks.findIndex((b) => b.type === "h1");
   if (firstIdx !== -1 && firstIdx <= 1) blocks.splice(firstIdx, 1);
 

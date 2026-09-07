@@ -41,7 +41,7 @@ export const FIXED_ROUTES: Record<string, Fixed> = {
   "/about": {
     title: "About Us | Best Hospital in Jamshedpur for Quality Healthcare",
     description:
-      "About Brahmanandam Hospital, Sonari — a trusted multispeciality healthcare provider in Jamshedpur combining modern medical technology, experienced doctors and a patient-first approach.",
+      "About Brahmanandam Hospital, Sonari - a trusted multispeciality healthcare provider in Jamshedpur combining modern medical technology, experienced doctors and a patient-first approach.",
   },
   "/chairmans-message": {
     title: "Chairman's Message",
@@ -56,27 +56,27 @@ export const FIXED_ROUTES: Record<string, Fixed> = {
   "/our-directors": {
     title: "Our Directors",
     description:
-      "The leadership team of Brahmanandam Hospital, Sonari — driven by a shared vision of delivering compassionate, ethical and high-quality healthcare in Jamshedpur.",
+      "The leadership team of Brahmanandam Hospital, Sonari - driven by a shared vision of delivering compassionate, ethical and high-quality healthcare in Jamshedpur.",
   },
   "/mission-vision-values": {
     title: "Mission, Vision and Values",
     description:
-      "The mission, vision and seven core values of Brahmanandam Hospital, Sonari — quality, compassion, integrity, teamwork, service, innovation and responsibility.",
+      "The mission, vision and seven core values of Brahmanandam Hospital, Sonari - quality, compassion, integrity, teamwork, service, innovation and responsibility.",
   },
   "/quality-and-safety": {
     title: "Quality and Safety",
     description:
-      "Quality care and patient safety at Brahmanandam Hospital, Sonari — regulatory compliance, clinical risk management, infection control, patient safety and continuous quality improvement.",
+      "Quality care and patient safety at Brahmanandam Hospital, Sonari - regulatory compliance, clinical risk management, infection control, patient safety and continuous quality improvement.",
   },
   "/doctors": {
     title: "Doctors in Sonari, Jamshedpur | Our Medical Faculty & Specialists",
     description:
-      "Find doctors in Sonari, Jamshedpur — cardiologists, gynaecologists, orthopaedic surgeons, physicians, paediatricians and urologists at Brahmanandam Hospital. See OPD timings, chamber and book online.",
+      "Find doctors in Sonari, Jamshedpur - cardiologists, gynaecologists, orthopaedic surgeons, physicians, paediatricians and urologists at Brahmanandam Hospital. See OPD timings, chamber and book online.",
   },
   "/departments": {
     title: "Departments | Multispeciality Hospital in Sonari, Jamshedpur",
     description:
-      "Explore 20+ specialities at Brahmanandam Hospital, Sonari — cardiology and cath lab, orthopaedics, gynaecology, paediatrics, general surgery, emergency and trauma care, ICU, radiology and pathology in Jamshedpur.",
+      "Explore 20+ specialities at Brahmanandam Hospital, Sonari - cardiology and cath lab, orthopaedics, gynaecology, paediatrics, general surgery, emergency and trauma care, ICU, radiology and pathology in Jamshedpur.",
   },
   "/services": {
     title: "Hospital Services in Jamshedpur | Emergency, ICU, OT & Diagnostics",
@@ -91,22 +91,22 @@ export const FIXED_ROUTES: Record<string, Fixed> = {
   "/gallery": {
     title: "Hospital Gallery",
     description:
-      "Photo gallery of Brahmanandam Hospital, Sonari — emergency and trauma entrance, ICU, modular operation theatres, diagnostics lab, 24x7 pharmacy, ambulance fleet and OPD consultation rooms.",
+      "Photo gallery of Brahmanandam Hospital, Sonari - emergency and trauma entrance, ICU, modular operation theatres, diagnostics lab, 24x7 pharmacy, ambulance fleet and OPD consultation rooms.",
   },
   "/health-packages": {
     title: "Preventive Health Check-up Packages",
     description:
-      "Preventive health check-up packages at Brahmanandam Hospital, Sonari, Jamshedpur — basic health check, diabetes care, cardiac screening, women's health, senior citizen and executive check-ups with same-day reports.",
+      "Preventive health check-up packages at Brahmanandam Hospital, Sonari, Jamshedpur - basic health check, diabetes care, cardiac screening, women's health, senior citizen and executive check-ups with same-day reports.",
   },
   "/insurance": {
     title: "Cashless Hospital in Jamshedpur | TPA & Insurance Partners",
     description:
-      "Cashless hospitalisation at Brahmanandam Hospital, Sonari — empanelled with Star Health, ICICI Lombard, HDFC ERGO, Bajaj Allianz, Medi Assist, Paramount and more. Pre-authorisation handled by our TPA desk.",
+      "Cashless hospitalisation at Brahmanandam Hospital, Sonari - empanelled with Star Health, ICICI Lombard, HDFC ERGO, Bajaj Allianz, Medi Assist, Paramount and more. Pre-authorisation handled by our TPA desk.",
   },
   "/patient-services": {
     title: "Patient Services",
     description:
-      "Support facilities at Brahmanandam Hospital, Sonari — 24x7 pharmacy, blood bank coordination, ambulance, laundry, patient assistance, safe drinking water and cafeteria.",
+      "Support facilities at Brahmanandam Hospital, Sonari - 24x7 pharmacy, blood bank coordination, ambulance, laundry, patient assistance, safe drinking water and cafeteria.",
   },
   "/admission-process": {
     title: "Admission Process",
@@ -116,37 +116,37 @@ export const FIXED_ROUTES: Record<string, Fixed> = {
   "/discharge-process": {
     title: "Discharge Process",
     description:
-      "Discharge formalities at Brahmanandam Hospital, Sonari — billing, discharge summary, medication, medico-legal cases, certificates and patient feedback.",
+      "Discharge formalities at Brahmanandam Hospital, Sonari - billing, discharge summary, medication, medico-legal cases, certificates and patient feedback.",
   },
   "/visitor-guidelines": {
     title: "Guidelines for Visitors",
     description:
-      "Visitor rules at Brahmanandam Hospital, Sonari — infection control, attendant policy, visiting conduct, parking, payments and fire safety guidelines.",
+      "Visitor rules at Brahmanandam Hospital, Sonari - infection control, attendant policy, visiting conduct, parking, payments and fire safety guidelines.",
   },
   "/patient-rights": {
     title: "Patient and Attendant Rights",
     description:
-      "Patient and attendant rights at Brahmanandam Hospital, Sonari — dignity, privacy, clear medical information, safety, cost transparency and access to medical records.",
+      "Patient and attendant rights at Brahmanandam Hospital, Sonari - dignity, privacy, clear medical information, safety, cost transparency and access to medical records.",
   },
   "/careers": {
     title: "Careers",
     description:
-      "Careers at Brahmanandam Hospital, Sonari, Jamshedpur — clinical, diagnostic, support and administrative roles. Send your resume to our careers desk.",
+      "Careers at Brahmanandam Hospital, Sonari, Jamshedpur - clinical, diagnostic, support and administrative roles. Send your resume to our careers desk.",
   },
   "/csr": {
     title: "Corporate Social Responsibility (CSR)",
     description:
-      "CSR at Brahmanandam Hospital, Sonari — free health check-up camps, community health awareness, women and child health support, and help for underprivileged patients in Jamshedpur.",
+      "CSR at Brahmanandam Hospital, Sonari - free health check-up camps, community health awareness, women and child health support, and help for underprivileged patients in Jamshedpur.",
   },
   "/faq": {
     title: "Frequently Asked Questions",
     description:
-      "Answers to common questions about Brahmanandam Hospital, Sonari — location, working hours, appointments, available specialities, insurance and online consultation.",
+      "Answers to common questions about Brahmanandam Hospital, Sonari - location, working hours, appointments, available specialities, insurance and online consultation.",
   },
   "/appointment": {
-    title: "Book an Appointment — Online OPD Chamber Desk",
+    title: "Book an Appointment - Online OPD Chamber Desk",
     description:
-      "Schedule a confirmed OPD consultation with senior specialists at Brahmanandam Hospital, Sonari. Choose department, doctor, date and slot — instant SMS token, no advance payment.",
+      "Schedule a confirmed OPD consultation with senior specialists at Brahmanandam Hospital, Sonari. Choose department, doctor, date and slot - instant SMS token, no advance payment.",
   },
   "/appointment/confirmation": {
     title: "Appointment Confirmed",
@@ -155,14 +155,14 @@ export const FIXED_ROUTES: Record<string, Fixed> = {
     noIndex: true,
   },
   "/contact": {
-    title: "Contact | Hospital in Sonari, Jamshedpur — 24x7 Helpline",
+    title: "Contact | Hospital in Sonari, Jamshedpur - 24x7 Helpline",
     description:
-      "Contact Brahmanandam Hospital, Sonari — 184, Near Road No. 3, Kagal Nagar, Jamshedpur 831011. 24x7 helpline 8271827999, WhatsApp, email, Google Maps directions and OPD timings.",
+      "Contact Brahmanandam Hospital, Sonari - 184, Near Road No. 3, Kagal Nagar, Jamshedpur 831011. 24x7 helpline 8271827999, WhatsApp, email, Google Maps directions and OPD timings.",
   },
   "/blog": {
-    title: "Health Blog — Latest Medical Insights",
+    title: "Health Blog - Latest Medical Insights",
     description:
-      "Preventive wellness guidance and specialist articles by senior doctors at Brahmanandam Hospital, Sonari — cardiology, diabetes care and child health.",
+      "Preventive wellness guidance and specialist articles by senior doctors at Brahmanandam Hospital, Sonari - cardiology, diabetes care and child health.",
   },
   "/privacy-policy": {
     title: "Privacy Policy",
@@ -177,7 +177,7 @@ export const FIXED_ROUTES: Record<string, Fixed> = {
   "/patient-charter": {
     title: "Patient Charter",
     description:
-      "Patient rights and responsibilities at Brahmanandam Hospital, Sonari — dignity, information, consent, privacy, transparent billing and grievance redressal.",
+      "Patient rights and responsibilities at Brahmanandam Hospital, Sonari - dignity, information, consent, privacy, transparent billing and grievance redressal.",
   },
 };
 

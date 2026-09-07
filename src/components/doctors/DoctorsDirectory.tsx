@@ -219,7 +219,7 @@ export function DoctorsDirectory() {
 
       {filtersActive ? (
         <p className="mt-4 text-center text-[0.8125rem] text-muted">
-          Filters applied — reset to browse the full faculty registry.
+          Filters applied - reset to browse the full faculty registry.
         </p>
       ) : null}
     </>

@@ -23,7 +23,7 @@ export default function PatientServicesPage() {
       <Seo
         crumbs={[{ label: "Patient Services" }]}
         title="Patient Services"
-        description="Support facilities at Brahmanandam Hospital, Sonari — 24x7 pharmacy, blood bank coordination, ambulance, laundry, patient assistance, safe drinking water and cafeteria."
+        description="Support facilities at Brahmanandam Hospital, Sonari - 24x7 pharmacy, blood bank coordination, ambulance, laundry, patient assistance, safe drinking water and cafeteria."
       />
       <PageHero
         crumbs={[{ label: "Patient Services" }]}
@@ -86,7 +86,7 @@ export default function PatientServicesPage() {
             </h2>
             <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">
               Admission and discharge formalities, visitor rules, your rights as
-              a patient, and insurance support — all documented so there are no
+              a patient, and insurance support - all documented so there are no
               surprises.
             </p>
             <a

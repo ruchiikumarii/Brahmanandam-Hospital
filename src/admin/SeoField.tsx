@@ -161,7 +161,7 @@ export function SeoField({
               <p className="mt-0.5 text-[0.75rem] text-slate-500">
                 {aiSuggestAvailable
                   ? "Rewrites are generated against the rules below, then re-scored."
-                  : "No AI key set — rewrites are built from this post's own title, excerpt and keyword, then re-scored."}
+                  : "No AI key set - rewrites are built from this post's own title, excerpt and keyword, then re-scored."}
               </p>
             </div>
             <button

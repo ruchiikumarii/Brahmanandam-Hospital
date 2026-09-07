@@ -21,7 +21,7 @@ export default function ChairmansMessagePage() {
         crumbs={[{ label: "About Us", href: "/about" }, { label: "Chairman's Message" }]}
         eyebrow="Leadership • Brahmanandam Hospital"
         title="Chairman's Message"
-        subtitle="Healthcare is not just a service but a responsibility toward society — a principle that has shaped this institution from the very beginning."
+        subtitle="Healthcare is not just a service but a responsibility toward society - a principle that has shaped this institution from the very beginning."
         icon={<Icon name="hand-heart" size={14} className="text-secondary" />}
       />
 

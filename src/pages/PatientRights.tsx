@@ -14,7 +14,7 @@ export default function PatientRightsPage() {
           { label: "Patient and Attendant Rights" },
         ]}
         title="Patient and Attendant Rights"
-        description="Patient and attendant rights at Brahmanandam Hospital, Sonari — dignity, privacy, clear medical information, safety, cost transparency and access to medical records."
+        description="Patient and attendant rights at Brahmanandam Hospital, Sonari - dignity, privacy, clear medical information, safety, cost transparency and access to medical records."
       />
       <PageHero
         crumbs={[

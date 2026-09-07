@@ -39,7 +39,7 @@ export default function HealthPackagesPage() {
       <Seo
         crumbs={crumbs}
         title="Preventive Health Check-up Packages"
-        description="Preventive health check-up packages at Brahmanandam Hospital, Sonari, Jamshedpur — basic health check, diabetes care, cardiac screening, women's health, senior citizen and executive check-ups with same-day reports."
+        description="Preventive health check-up packages at Brahmanandam Hospital, Sonari, Jamshedpur - basic health check, diabetes care, cardiac screening, women's health, senior citizen and executive check-ups with same-day reports."
       />
 
       <PageHero

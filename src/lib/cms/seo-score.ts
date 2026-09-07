@@ -79,6 +79,9 @@ const PASSIVE_HINTS = [
   " have been", " is used", " are used",
 ];
 
+/* The dashes here sit with no space around them, which is what keeps
+   scripts/dashes.mjs out of this class: rewriting one would leave a reversed
+   range and stop the build. */
 const SEPARATORS = /[|\-–—:·•]/g;
 
 /* ----------------------------------------------------------------- helpers */
@@ -131,7 +134,7 @@ export function scoreTitle(title: string, ctx: ScoreContext = {}): ScoreResult {
       len === 0
         ? "SEO title is empty."
         : `SEO title is ${len} characters${
-            len > 60 ? " — the end will be cut off." : len < 50 ? " — shorter than the ideal range." : "."
+            len > 60 ? " - the end will be cut off." : len < 50 ? " - shorter than the ideal range." : "."
           }`,
     points: lenPts,
     max: 30,
@@ -146,7 +149,7 @@ export function scoreTitle(title: string, ctx: ScoreContext = {}): ScoreResult {
     label: "Focus keyword present",
     why: "The query the page targets has to appear in the title, or the title is not competing for it.",
     problem: !kw
-      ? "No focus keyword set — add one to score the keyword rules."
+      ? "No focus keyword set - add one to score the keyword rules."
       : hasKw
         ? `Contains “${kw}”.`
         : `“${kw}” does not appear in the title.`,
@@ -165,7 +168,7 @@ export function scoreTitle(title: string, ctx: ScoreContext = {}): ScoreResult {
       ? "Keyword not found, so position cannot be scored."
       : early
         ? `Keyword starts at character ${kwPos}.`
-        : `Keyword starts at character ${kwPos} — move it nearer the front.`,
+        : `Keyword starts at character ${kwPos} - move it nearer the front.`,
     points: hasKw ? (early ? 15 : 5) : 0,
     max: 15,
     passed: early,
@@ -182,7 +185,7 @@ export function scoreTitle(title: string, ctx: ScoreContext = {}): ScoreResult {
     problem: dupOther
       ? "Another post already uses this exact SEO title."
       : copiesH1
-        ? "This is a verbatim copy of the page H1 — write a distinct search-facing title."
+        ? "This is a verbatim copy of the page H1 - write a distinct search-facing title."
         : "Title is unique.",
     points: unique ? 10 : 0,
     max: 10,
@@ -196,10 +199,10 @@ export function scoreTitle(title: string, ctx: ScoreContext = {}): ScoreResult {
   rules.push({
     id: "title-compelling",
     label: "Has a number, power word or clear benefit",
-    why: "A concrete number or benefit lifts click-through rate — without tipping into clickbait.",
+    why: "A concrete number or benefit lifts click-through rate - without tipping into clickbait.",
     problem: compelling
       ? "Contains a number or a benefit word."
-      : "No number or benefit word — the title states a topic but no reason to click.",
+      : "No number or benefit word - the title states a topic but no reason to click.",
     points: compelling ? 10 : 0,
     max: 10,
     passed: compelling,
@@ -219,7 +222,7 @@ export function scoreTitle(title: string, ctx: ScoreContext = {}): ScoreResult {
       : shouting
         ? "Title is mostly capital letters."
         : seps > 1
-          ? `Uses ${seps} separators — keep it to one.`
+          ? `Uses ${seps} separators - keep it to one.`
           : "Clean.",
     points: clean ? 10 : 0,
     max: 10,
@@ -260,7 +263,7 @@ export function scoreDescription(
       len === 0
         ? "Meta description is empty."
         : `Meta description is ${len} characters${
-            len > 160 ? " — Google will cut it off." : len < 120 ? " — shorter than the ideal range." : "."
+            len > 160 ? " - Google will cut it off." : len < 120 ? " - shorter than the ideal range." : "."
           }`,
     points: lenPts,
     max: 30,
@@ -274,7 +277,7 @@ export function scoreDescription(
     label: "Focus keyword present",
     why: "Google bolds words that match the searcher's query, which visibly lifts click-through rate.",
     problem: !kw
-      ? "No focus keyword set — add one to score the keyword rules."
+      ? "No focus keyword set - add one to score the keyword rules."
       : hasKw
         ? `Contains “${kw}”.`
         : `“${kw}” does not appear in the description.`,
@@ -294,7 +297,7 @@ export function scoreDescription(
     why: "The description's only job is to earn the click, so it needs a verb and a concrete benefit.",
     problem: hasCta
       ? "Contains an action verb."
-      : "No action verb — try opening with Learn, Get, Book, Compare or Discover.",
+      : "No action verb - try opening with Learn, Get, Book, Compare or Discover.",
     points: hasCta ? 20 : 0,
     max: 20,
     passed: hasCta,
@@ -310,9 +313,9 @@ export function scoreDescription(
     label: "Specific and in the active voice",
     why: "Generic or passive descriptions get rewritten by Google and read as filler, lowering click-through rate.",
     problem: boiler
-      ? "Opens with boilerplate — describe what THIS page gives the reader."
+      ? "Opens with boilerplate - describe what THIS page gives the reader."
       : passive
-        ? "Uses passive phrasing — rewrite it in the active voice."
+        ? "Uses passive phrasing - rewrite it in the active voice."
         : "Reads as specific and active.",
     points: specific ? 15 : 0,
     max: 15,

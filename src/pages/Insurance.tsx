@@ -34,7 +34,7 @@ export default function InsurancePage() {
       <Seo
         crumbs={[{ label: "TPA & Insurance" }]}
         title="Cashless Hospital in Jamshedpur | TPA & Insurance Partners"
-        description="Cashless hospitalisation at Brahmanandam Hospital, Sonari — empanelled with Star Health, ICICI Lombard, HDFC ERGO, Bajaj Allianz, Medi Assist, Paramount and more. Pre-authorisation handled by our TPA desk."
+        description="Cashless hospitalisation at Brahmanandam Hospital, Sonari - empanelled with Star Health, ICICI Lombard, HDFC ERGO, Bajaj Allianz, Medi Assist, Paramount and more. Pre-authorisation handled by our TPA desk."
       />
       <PageHero
         crumbs={[{ label: "TPA & Insurance" }]}
@@ -69,7 +69,7 @@ export default function InsurancePage() {
         <SectionHeading
           eyebrow="Empanelled Partners"
           title="Cashless Hospitalization & Insurance Approval"
-          subtitle="Brahmanandam Hospital is empanelled with major TPAs and private health insurers. Coverage varies by policy — confirm with our desk before admission."
+          subtitle="Brahmanandam Hospital is empanelled with major TPAs and private health insurers. Coverage varies by policy - confirm with our desk before admission."
           ekg={false}
         />
 

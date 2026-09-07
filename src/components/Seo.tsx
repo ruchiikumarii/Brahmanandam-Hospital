@@ -189,7 +189,7 @@ export function departmentSchema(dept: {
     "@context": "https://schema.org",
     "@type": "MedicalClinic",
     "@id": `${ORIGIN}/departments/${dept.slug}#department`,
-    name: `${dept.name} — Brahmanandam Hospital, Sonari`,
+    name: `${dept.name} - Brahmanandam Hospital, Sonari`,
     url: `${ORIGIN}/departments/${dept.slug}`,
     description: dept.summary,
     parentOrganization: { "@id": HOSPITAL_ID },

@@ -11,7 +11,7 @@ export default function QualityAndSafetyPage() {
       <Seo
         crumbs={[{ label: "About Us", href: "/about" }, { label: "Quality and Safety" }]}
         title="Quality and Safety"
-        description="Quality care and patient safety at Brahmanandam Hospital, Sonari — regulatory compliance, clinical risk management, infection control, patient safety and continuous quality improvement."
+        description="Quality care and patient safety at Brahmanandam Hospital, Sonari - regulatory compliance, clinical risk management, infection control, patient safety and continuous quality improvement."
       />
       <PageHero
         crumbs={[{ label: "About Us", href: "/about" }, { label: "Quality and Safety" }]}

@@ -100,7 +100,7 @@ const bodies: Record<
       {
         heading: "Patient-Centered Care Approach",
         paragraphs: [
-          "At Brahmanandam Hospital, patients are not just treated \u2014 they are cared for. The hospital follows a patient-first approach, where every decision is made keeping the patient's well-being in mind.",
+          "At Brahmanandam Hospital, patients are not just treated - they are cared for. The hospital follows a patient-first approach, where every decision is made keeping the patient's well-being in mind.",
           "This includes:",
         ],
         points: [
@@ -164,7 +164,7 @@ const bodies: Record<
         paragraphs: [
           "When it comes to healthcare, choosing the right hospital is one of the most important decisions you can make for yourself and your loved ones. With several healthcare options available in Jamshedpur, it can often become confusing to decide which hospital truly meets your needs.",
           "In this guide, we will help you understand the key factors to consider while selecting the best hospital in Jamshedpur and why making the right choice can significantly impact your health outcomes.",
-          "Healthcare is not just about treatment \u2014 it's about trust, safety, and quality care. A good hospital ensures:",
+          "Healthcare is not just about treatment - it's about trust, safety, and quality care. A good hospital ensures:",
         ],
         points: [
           "Accurate diagnosis",
@@ -304,7 +304,7 @@ const bodies: Record<
         heading: "Why heart health needs earlier attention in Jamshedpur",
         paragraphs: [
           "Coronary artery disease presents almost a decade earlier in Indian patients than in western populations. In our Sonari cath lab we routinely see first heart attacks in patients in their early forties, often with no prior cardiac diagnosis.",
-          "The reasons are familiar — sedentary work patterns, high refined-carbohydrate intake, undiagnosed diabetes, tobacco use, and blood pressure that has never been measured outside a hospital visit. Every one of those is modifiable.",
+          "The reasons are familiar - sedentary work patterns, high refined-carbohydrate intake, undiagnosed diabetes, tobacco use, and blood pressure that has never been measured outside a hospital visit. Every one of those is modifiable.",
         ],
       },
       {
@@ -315,7 +315,7 @@ const bodies: Record<
         points: [
           "Replace refined oil re-use with fresh cooking medium; limit total added fat to roughly three teaspoons per person per day.",
           "Build half your plate from vegetables and pulses; keep fried snacks to a weekly rather than a daily habit.",
-          "Reduce salt to under 5g daily — most of it comes from pickles, papad, packaged snacks and restaurant food, not the kitchen shaker.",
+          "Reduce salt to under 5g daily - most of it comes from pickles, papad, packaged snacks and restaurant food, not the kitchen shaker.",
           "Choose whole grains over polished rice at one meal per day if a full switch is unrealistic.",
         ],
       },
@@ -348,7 +348,7 @@ const bodies: Record<
       {
         heading: "Recognising diabetes before complications begin",
         paragraphs: [
-          "Type 2 diabetes is often silent for years. By the time classic symptoms — excessive thirst, frequent urination, unexplained weight loss — appear, blood glucose has usually been elevated for a long period.",
+          "Type 2 diabetes is often silent for years. By the time classic symptoms - excessive thirst, frequent urination, unexplained weight loss - appear, blood glucose has usually been elevated for a long period.",
           "Anyone above 35, or above 25 with a family history or central obesity, should have a fasting glucose and HbA1c check annually.",
         ],
       },
@@ -394,7 +394,7 @@ const bodies: Record<
       {
         heading: "Immunisation calendar essentials",
         paragraphs: [
-          "Follow the Indian Academy of Paediatrics schedule. If doses have been missed, catch-up vaccination is almost always possible — bring the immunisation card to the well-baby clinic and we will build a corrected schedule.",
+          "Follow the Indian Academy of Paediatrics schedule. If doses have been missed, catch-up vaccination is almost always possible - bring the immunisation card to the well-baby clinic and we will build a corrected schedule.",
         ],
         points: [
           "Birth: BCG, OPV-0, Hepatitis B.",
@@ -407,7 +407,7 @@ const bodies: Record<
         heading: "Hydration guidance during summer months",
         paragraphs: [
           "Dehydration progresses faster in small children than most parents expect. Offer ORS in small, frequent sips rather than large volumes at once, and continue breastfeeding or normal feeds alongside.",
-          "Reduced urine output — fewer than four wet nappies in a day — is the most reliable home indicator that a review is needed.",
+          "Reduced urine output - fewer than four wet nappies in a day - is the most reliable home indicator that a review is needed.",
         ],
       },
       {

@@ -24,7 +24,7 @@ export default function AboutPage() {
       <Seo
         crumbs={[{ label: "About Us" }]}
         title="About Us | Best Hospital in Jamshedpur for Quality Healthcare"
-        description="About Brahmanandam Hospital, Sonari — a trusted multispeciality healthcare provider in Jamshedpur combining modern medical technology, experienced doctors and a patient-first approach."
+        description="About Brahmanandam Hospital, Sonari - a trusted multispeciality healthcare provider in Jamshedpur combining modern medical technology, experienced doctors and a patient-first approach."
       />
       <PageHero
         crumbs={[{ label: "About Us" }]}

@@ -91,7 +91,7 @@ function templateTitles(input: SuggestInput): string[] {
     // keyword first, then a benefit
     kw ? `${kwTitle}: ${trimWords(benefit || base, max - kwTitle.length - 2)}` : base,
     // keyword first, then a guide promise
-    kw ? `${kwTitle} — Complete Guide for Patients` : `${base} — Complete Guide`,
+    kw ? `${kwTitle} - Complete Guide for Patients` : `${base} - Complete Guide`,
     // keyword plus a number, if the source offers one
     kw
       ? `${kwTitle}: 7 Things Every Patient Should Know`

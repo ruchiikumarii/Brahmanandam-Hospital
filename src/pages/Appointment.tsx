@@ -9,8 +9,8 @@ export default function AppointmentPage() {
   return (
     <>
       <Seo
-        title="Book an Appointment — Online OPD Chamber Desk"
-        description="Schedule a confirmed OPD consultation with senior specialists at Brahmanandam Hospital, Sonari. Choose department, doctor, date and slot — instant SMS token, no advance payment."
+        title="Book an Appointment - Online OPD Chamber Desk"
+        description="Schedule a confirmed OPD consultation with senior specialists at Brahmanandam Hospital, Sonari. Choose department, doctor, date and slot - instant SMS token, no advance payment."
       />
 
 

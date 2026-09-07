@@ -51,7 +51,7 @@ export function LocationSection() {
 
           <div className="group relative mt-4 overflow-hidden rounded-[1.125rem] border border-line bg-white shadow-card">
             <iframe
-              title="Brahmanandam Hospital, Sonari — location map"
+              title="Brahmanandam Hospital, Sonari - location map"
               src={site.google.embedUrl}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

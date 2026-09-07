@@ -21,7 +21,7 @@ export default function CeoMessagePage() {
         crumbs={[{ label: "About Us", href: "/about" }, { label: "CEO Message" }]}
         eyebrow="Leadership • Brahmanandam Hospital"
         title="CEO Message"
-        subtitle="Healthcare is not only about treatment — it is about building trust, and about the comfort and dignity of every person who walks through our doors."
+        subtitle="Healthcare is not only about treatment - it is about building trust, and about the comfort and dignity of every person who walks through our doors."
         icon={<Icon name="stethoscope" size={14} className="text-secondary" />}
       />
 

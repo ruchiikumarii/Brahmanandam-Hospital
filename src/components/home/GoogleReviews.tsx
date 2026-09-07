@@ -78,7 +78,7 @@ export function GoogleReviews() {
                 </p>
                 <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
                   Ratings and reviews are shown live on our Google Business
-                  listing. Open it to read what patients say — or add your own
+                  listing. Open it to read what patients say - or add your own
                   after a visit.
                 </p>
               </>

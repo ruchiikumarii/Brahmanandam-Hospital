@@ -14,7 +14,7 @@ export default function MissionVisionValuesPage() {
           { label: "Mission, Vision and Values" },
         ]}
         title="Mission, Vision and Values"
-        description="The mission, vision and seven core values of Brahmanandam Hospital, Sonari — quality, compassion, integrity, teamwork, service, innovation and responsibility."
+        description="The mission, vision and seven core values of Brahmanandam Hospital, Sonari - quality, compassion, integrity, teamwork, service, innovation and responsibility."
       />
       <PageHero
         crumbs={[

@@ -58,7 +58,7 @@ export function CoreServices() {
   );
 }
 
-/** 24×7 emergency strip — headline and opening hours as published. */
+/** 24×7 emergency strip - headline and opening hours as published. */
 export function EmergencyHours() {
   return (
     <section className="relative isolate bg-lavender py-12 lg:py-14">

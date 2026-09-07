@@ -19,7 +19,7 @@ export default function TermsPage() {
         {
           heading: "Medical disclaimer",
           paragraphs: [
-            "Content on this website — including department descriptions, doctor profiles and health articles — is provided for general information. It is not a substitute for professional medical advice, diagnosis or treatment.",
+            "Content on this website - including department descriptions, doctor profiles and health articles - is provided for general information. It is not a substitute for professional medical advice, diagnosis or treatment.",
             "Never disregard or delay seeking medical advice because of something you have read here. In an emergency, call our helpline or report directly to the casualty department.",
           ],
         },

@@ -27,7 +27,7 @@ export const galleryItems: GalleryItem[] = [
   {
     src: "/images/facilities/ambulance.jpg",
     alt: "Brahmanandam Hospital main entrance with an ambulance parked outside",
-    caption: "Hospital Entrance & 24×7 Ambulance — Kagal Nagar",
+    caption: "Hospital Entrance & 24×7 Ambulance - Kagal Nagar",
     category: "campus",
     width: 900,
     height: 428,
@@ -67,7 +67,7 @@ export const galleryItems: GalleryItem[] = [
   {
     src: "/images/facilities/pharmacy.jpg",
     alt: "In-house hospital pharmacy counter with pharmacists serving patients",
-    caption: "In-House Pharmacy — Open 24 Hours",
+    caption: "In-House Pharmacy - Open 24 Hours",
     category: "diagnostics",
     width: 900,
     height: 428,
@@ -99,7 +99,7 @@ export const galleryItems: GalleryItem[] = [
   {
     src: "/images/doctors/rajeev-ranjan-profile.jpg",
     alt: "Senior interventional cardiologist at the Sonari cardiac unit",
-    caption: "Cardiac Sciences — Senior Consultant",
+    caption: "Cardiac Sciences - Senior Consultant",
     category: "consultation",
     width: 720,
     height: 727,
@@ -107,7 +107,7 @@ export const galleryItems: GalleryItem[] = [
   {
     src: "/images/general/sonari-map.jpg",
     alt: "Map showing the location of Brahmanandam Hospital Centre in Sonari, Jamshedpur",
-    caption: "Central Sonari Location — Near Road No. 3",
+    caption: "Central Sonari Location - Near Road No. 3",
     category: "campus",
     width: 1200,
     height: 524,

@@ -39,7 +39,7 @@ export function Logo({
     <Link
       to="/"
       className="group flex items-center gap-2.5"
-      aria-label="Brahmanandam Hospital — home"
+      aria-label="Brahmanandam Hospital - home"
     >
       <LogoMark className={cn(compact ? "h-9 w-9" : "h-11 w-11")} />
       <span className="flex flex-col leading-none">

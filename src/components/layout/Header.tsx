@@ -230,7 +230,7 @@ export function Header() {
           <div className="ml-auto flex shrink-0 items-center gap-2.5 min-[1400px]:ml-0">
             <a
               href={site.phoneHref}
-              title={`24×7 emergency — call ${site.phone}`}
+              title={`24×7 emergency - call ${site.phone}`}
               className="hidden h-10 w-10 place-items-center rounded-full bg-secondary text-white transition-colors hover:bg-secondary-700 md:grid"
             >
               <Phone size={17} strokeWidth={2.2} />

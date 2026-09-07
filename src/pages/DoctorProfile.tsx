@@ -39,7 +39,7 @@ export default function DoctorProfilePage() {
           { label: doctor.name },
         ]}
         schema={physicianSchema(doctor)}
-        title={`${doctor.name} — ${doctor.designation}`}
+        title={`${doctor.name} - ${doctor.designation}`}
         description={`${doctor.name}, ${doctor.designation} at Brahmanandam Hospital, Sonari, Jamshedpur. OPD ${doctor.daysLabel}, ${doctor.opdTiming}. Book a consultation or call ${site.phone}.`}
       />
 

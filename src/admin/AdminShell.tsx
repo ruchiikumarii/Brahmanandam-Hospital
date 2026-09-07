@@ -63,7 +63,7 @@ function NotConfigured() {
         </p>
         <p className="mt-3 text-[0.8125rem] leading-relaxed text-slate-500">
           Both names must keep the <code className="rounded bg-slate-100 px-1">VITE_</code>{" "}
-          prefix — the build only exposes variables that start with it, so
+          prefix - the build only exposes variables that start with it, so
           <code className="mx-1 rounded bg-slate-100 px-1">SUPABASE_URL</code>
           is invisible here. On a host, set them for the Production environment
           and redeploy: the values are baked in at build time, not read live.

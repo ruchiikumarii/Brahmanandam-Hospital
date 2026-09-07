@@ -304,7 +304,7 @@ export default function AdminAppointments() {
                       </td>
                       <td className="hidden px-4 py-3 md:table-cell">
                         <span className="block text-[0.8125rem] text-ink">
-                          {r.doctor_name || "—"}
+                          {r.doctor_name || "-"}
                         </span>
                         <span className="mt-0.5 block text-[0.75rem] text-muted">
                           {r.department || ""}
@@ -395,17 +395,17 @@ export default function AdminAppointments() {
                   "Age / Gender",
                   [open.age ? `${open.age} years` : null, open.gender]
                     .filter(Boolean)
-                    .join(" · ") || "—",
+                    .join(" · ") || "-",
                 ],
-                ["Blood group", open.blood_group || "—"],
+                ["Blood group", open.blood_group || "-"],
                 [
                   "Appointment",
                   `${fmtDate(open.appointment_date)} · ${open.appointment_time}`,
                 ],
-                ["OPD token", open.token || "—"],
-                ["Doctor", open.doctor_name || "—"],
-                ["Department", open.department || "—"],
-                ["Visit category", open.visit_category || "—"],
+                ["OPD token", open.token || "-"],
+                ["Doctor", open.doctor_name || "-"],
+                ["Department", open.department || "-"],
+                ["Visit category", open.visit_category || "-"],
                 ["Booked on", fmtWhen(open.created_at)],
               ].map(([k, v]) => (
                 <div key={k} className="flex justify-between gap-4 py-2.5">

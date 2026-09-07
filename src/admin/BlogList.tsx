@@ -31,7 +31,7 @@ const fmtDate = (iso: string | null) =>
     ? new Date(iso).toLocaleDateString("en-IN", {
         day: "2-digit", month: "short", year: "numeric", timeZone: IST,
       })
-    : "—";
+    : "-";
 const fmtTime = (iso: string | null) =>
   iso
     ? new Date(iso).toLocaleTimeString("en-IN", {
@@ -274,7 +274,7 @@ export default function BlogList() {
                       </span>
                     </td>
                     <td className="hidden px-3 py-2.5 whitespace-nowrap text-slate-600 md:table-cell">
-                      {p.category ?? "—"}
+                      {p.category ?? "-"}
                     </td>
                     <td className="px-3 py-2.5">
                       <span
@@ -298,10 +298,10 @@ export default function BlogList() {
                       {fmtDate(p.updated_at)}
                     </td>
                     <td className="hidden px-3 py-2.5 whitespace-nowrap text-slate-500 2xl:table-cell">
-                      {p.created_by ?? "—"}
+                      {p.created_by ?? "-"}
                     </td>
                     <td className="hidden px-3 py-2.5 whitespace-nowrap text-slate-500 lg:table-cell">
-                      {p.read_time ?? "—"}m
+                      {p.read_time ?? "-"}m
                     </td>
                     <td className="px-3 py-2.5">
                       <div className="flex items-center justify-end gap-0.5">

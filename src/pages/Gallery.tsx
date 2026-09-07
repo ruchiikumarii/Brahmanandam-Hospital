@@ -12,7 +12,7 @@ export default function GalleryPage() {
       <Seo
         crumbs={[{ label: "Gallery" }]}
         title="Hospital Gallery"
-        description="Photo gallery of Brahmanandam Hospital, Sonari — emergency and trauma entrance, ICU, modular operation theatres, diagnostics lab, 24x7 pharmacy, ambulance fleet and OPD consultation rooms."
+        description="Photo gallery of Brahmanandam Hospital, Sonari - emergency and trauma entrance, ICU, modular operation theatres, diagnostics lab, 24x7 pharmacy, ambulance fleet and OPD consultation rooms."
       />
       <PageHero
         crumbs={[{ label: "Gallery" }]}

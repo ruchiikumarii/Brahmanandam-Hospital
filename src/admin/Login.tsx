@@ -71,7 +71,7 @@ export default function Login() {
 
         {!cmsConfigured ? (
           <p className="mt-4 rounded-lg bg-amber-50 p-3 text-[0.8125rem] text-amber-800">
-            Supabase environment variables are not set — see the README.
+            Supabase environment variables are not set - see the README.
           </p>
         ) : null}
 

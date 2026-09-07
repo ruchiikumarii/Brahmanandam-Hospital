@@ -18,13 +18,13 @@ export default function FaqPage() {
         crumbs={[{ label: "FAQ" }]}
         schema={faqSchema(faqs)}
         title="Frequently Asked Questions"
-        description="Answers to common questions about Brahmanandam Hospital, Sonari — location, working hours, appointments, available specialities, insurance and online consultation."
+        description="Answers to common questions about Brahmanandam Hospital, Sonari - location, working hours, appointments, available specialities, insurance and online consultation."
       />
       <PageHero
         crumbs={[{ label: "FAQ" }]}
         eyebrow="Help & Information"
         title="Frequently Asked Questions"
-        subtitle="Quick answers about visiting Brahmanandam Hospital, Sonari — timings, appointments, specialities, insurance and more."
+        subtitle="Quick answers about visiting Brahmanandam Hospital, Sonari - timings, appointments, specialities, insurance and more."
         icon={<Icon name="clipboard-check" size={14} className="text-secondary" />}
         aside={
           <div className="rounded-[1.25rem] border border-line bg-white p-6 shadow-card">

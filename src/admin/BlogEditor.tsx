@@ -449,7 +449,7 @@ export default function BlogEditor() {
               Schedule
             </button>
             <p className="mt-2 text-[0.6875rem] leading-relaxed text-slate-500">
-              Stored in UTC. The post becomes visible when the clock passes it — no status flip.
+              Stored in UTC. The post becomes visible when the clock passes it - no status flip.
             </p>
           </section>
 
@@ -612,7 +612,7 @@ export default function BlogEditor() {
                         setPost({ ...snap, id: post.id, version: post.version });
                         dirty.current = true;
                         setShowVersions(false);
-                        setMsg(`Restored v${v.version} — save to keep it`);
+                        setMsg(`Restored v${v.version} - save to keep it`);
                       }}
                       className="rounded-lg bg-slate-900 px-2.5 py-1 text-[0.75rem] font-semibold text-white">
                       Restore

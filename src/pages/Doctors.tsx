@@ -19,7 +19,7 @@ export default function DoctorsPage() {
     <>
       <Seo
         title="Doctors in Sonari, Jamshedpur | Our Medical Faculty & Specialists"
-        description="Find doctors in Sonari, Jamshedpur — cardiologists, gynaecologists, orthopaedic surgeons, physicians, paediatricians and urologists at Brahmanandam Hospital. See OPD timings, chamber and book online."
+        description="Find doctors in Sonari, Jamshedpur - cardiologists, gynaecologists, orthopaedic surgeons, physicians, paediatricians and urologists at Brahmanandam Hospital. See OPD timings, chamber and book online."
       />
 
       <section className="relative isolate overflow-hidden bg-white pb-10 lg:pb-12">
