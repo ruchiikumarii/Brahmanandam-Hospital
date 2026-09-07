@@ -40,6 +40,7 @@ import {
   buildToken,
   useAppointment,
 } from "@/lib/appointment-context";
+import { saveAppointment } from "@/lib/appointments";
 import { AppointmentStepper } from "./Stepper";
 import { Icon } from "@/components/ui/Icon";
 import { EkgLine, cn } from "@/components/ui";
@@ -197,13 +198,25 @@ export function AppointmentFlow() {
     }
 
     const seed = `${draft.doctor}${draft.date}${draft.time}${draft.mobile}`;
-    confirmBooking({
+    const booking = {
       ...draft,
       reference: buildReference(draft.department, seed),
       token: buildToken(seed),
       bookedAt: new Date().toISOString(),
       fee: doctor?.fee ?? 700,
+    };
+
+    confirmBooking(booking);
+
+    /*
+     * Record it for the front desk. The patient already has their reference and
+     * OPD token, so this runs alongside the redirect rather than gating it — a
+     * database problem must not cost them a confirmed booking.
+     */
+    void saveAppointment(booking, doctor?.name ?? "").then(({ ok }) => {
+      if (!ok) confirmBooking({ ...booking, deskSyncFailed: true });
     });
+
     navigate("/appointment/confirmation");
   };
 

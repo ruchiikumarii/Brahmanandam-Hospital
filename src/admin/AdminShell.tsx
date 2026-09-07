@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import {
+  CalendarCheck,
   FileText,
   FolderTree,
   Image as ImageIcon,
@@ -13,6 +14,12 @@ import { cmsConfigured } from "@/lib/cms/supabase";
 
 const NAV = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, end: true },
+  {
+    to: "/admin/appointments",
+    label: "Appointments",
+    icon: CalendarCheck,
+    end: false,
+  },
   { to: "/admin/blogs", label: "Blogs", icon: FileText, end: false },
   { to: "/admin/media", label: "Media", icon: ImageIcon, end: false },
   { to: "/admin/categories", label: "Categories", icon: FolderTree, end: false },

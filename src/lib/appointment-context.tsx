@@ -28,6 +28,8 @@ export type ConfirmedBooking = BookingDraft & {
   token: string;
   bookedAt: string;
   fee: number;
+  /** Set when the booking could not be written to the desk queue. */
+  deskSyncFailed?: boolean;
 };
 
 export const emptyDraft: BookingDraft = {

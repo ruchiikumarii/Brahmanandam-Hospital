@@ -89,6 +89,28 @@ for (const t of ["blog_versions", "deploy_state"]) {
   else bad(`${t} LEAKED ${count} row(s) to anon — check its RLS policy`);
 }
 
+/*
+ * Appointments are the mirror image of blogs: anon may INSERT a booking but
+ * must never SELECT one back, because these rows hold patient name, mobile,
+ * age and the reason for the visit.
+ */
+console.log("\nAppointments (patient data)");
+{
+  const { data, error, count } = await sb
+    .from("appointments")
+    .select("*", { count: "exact" });
+
+  if (error && /does not exist|schema cache/i.test(error.message)) {
+    info("appointments table not found — run 0003_appointments.sql");
+  } else if (error) {
+    ok(`not readable by anon (${error.code ?? "denied"})`);
+  } else if ((count ?? data?.length ?? 0) === 0) {
+    ok("anon reads back 0 appointments (patient data is not exposed)");
+  } else {
+    bad(`anon READ ${count} appointment(s) — remove the anon SELECT policy`);
+  }
+}
+
 /* --------------------------------------------------------- 3. storage */
 console.log("\nStorage");
 {

@@ -49,6 +49,7 @@ const NotFoundPage = lazy(() => import("@/pages/NotFound"));
 const AdminLogin = lazy(() => import("@/admin/Login"));
 const AdminDashboard = lazy(() => import("@/admin/Dashboard"));
 const AdminBlogList = lazy(() => import("@/admin/BlogList"));
+const AdminAppointments = lazy(() => import("@/admin/Appointments"));
 const AdminBlogEditor = lazy(() => import("@/admin/BlogEditor"));
 const AdminMedia = lazy(() => import("@/admin/Media"));
 const AdminCategories = lazy(() => import("@/admin/Categories"));
@@ -105,6 +106,10 @@ export default function App() {
                     <Route path="/admin/blogs" element={<AdminBlogList />} />
                     <Route path="/admin/blogs/new" element={<AdminBlogEditor />} />
                     <Route path="/admin/blogs/:id" element={<AdminBlogEditor />} />
+                    <Route
+                      path="/admin/appointments"
+                      element={<AdminAppointments />}
+                    />
                     <Route path="/admin/media" element={<AdminMedia />} />
                     <Route path="/admin/categories" element={<AdminCategories />} />
                   </Routes>
