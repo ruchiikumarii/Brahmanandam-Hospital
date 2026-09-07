@@ -154,7 +154,6 @@ export function physicianSchema(d: {
   photo: string;
   rating: number;
   reviews: number;
-  fee: number;
   daysLabel: string;
   opdTiming: string;
 }) {

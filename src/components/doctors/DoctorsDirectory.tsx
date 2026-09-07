@@ -13,12 +13,11 @@ import { DoctorDirectoryCard } from "@/components/cards/DoctorDirectoryCard";
 import { cn } from "@/components/ui";
 import { revealDelay } from "@/lib/use-scroll-reveal";
 
-type SortKey = "experience" | "rating" | "fee-low" | "name";
+type SortKey = "experience" | "rating" | "name";
 
 const sortLabels: { value: SortKey; label: string }[] = [
   { value: "experience", label: "Experience (Highest First)" },
   { value: "rating", label: "Patient Rating (Highest First)" },
-  { value: "fee-low", label: "Consultation Fee (Lowest First)" },
   { value: "name", label: "Doctor Name (A – Z)" },
 ];
 
@@ -61,7 +60,6 @@ export function DoctorsDirectory() {
     return [...list].sort((a, b) => {
       if (sort === "experience") return b.experienceYears - a.experienceYears;
       if (sort === "rating") return b.rating - a.rating;
-      if (sort === "fee-low") return a.fee - b.fee;
       return a.name.localeCompare(b.name);
     });
   }, [query, specialty, day, opdWindow, sort]);

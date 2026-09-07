@@ -99,11 +99,18 @@ export function Header() {
           </div>
         </div>
 
-        <div className="shell flex h-[4.25rem] items-center justify-between gap-4 lg:h-[4.75rem]">
-          <Logo />
+        <div className="shell flex h-[4.25rem] items-center justify-between gap-2 lg:h-[4.75rem]">
+          <div className="shrink-0">
+            <Logo />
+          </div>
 
-          <nav ref={navRef} aria-label="Primary" className="hidden xl:block">
-            <ul className="flex items-center gap-0.5">
+          {/*
+            The nav is the only element allowed to flex. min-w-0 lets it shrink
+            below its content width and scroll internally, so the emergency
+            number and Book Appointment button can never be pushed off-screen.
+          */}
+          <nav ref={navRef} aria-label="Primary" className="hidden min-[1400px]:block">
+            <ul className="flex items-center">
               {mainNav.map((item) => {
                 const active = isActive(item);
 
@@ -114,7 +121,7 @@ export function Header() {
                         to={item.href}
                         aria-current={active ? "page" : undefined}
                         className={cn(
-                          "relative inline-flex h-9 items-center rounded-full px-2.5 text-[0.8125rem] font-semibold whitespace-nowrap transition-colors 2xl:px-3",
+                          "relative inline-flex h-9 items-center rounded-full px-1.5 text-[0.8125rem] font-semibold whitespace-nowrap transition-colors 2xl:px-2.5",
                           active
                             ? "bg-[rgba(47,59,128,.07)] text-primary"
                             : "text-muted hover:text-primary",
@@ -143,7 +150,7 @@ export function Header() {
                       aria-haspopup="true"
                       onClick={() => setOpenMenu(expanded ? null : item.label)}
                       className={cn(
-                        "relative inline-flex h-9 items-center gap-1 rounded-full px-2.5 text-[0.8125rem] font-semibold whitespace-nowrap transition-colors 2xl:px-3",
+                        "relative inline-flex h-9 items-center gap-1 rounded-full px-1.5 text-[0.8125rem] font-semibold whitespace-nowrap transition-colors 2xl:px-2.5",
                         active
                           ? "bg-[rgba(47,59,128,.07)] text-primary"
                           : "text-muted hover:text-primary",
@@ -218,7 +225,7 @@ export function Header() {
 
             <Link
               to="/appointment"
-              className="hidden h-10 items-center gap-2 rounded-full bg-primary px-5 text-[0.8125rem] font-bold whitespace-nowrap text-white transition-colors hover:bg-primary-800 lg:inline-flex xl:hidden 2xl:inline-flex"
+              className="hidden h-10 items-center gap-2 rounded-full bg-primary px-4 text-[0.8125rem] font-bold whitespace-nowrap text-white transition-colors hover:bg-primary-800 lg:inline-flex"
             >
               <CalendarCheck size={16} strokeWidth={2.2} />
               Book Appointment
@@ -230,7 +237,7 @@ export function Header() {
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? "Close menu" : "Open menu"}
-              className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-white text-primary xl:hidden"
+              className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-white text-primary min-[1400px]:hidden"
             >
               {open ? <X size={20} /> : <Menu size={20} />}
             </button>

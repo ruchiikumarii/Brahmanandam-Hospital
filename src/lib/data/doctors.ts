@@ -24,9 +24,6 @@ export type Doctor = {
   opdShort: string;
   chamber: string;
   chamberShort: string;
-  fee: number;
-  feeNote: string;
-  followUpFee: number;
   nextSlot: string;
   tags: string[];
   about: string[];
@@ -83,9 +80,6 @@ export const doctors: Doctor[] = [
     opdShort: "Mon – Sat (10 AM – 2 PM)",
     chamber: "Chamber #4, Block A",
     chamberShort: "Chamber #04 (First Floor)",
-    fee: 800,
-    feeNote: "First Visit",
-    followUpFee: 500,
     nextSlot: "Today, 04:30 PM",
     tags: [
       "AIIMS Alumnus",
@@ -237,9 +231,6 @@ export const doctors: Doctor[] = [
     opdShort: "Mon – Sat (11 AM – 4 PM)",
     chamber: "Chamber #2, Block B (Maternity)",
     chamberShort: "Chamber #02 (Maternity Block)",
-    fee: 700,
-    feeNote: "Standard",
-    followUpFee: 450,
     nextSlot: "Today, 11:30 AM",
     tags: ["FICOG", "High-Risk Pregnancy Care", "Cashless Insurance Accepted"],
     about: [
@@ -381,9 +372,6 @@ export const doctors: Doctor[] = [
     opdShort: "Mon – Sat (4 PM – 7 PM)",
     chamber: "Chamber #6, Ground Floor",
     chamberShort: "Chamber #06 (Ground Floor)",
-    fee: 700,
-    feeNote: "Standard",
-    followUpFee: 450,
     nextSlot: "Today, 05:30 PM",
     tags: [
       "Arthroscopy Fellowship",
@@ -526,9 +514,6 @@ export const doctors: Doctor[] = [
     opdShort: "Mon – Sat (9 AM – 1 PM)",
     chamber: "Chamber #1, Block A",
     chamberShort: "Chamber #01 (Ground Floor)",
-    fee: 600,
-    feeNote: "Standard",
-    followUpFee: 400,
     nextSlot: "Tomorrow, 09:30 AM",
     tags: ["Diabetology", "Tropical Infections", "Cashless Insurance Accepted"],
     about: [
@@ -670,9 +655,6 @@ export const doctors: Doctor[] = [
     opdShort: "Mon – Sat (3 PM – 7 PM)",
     chamber: "Chamber #5, Child Care Wing",
     chamberShort: "Chamber #05 (Child Care Wing)",
-    fee: 600,
-    feeNote: "Standard",
-    followUpFee: 400,
     nextSlot: "Today, 05:00 PM",
     tags: ["Neonatology", "Level-II NICU", "Cashless Insurance Accepted"],
     about: [
@@ -814,9 +796,6 @@ export const doctors: Doctor[] = [
     opdShort: "Tue, Thu, Sat (2 PM – 6 PM)",
     chamber: "Chamber #7, Block A",
     chamberShort: "Chamber #07 (First Floor)",
-    fee: 800,
-    feeNote: "First Visit",
-    followUpFee: 500,
     nextSlot: "Thursday, 02:30 PM",
     tags: ["MCh Urology", "Endourology", "Cashless Insurance Accepted"],
     about: [

@@ -2,6 +2,7 @@ import Image from "@/components/ui/Img";
 import { Link } from "react-router-dom";
 import { BadgeCheck, CalendarDays, DoorClosed, Wallet } from "lucide-react";
 import type { Doctor } from "@/lib/data/doctors";
+import { site } from "@/lib/data/site";
 import { Stars } from "@/components/ui";
 
 export function DoctorDirectoryCard({
@@ -86,8 +87,9 @@ export function DoctorDirectoryCard({
           <Wallet size={15} className="mt-0.5 shrink-0 text-primary" />
           <dd className="text-muted">
             Consultation Fee:{" "}
-            <strong className="font-extrabold text-ink">₹{doctor.fee}</strong>{" "}
-            <span className="text-muted">({doctor.feeNote})</span>
+            <strong className="font-bold text-primary">
+              Call {site.phone}
+            </strong>
           </dd>
         </div>
       </dl>

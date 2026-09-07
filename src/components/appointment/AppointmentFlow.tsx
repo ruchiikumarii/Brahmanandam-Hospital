@@ -203,7 +203,6 @@ export function AppointmentFlow() {
       reference: buildReference(draft.department, seed),
       token: buildToken(seed),
       bookedAt: new Date().toISOString(),
-      fee: doctor?.fee ?? 700,
     };
 
     confirmBooking(booking);
@@ -293,11 +292,10 @@ export function AppointmentFlow() {
                       <dt className="text-[0.6875rem] font-bold tracking-[0.06em] text-muted uppercase">
                         Consultation Fee
                       </dt>
-                      <dd className="mt-1.5 font-display text-[1.25rem] leading-none font-extrabold text-primary">
-                        ₹{doctor.fee}{" "}
-                        <span className="text-[0.75rem] font-semibold text-muted">
-                          / Visit
-                        </span>
+                      <dd className="mt-1.5 text-[0.875rem] font-bold text-primary">
+                        <a href={site.phoneHref} className="hover:text-secondary">
+                          Call {site.phone}
+                        </a>
                       </dd>
                     </div>
                     <div>
@@ -346,7 +344,7 @@ export function AppointmentFlow() {
               ) : (
                 <p className="mt-4 text-[0.875rem] leading-relaxed text-muted">
                   Choose a department and specialist to see chamber details,
-                  consultation fee, and live OPD availability here.
+                  and live OPD availability here.
                 </p>
               )}
             </div>
@@ -462,7 +460,7 @@ export function AppointmentFlow() {
                               {d.headline}
                             </span>
                             <span className="mt-1 block text-[0.75rem] text-muted">
-                              {d.daysLabel} • ₹{d.fee} • {d.experienceYears}+ yrs
+                              {d.daysLabel} • {d.experienceYears}+ yrs
                             </span>
                           </span>
                         </button>

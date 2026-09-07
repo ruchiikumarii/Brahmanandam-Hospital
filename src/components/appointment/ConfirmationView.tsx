@@ -370,11 +370,11 @@ export function ConfirmationView() {
                       Consultation Fee
                     </span>
                     <span className="text-right">
-                      <strong className="font-display text-[1.0625rem] font-extrabold text-secondary">
-                        ₹{confirmed.fee}
+                      <strong className="text-[0.9375rem] font-bold text-primary">
+                        Payable at OPD Counter
                       </strong>
                       <span className="ml-1.5 text-[0.75rem] text-muted">
-                        (Payable at OPD Counter / UPI)
+                        (cash / card / UPI)
                       </span>
                     </span>
                   </div>

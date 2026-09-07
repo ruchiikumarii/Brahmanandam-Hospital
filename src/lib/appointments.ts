@@ -77,7 +77,6 @@ export async function saveAppointment(
     visit_category: booking.visitCategory || null,
     chief_concern: booking.chiefConcern?.trim() || null,
     insurance: booking.insurance,
-    fee: booking.fee ?? null,
     status: "new",
   });
 

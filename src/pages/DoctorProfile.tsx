@@ -200,19 +200,15 @@ export default function DoctorProfilePage() {
                     Valid 7 Days
                   </span>
                 </div>
-                <p className="mt-3 flex flex-wrap items-baseline gap-2">
-                  <span className="font-display text-[2rem] leading-none font-extrabold text-primary">
-                    ₹{doctor.fee}
-                  </span>
-                  <span className="text-[0.875rem] text-muted line-through">
-                    ₹{doctor.fee + 200}
-                  </span>
-                  <span className="text-[0.875rem] text-muted">
-                    ({doctor.feeNote})
-                  </span>
-                </p>
-                <p className="mt-1.5 text-[0.875rem] text-muted">
-                  Follow-up: ₹{doctor.followUpFee} within 7 days
+                <a
+                  href={site.phoneHref}
+                  className="mt-3 flex items-center gap-2 font-display text-[1.5rem] leading-none font-extrabold text-primary hover:text-secondary"
+                >
+                  <Phone size={19} className="text-secondary" />
+                  {site.phone}
+                </a>
+                <p className="mt-2 text-[0.875rem] text-muted">
+                  Call the OPD desk for the current consultation fee.
                 </p>
 
                 <div className="mt-4 rounded-xl border border-[rgba(190,53,58,.18)] bg-white p-3.5">

@@ -68,7 +68,7 @@ export function ProfileBookingCard({ doctor }: { doctor: Doctor }) {
             Instant Booking
           </p>
           <span className="rounded-full bg-secondary px-2.5 py-1 text-[0.6875rem] font-extrabold">
-            ₹{doctor.fee} OPD Fee
+OPD Booking
           </span>
         </div>
         <h2 className="mt-2 text-[1.375rem] font-extrabold !text-white">
@@ -308,7 +308,7 @@ export function ProfileBookingCard({ doctor }: { doctor: Doctor }) {
 
         <p className="mt-3 flex items-center justify-center gap-2 text-center text-[0.75rem] font-bold text-primary">
           <Lock size={13} className="text-success" />
-          100% Secure • Instant SMS Confirmation • Zero Booking Fee
+          100% Secure • Instant SMS Confirmation • No Online Payment
         </p>
         <p className="mt-2 text-center text-[0.75rem] text-muted">
           Need urgent assistance? Call Sonari Front Desk:{" "}

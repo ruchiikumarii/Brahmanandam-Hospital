@@ -406,7 +406,6 @@ export default function AdminAppointments() {
                 ["Doctor", open.doctor_name || "—"],
                 ["Department", open.department || "—"],
                 ["Visit category", open.visit_category || "—"],
-                ["Consultation fee", open.fee ? `₹${open.fee}` : "—"],
                 ["Booked on", fmtWhen(open.created_at)],
               ].map(([k, v]) => (
                 <div key={k} className="flex justify-between gap-4 py-2.5">
