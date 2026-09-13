@@ -75,18 +75,11 @@ export const mainNav: NavItem[] = [
       { label: "Guidelines for Visitors", href: "/visitor-guidelines" },
       { label: "Patient & Attendant Rights", href: "/patient-rights" },
       { label: "TPA & Insurance", href: "/insurance" },
+      { label: "Hospital Facilities", href: "/facilities" },
+      { label: "Hospital Gallery", href: "/gallery" },
       { label: "FAQ", href: "/faq" },
     ],
   },
-  {
-    label: "Facilities",
-    href: "/facilities",
-    children: [
-      { label: "Hospital Facilities", href: "/facilities" },
-      { label: "Hospital Gallery", href: "/gallery" },
-    ],
-  },
-  { label: "Health Packages", href: "/health-packages" },
   { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "/contact" },
 ];

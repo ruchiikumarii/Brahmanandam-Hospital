@@ -66,8 +66,12 @@ export function useScrollReveal(enabled = true) {
       const startState = (variant: string) => {
         if (variant === "fade") return { opacity: 0 };
         if (variant === "zoom") return { opacity: 0, scale: 0.965 };
+        /* 20px, not more: the shell's side padding is 24px, and a card still
+           waiting below the fold sits at this offset. At 26px it poked 2px
+           past the viewport and gave the page a sideways scroll before the
+           visitor had scrolled at all. */
         if ((variant === "left" || variant === "right") && wide.matches) {
-          return { opacity: 0, x: variant === "left" ? -26 : 26 };
+          return { opacity: 0, x: variant === "left" ? -20 : 20 };
         }
         return { opacity: 0, y: 24 };
       };
