@@ -124,13 +124,20 @@ export function Header() {
           {/*
             The nav takes the space between the logo and the buttons and centres
             itself in it, so the row reads as balanced instead of left-packed.
-            Everything else is shrink-0, so the widths have to add up: logo 182
-            + buttons 218 + gaps leave 812px, and the seven items need 523.
+            Everything else is shrink-0, so the widths have to add up. The tight
+            case is the 73.75rem (1180px) breakpoint: a 1132px shell, less
+            logo 182, buttons 218 and gaps 24, leaves 708px for seven items
+            that need 523. It was 1400px while the nav had nine items; at 7 it
+            fits well below that, and laptops at 110-125% zoom (1240-1400px
+            wide) were getting a hamburger beside an empty gap. It is in rem on
+            purpose: a media query's rem follows the visitor's default font
+            size, so anyone who has asked for larger text keeps the hamburger
+            until the enlarged nav really fits.
           */}
           <nav
             ref={navRef}
             aria-label="Primary"
-            className="hidden min-w-0 flex-1 justify-center min-[1400px]:flex"
+            className="hidden min-w-0 flex-1 justify-center min-[73.75rem]:flex"
           >
             <ul className="flex items-center">
               {mainNav.map((item) => {
@@ -227,7 +234,7 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="ml-auto flex shrink-0 items-center gap-2.5 min-[1400px]:ml-0">
+          <div className="ml-auto flex shrink-0 items-center gap-2.5 min-[73.75rem]:ml-0">
             <a
               href={site.phoneHref}
               title={`24×7 emergency - call ${site.phone}`}
@@ -253,7 +260,7 @@ export function Header() {
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? "Close menu" : "Open menu"}
-              className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-white text-primary min-[1400px]:hidden"
+              className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-white text-primary min-[73.75rem]:hidden"
             >
               {open ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -267,7 +274,7 @@ export function Header() {
       <div
         id="mobile-menu"
         hidden={!open}
-        className="fixed inset-x-0 top-[4.25rem] bottom-0 z-[60] overflow-y-auto border-t border-line bg-white lg:top-[7rem] min-[1400px]:hidden"
+        className="fixed inset-x-0 top-[4.25rem] bottom-0 z-[60] overflow-y-auto border-t border-line bg-white lg:top-[7rem] min-[73.75rem]:hidden"
       >
         <nav aria-label="Mobile" className="shell py-5 pb-24">
           <ul className="grid gap-1">
