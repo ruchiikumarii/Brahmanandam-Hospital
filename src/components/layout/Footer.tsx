@@ -7,7 +7,7 @@ import {
   footerQuickLinks,
 } from "@/lib/data/institutional";
 import { Icon } from "@/components/ui/Icon";
-import { LogoMark } from "./Logo";
+import { Logo } from "./Logo";
 
 const serviceIcons = [
   "siren",
@@ -120,15 +120,11 @@ export function Footer() {
           className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[1.15fr_.72fr_.72fr_1fr_.95fr_1.05fr] xl:gap-6"
         >
           <div>
-            <div className="flex items-center gap-2.5">
-              <LogoMark className="h-10 w-10" />
-              <span className="font-display text-[1.5rem] font-extrabold tracking-[-0.02em] text-white">
-                Brahmanandam
-              </span>
-            </div>
-            <p className="mt-3 inline-block rounded-md bg-white/12 px-2.5 py-1.5 text-[0.6875rem] font-bold tracking-[0.09em] text-white uppercase">
-              Multi Specialty Centre Sonari
-            </p>
+            {/* The lockup already carries the name and the "Multi Speciality
+                Centre Sonari" line, so the separate name and tagline pill are
+                gone. White knock-out: the colour logo's blue half vanishes on
+                navy. */}
+            <Logo variant="white" className="h-12 w-auto lg:h-14" />
             <p className="mt-4 max-w-xs text-[0.875rem] leading-[1.75] text-white/70">
               {footerAbout}
             </p>

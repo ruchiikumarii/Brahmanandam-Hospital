@@ -1,66 +1,52 @@
 import { Link } from "react-router-dom";
-import { cn } from "@/components/ui";
+import Image from "@/components/ui/Img";
 
-export function LogoMark({ className = "" }: { className?: string }) {
-  return (
-    <span
-      className={cn(
-        "relative grid shrink-0 place-items-center rounded-[0.9rem] bg-primary text-white",
-        className,
-      )}
-      aria-hidden="true"
-    >
-      <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-        <path
-          d="M13.4 4h5.2v8.4H27v5.2h-8.4V26h-5.2v-8.4H5v-5.2h8.4z"
-          fill="currentColor"
-          opacity=".95"
-        />
-        <path
-          d="M5 22.6h5.1l1.6-3.1 2.6 6 2.1-4.2 1.3 1.3H27"
-          stroke="#BE353A"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </span>
-  );
-}
+/**
+ * The hospital's own lockup - heart-and-hands mark, name, EKG rule and
+ * "Multi Speciality Centre Sonari" - generated into public/brand by
+ * scripts/brand-assets.py from the file the hospital supplied.
+ *
+ * The name is part of the artwork, so there is no text beside it to keep in
+ * sync; the alt text carries it for screen readers and image search.
+ *
+ * `white` is a knock-out of the same artwork for the navy footer, where the
+ * blue half of the colour logo would sink into the background.
+ */
+export const LOGO_ALT = "Brahmanandam Hospital, Multi Speciality Centre Sonari";
+
+/* Intrinsic size of the 144px-tall raster, so the space is reserved before
+   the image arrives and nothing shifts. */
+const WIDTH = 467;
+const HEIGHT = 144;
 
 export function Logo({
-  invert = false,
-  compact = false,
+  variant = "color",
+  priority = false,
+  className,
 }: {
-  invert?: boolean;
-  compact?: boolean;
+  variant?: "color" | "white";
+  /** The header logo is above the fold on every page. */
+  priority?: boolean;
+  /** Height classes; the width follows the artwork. */
+  className?: string;
 }) {
   return (
     <Link
       to="/"
-      className="group flex items-center gap-2.5"
-      aria-label="Brahmanandam Hospital - home"
+      aria-label="Brahmanandam Hospital home page"
+      className="inline-flex shrink-0 items-center"
     >
-      <LogoMark className={cn(compact ? "h-9 w-9" : "h-11 w-11")} />
-      <span className="flex flex-col leading-none">
-        <span
-          className={cn(
-            "font-display font-extrabold tracking-[-0.02em]",
-            compact ? "text-[1.05rem]" : "text-[1.25rem]",
-            invert ? "text-white" : "text-primary",
-          )}
-        >
-          Brahmanandam
-        </span>
-        <span
-          className={cn(
-            "mt-1 text-[0.5625rem] font-bold tracking-[0.14em] uppercase",
-            invert ? "text-white/65" : "text-muted",
-          )}
-        >
-          Multi Specialty Centre Sonari
-        </span>
-      </span>
+      <Image
+        src={variant === "white" ? "/brand/logo-white-144.png" : "/brand/logo-144.png"}
+        alt={LOGO_ALT}
+        width={WIDTH}
+        height={HEIGHT}
+        priority={priority}
+        /* Sized for the tagline as much as the name: the lockup stacks two
+           lines of name, a rule and a tagline, so at 48px the tagline was
+           barely a smudge. The header row has room for more. */
+        className={className ?? "h-11 w-auto lg:h-14"}
+      />
     </Link>
   );
 }

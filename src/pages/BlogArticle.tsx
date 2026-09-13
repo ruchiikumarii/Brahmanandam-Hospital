@@ -102,9 +102,22 @@ export default function BlogArticlePage() {
 
             {article.author ? (
               <div className="mt-5 flex items-center gap-3 border-y border-line py-4">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-[rgba(47,59,128,.07)] text-primary">
-                  <UserRound size={18} />
-                </span>
+                {/* The hospital's editorial desk writes most posts, so those carry
+                    its mark. A named doctor or guest author keeps the neutral
+                    avatar rather than borrowing the hospital's logo. */}
+                {/brahmanandam/i.test(article.author) ? (
+                  <Image
+                    src="/brand/mark-192.png"
+                    alt="Brahmanandam Hospital logo"
+                    width={40}
+                    height={40}
+                    className="h-10 w-10 rounded-full bg-white object-contain p-1 shadow-card"
+                  />
+                ) : (
+                  <span className="grid h-10 w-10 place-items-center rounded-full bg-[rgba(47,59,128,.07)] text-primary">
+                    <UserRound size={18} />
+                  </span>
+                )}
                 <span className="block text-[0.9375rem] font-bold text-primary">
                   {article.author}
                 </span>

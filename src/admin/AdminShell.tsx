@@ -100,8 +100,20 @@ export function AdminShell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-30 border-b border-slate-200 bg-white">
         <div className="mx-auto flex h-14 max-w-[1400px] items-center justify-between gap-4 px-4">
           <div className="flex items-center gap-6">
-            <Link to="/admin" className="text-[0.9375rem] font-bold">
-              Brahmanandam <span className="text-slate-400">CMS</span>
+            <Link
+              to="/admin"
+              className="flex shrink-0 items-center gap-2 text-[0.9375rem] font-bold whitespace-nowrap"
+            >
+              <img
+                src="/brand/mark-192.png"
+                alt="Brahmanandam Hospital logo"
+                width={28}
+                height={28}
+                className="h-7 w-7"
+              />
+              <span>
+                Brahmanandam <span className="text-slate-400">CMS</span>
+              </span>
             </Link>
             <nav className="hidden gap-1 sm:flex">
               {NAV.map((n) => {
@@ -131,11 +143,11 @@ export function AdminShell({ children }: { children: ReactNode }) {
               href="/"
               target="_blank"
               rel="noreferrer"
-              className="hidden text-[0.75rem] font-semibold text-slate-500 hover:text-slate-900 md:inline"
+              className="hidden text-[0.75rem] font-semibold whitespace-nowrap text-slate-500 hover:text-slate-900 md:inline"
             >
               View site
             </a>
-            <span className="hidden text-[0.75rem] text-slate-500 lg:inline">
+            <span className="hidden text-[0.75rem] text-slate-500 xl:inline">
               {email}
             </span>
             <button
@@ -145,7 +157,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
                   window.location.href = "/admin/login";
                 })
               }
-              className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-slate-300 px-3 text-[0.75rem] font-semibold hover:bg-slate-100"
+              className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-lg border border-slate-300 px-3 text-[0.75rem] font-semibold whitespace-nowrap hover:bg-slate-100"
             >
               <LogOut size={13} /> Sign out
             </button>

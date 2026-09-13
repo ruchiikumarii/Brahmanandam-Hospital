@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Navigate } from "react-router-dom";
-import { Eye, EyeOff, Loader2, Lock } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { signIn } from "@/lib/cms/admin-api";
 import { cmsConfigured } from "@/lib/cms/supabase";
 import { useAuth } from "./AdminShell";
@@ -61,9 +61,13 @@ export default function Login() {
         onSubmit={submit}
         className="w-full max-w-sm rounded-2xl border border-slate-200 bg-white p-8"
       >
-        <span className="grid h-11 w-11 place-items-center rounded-xl bg-slate-900 text-white">
-          <Lock size={19} />
-        </span>
+        <img
+          src="/brand/mark-192.png"
+          alt="Brahmanandam Hospital logo"
+          width={48}
+          height={48}
+          className="h-12 w-12"
+        />
         <h1 className="mt-5 text-xl font-bold">Brahmanandam CMS</h1>
         <p className="mt-1 text-[0.8125rem] text-slate-500">
           Sign in to manage the health blog.

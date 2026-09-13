@@ -1,3 +1,5 @@
+import { LOGO_ALT } from "@/components/layout/Logo";
+import Image from "@/components/ui/Img";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
@@ -241,6 +243,16 @@ export function ConfirmationView() {
                   "radial-gradient(600px 260px at 50% -10%, rgba(47,59,128,.07), transparent 65%), #fbfbff",
               }}
             >
+              {/* The patient prints and keeps this slip, so it carries the
+                  hospital's own mark rather than only its name in text. */}
+              <Image
+                src="/brand/logo-144.png"
+                alt={LOGO_ALT}
+                width={467}
+                height={144}
+                priority
+                className="mx-auto mb-5 h-12 w-auto"
+              />
               <EkgLine className="mx-auto w-full max-w-[26rem]" width={420} tone="secondary" />
               <span className="mx-auto mt-5 grid h-[4.5rem] w-[4.5rem] place-items-center rounded-full bg-success text-white ring-[10px] ring-[rgba(15,157,110,.12)]">
                 <Check size={32} strokeWidth={3} />

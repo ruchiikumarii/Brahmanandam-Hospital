@@ -118,14 +118,14 @@ export function Header() {
 
         <div className="shell flex h-[4.25rem] items-center gap-3 lg:h-[4.75rem]">
           <div className="shrink-0">
-            <Logo />
+            <Logo priority />
           </div>
 
           {/*
             The nav takes the space between the logo and the buttons and centres
             itself in it, so the row reads as balanced instead of left-packed.
-            Everything else is shrink-0, so the widths have to add up: logo 238
-            + buttons 218 + gaps leave 756px, and the nine items need 731.
+            Everything else is shrink-0, so the widths have to add up: logo 182
+            + buttons 218 + gaps leave 812px, and the seven items need 523.
           */}
           <nav
             ref={navRef}
